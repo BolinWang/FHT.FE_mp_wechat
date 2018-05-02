@@ -1,0 +1,28 @@
+<!--pages/bindCard/bindCard.wxml-->
+<model 
+  showCancel
+  model-hidden="{{is_model_Hidden}}" 
+  model-msg="{{is_model_Msg}}" 
+  model-title="{{is_model_title}}"
+  bindemitSure="navigateIndex"
+/> 
+<view class="section border">
+  <view class="section__title">组织的主账号：</view>
+  <input type="number" name="mobile" id="mobile" 
+    bindinput="bindKeyInput" placeholder="请输入主账号手机号" value="{{mobile}}" />
+</view>
+
+<view class="section border">
+  <view class="section__title">开户人姓名：</view>
+  <input name="userName" id="userName" 
+    bindinput="bindKeyInput" placeholder="请输入开户人姓名" value="{{userName}}" />
+</view>
+
+<view class="section">
+  <view class="section__title">银行卡号：</view>
+  <input type="number" name="userCardNo" id="userCardNo" 
+    bindinput="bindKeyInput" placeholder="请输入银行卡号" value="{{userCardNo}}" />
+</view>
+
+<button class="btn__fixed" bindtap="bindCard">确定</button>
+

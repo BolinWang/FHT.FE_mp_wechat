@@ -1,0 +1,20 @@
+<!--pages/login/login.wxml-->
+<view class="container">
+  <view class="projectName">麦滴管家运营平台</view>
+  <view class="login__view">
+    <view class="section">
+      <i class="iconfont icon-iphone"></i>
+      <input type="number" name="mobile" id="mobile" 
+        bindinput="bindKeyInput" placeholder="请输入手机号码" value="{{mobile}}" />
+    </view>
+    <view class="section">
+      <i class="iconfont icon-mima"></i>
+      <input type="password" name="password" id="password" 
+        bindinput="bindKeyInput" placeholder="请输入密码" value="{{password}}" />
+    </view>
+    <view class="section noBorder">
+      <button class="mainBgcolor btn__login" bindtap="getSessionId">登录</button>
+    </view>
+  </view>
+</view>
+

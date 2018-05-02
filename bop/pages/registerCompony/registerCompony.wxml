@@ -1,0 +1,64 @@
+<!--pages/registerCompony/registerCompony.wxml-->
+<model 
+  showCancel
+  model-hidden="{{is_model_Hidden}}" 
+  model-msg="{{is_model_Msg}}" 
+  model-title="{{is_model_title}}"
+  bindemitSure="navigateIndex"
+/>
+<view class="aduit__detail">
+  <view class="section autoHeight">
+    <view class="section__title">企业名称：</view>
+    <input name="organizationName" id="organizationName" 
+      bindinput="bindKeyInput" placeholder="必填" 
+      value="{{organizationStepOneVO.organizationName}}" />
+  </view>
+
+  <view class="section">
+    <view class="section__title">企业缩写名：</view>
+    <input name="displayName" id="displayName" 
+      bindinput="bindKeyInput" placeholder="必填" 
+      value="{{organizationStepOneVO.displayName	}}" />
+  </view>
+
+  <view class="section noborder">
+    <view class="section__title" style="width: 9em;">统一社会信用代码：</view>
+    <input name="orgLicence" id="orgLicence" 
+      bindinput="bindKeyInput" placeholder="必填" 
+      value="{{organizationStepOneVO.orgLicence}}" />
+  </view>
+</view>
+
+<view class="aduit__detail">
+  <view class="section">
+    <view class="section__title">法人姓名：</view>
+    <input name="orgLegalPersonName" id="orgLegalPersonName" 
+      bindinput="bindKeyInput" placeholder="必填" 
+      value="{{organizationStepOneVO.orgLegalPersonName}}" />
+  </view>
+  <view class="section">
+    <view class="section__title" style="width: 7em;">法人身份证号：</view>
+    <input name="orgLegalPersonCardNo" id="orgLegalPersonCardNo" 
+      bindinput="bindKeyInput" placeholder="必填" 
+      value="{{organizationStepOneVO.orgLegalPersonCardNo}}" />
+  </view>
+
+  <view class="section">
+    <view class="section__title">联系人姓名：</view>
+    <input name="orgContactName" id="orgContactName" 
+      bindinput="bindKeyInput" placeholder="可输入联系人姓名" 
+      value="{{organizationStepOneVO.orgContactName}}" />
+  </view>
+
+  <view class="section noborder">
+    <view class="section__title">联系人号码：</view>
+    <input name="orgContactMobile" id="orgContactMobile" 
+      bindinput="bindKeyInput" placeholder="可输入联系人号码" 
+      value="{{organizationStepOneVO.orgContactMobile}}" />
+  </view>
+</view>
+
+<view class='footer'>
+  <button class="btn__fixed" bindtap="nextStep">下一步</button>
+</view>
+

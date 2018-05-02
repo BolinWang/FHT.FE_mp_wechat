@@ -1,0 +1,82 @@
+/* components/model/model.wxss */
+.mask_layer {  
+  width: 100%;  
+  height: 100%;  
+  position: fixed;  
+  z-index: 1000;  
+  background: #000;  
+  opacity: 0.5;  
+  overflow: hidden;  
+}  
+.model_box {  
+  width: 76%;  
+  overflow: hidden;  
+  position: fixed;  
+  top: 30%;  
+  left: 0;  
+  z-index: 1001;   
+  margin: 0 12% 0 12%;  
+  border-radius: 26rpx;  
+  background: #fff;  
+}  
+  
+.title {  
+  text-align: center;  
+  font-size: 32rpx;
+  padding-top: 40rpx;
+}  
+  
+.content {  
+  overflow-y: scroll; /*超出父盒子高度可滚动*/  
+  border-bottom: 2rpx solid #eee;
+  color: #101010;
+  font-size: 32rpx;
+  display: flex;
+  align-items: center;
+  max-height: 300rpx; 
+  padding: 40rpx 70rpx;
+}  
+  
+.btn {  
+  width: 100%;  
+  display: flex;  
+  flex-direction: row;  
+  align-items: center;  
+  justify-content: space-between;  
+  box-sizing: border-box;  
+  background-color: white;  
+  height: 80rpx;
+  line-height: 80rpx;
+  color: #0076FF;
+  font-size: 34rpx;
+}  
+
+.cancel {
+  border-left: 1rpx solid #eee;
+}
+  
+.cancel,
+.Sure{  
+  width: 100%;  
+  height: 100%;
+  text-align: center;  
+}
+  
+.modelMsg {  
+  text-align: center;  
+  width: 100%;
+  display: block;  
+}  
+
+.modelTextarea,
+.modelTextarea textarea {
+  width: 100%;
+  font-size: 26rpx;
+}
+
+.modelTextarea textarea {
+  border: 2rpx solid #eee;
+  border-radius: 10rpx;
+  padding: 10rpx;
+  min-height: 120rpx;
+}

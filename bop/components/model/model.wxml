@@ -1,0 +1,18 @@
+<!--components/model/model.wxml-->
+<view hidden='{{modelHidden}}'>  
+  <view class='mask_layer' bindtap='model_click_Hidden' />  
+  <view class='model_box'>  
+    <view wx:if="{{showTitle}}" class="title">{{modelTitle}}</view>  
+    <view class='content'>  
+      <view wx:if="{{showTextarea}}" class='modelTextarea'>
+        <textarea bindinput="getTextvalue" maxlength="50" 
+          auto-height focus placeholder="请输入原因" value="{{textarea}}" />
+      </view>
+      <view wx:else class='modelMsg'>{{modelMsg}}</view>  
+    </view>  
+    <view class='btn'>  
+      <view bindtap='Sure' class='Sure'>确定</view>
+      <view wx:if="{{showCancel}}" bindtap='model_click_Hidden' class='cancel'>取消</view>  
+    </view>  
+  </view>  
+</view>  

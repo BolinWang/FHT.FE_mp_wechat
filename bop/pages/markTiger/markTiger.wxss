@@ -1,0 +1,38 @@
+/* pages/markTiger/markTiger.wxss */
+page {
+  background: #F2F2F2;
+}
+.btn__fixed {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  color: #fff;
+  font-size: 28rpx;
+  background: #FF9800;
+  border: 0 none;
+  border-radius: 0;
+  height: 72rpx;
+  line-height: 72rpx;
+}
+
+.section {
+  height: 90rpx;
+  line-height: 90rpx;
+  font-size: 26rpx;
+  display: flex;
+  align-items: center;
+  background: #fff;
+  padding: 0 32rpx;
+}
+
+.section.border {
+  border-bottom: 2rpx solid #eee;
+}
+
+.section__title {
+  width: 450rpx;
+}
+
+.section input {
+  width: 100%;
+}

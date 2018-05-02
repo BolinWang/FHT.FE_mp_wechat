@@ -1,0 +1,67 @@
+/**index.wxss**/
+.userInfo {
+  height: 80rpx;
+  line-height: 80rpx;
+  font-size: 26rpx;
+  padding: 0 32rpx;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  align-content: right;
+}
+
+.userName {
+  color: #4680FF;
+}
+
+.btn__loginout {
+  color: #4680ff;
+  background: #fff;
+  font-size: 24rpx;
+  border: 2rpx solid #4680ff;
+  height: 48rpx;
+  line-height: 48rpx;
+  width: 120rpx;
+  padding-left: 0;
+  padding-right: 0;
+  margin: 0;
+}
+
+.flex__wrap {
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  top: -10rpx;
+}
+
+.flex__wrap .flex__item {
+  text-align: center;
+  width: 50%;
+  height: 180rpx;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  border-bottom: 1rpx solid #eee;
+  font-size: 28rpx;
+}
+
+.flex__item.setborder {
+  width: calc(50% - 2rpx);
+  border-left: 1rpx solid #eee;
+}
+
+.flex__wrap .flex__item i {
+  position: relative;
+  top: 15rpx;
+  display: block;
+  width: 100%;
+  color: #FF9800;
+}
+
+.flex__wrap .flex__item text {
+  position: relative;
+  top: -15rpx;
+}

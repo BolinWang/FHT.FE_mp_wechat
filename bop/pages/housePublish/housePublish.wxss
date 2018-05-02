@@ -1,0 +1,143 @@
+/* pages/housePublish/housePublish.wxss */
+page {
+  background: #F2F2F2;
+}
+
+.section__items {
+  padding: 15rpx 0;
+  background: #fff;
+  margin-bottom: 20rpx;
+  position: relative;
+  overflow: hidden;
+}
+
+.section {
+  height: 60rpx;
+  line-height: 60rpx;
+  font-size: 26rpx;
+  display: flex;
+  align-items: center;
+  padding: 0 32rpx;
+}
+
+.section__title {
+  color: #AAA;
+}
+
+.deliver {
+  height: 0;
+  margin: 15rpx 32rpx;
+  border-bottom: 2rpx solid #eee;
+}
+
+.flex__oprate {
+  font-size: 26rpx;
+  color: #FF9800;
+  height: 45rpx;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 32rpx;
+}
+
+.flex__oprate .icon-right {
+  color: #FF9800;
+  font-size: 32rpx;
+}
+
+.loading {
+  font-size: 26rpx;
+  height: 60rpx;
+  line-height: 60rpx;
+  text-align: center;
+  background: #fff;
+}
+
+.picItem {
+  position:absolute;
+  z-index: 2;
+  right: -70rpx;
+  top: 0;
+  font-size: 24rpx;
+  transform: rotate(45deg);
+  transform-origin: 50% 0;
+  width: 140rpx;
+  line-height: 70rpx;
+  text-align: center;
+
+}
+.item__nopic {
+  background: #e5e5e5;
+  color: #666;
+}
+
+.item__haspic {
+  background: #FF9800;
+  color: #fff;
+}
+
+.flex__room {
+  display: flex;
+  justify-content: space-between;
+  align-items:center;
+  align-content:right;
+}
+
+.flex__room .section__title {
+  display: inline-block;
+}
+
+.autoHeight {
+  height: auto;
+  align-items: flex-start;
+}
+
+.autoHeight .section__title {
+  white-space: nowrap;
+  word-wrap: normal;
+}
+
+.roomDetail {
+  line-height: 40rpx;
+  margin: 10rpx 0;
+}
+
+.section__search {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 26rpx;
+  padding: 15rpx;
+}
+
+.section__search .iconfont {
+  font-size: 32rpx;
+}
+
+.search__wrap {
+  width: 100%;
+  border-radius: 10rpx;
+  padding: 5rpx 17rpx;
+  background: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.search__wrap .icon-roundclose {
+  height: 50rpx;
+  line-height: 50rpx;
+  width: 50rpx;
+  text-align: center;
+}
+
+.section__search input {
+  width: 100%;
+  border: 0 none;
+  margin-left: 10rpx;
+}
+
+.section__search text {
+  white-space: nowrap;
+  padding: 10rpx 0 10rpx 15rpx;
+}

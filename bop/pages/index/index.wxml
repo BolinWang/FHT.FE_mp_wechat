@@ -1,0 +1,39 @@
+<!--index.wxml-->
+<view>
+  <view class="userInfo">
+    <view>当前账号：
+      <text class="userName">{{userInfo.name}}</text>
+    </view>
+    <button class="btn__loginout" bindtap="fedLoginout">退出</button>
+  </view>
+  <image mode="widthFix"
+    style="width: 100%; background-color: #eee;"
+    src="/images/banner.jpg">
+  </image>
+  <view class="flex flex__wrap">
+    <view class="flex__item" data-path="registerPerson" bindtap="navigateTo">
+      <i class="iconfont icon-wode"></i>
+      <text>个人账号注册</text>
+    </view>
+    <view class="flex__item setborder" data-path="registerCompony" bindtap="navigateTo">
+      <i class="iconfont icon-shenfenzheng"></i>
+      <text>企业账号注册</text>
+    </view>
+    <view class="flex__item" data-path="housePublish" bindtap="navigateTo">
+      <i class="iconfont icon-homefill"></i>
+      <text>房源发布审核</text>
+    </view>
+    <view class="flex__item setborder" data-path="signAudit" bindtap="navigateTo">
+      <i class="iconfont icon-fapiaoshenhe"></i>
+      <text>电子签章审核</text>
+    </view>
+    <view class="flex__item" data-path="markTiger"  bindtap="navigateTo">
+      <i class="iconfont icon-biaoji"></i>
+      <text>标记为飞虎队</text>
+    </view>
+    <view class="flex__item setborder" data-path="bindCard" bindtap="navigateTo">
+      <i class="iconfont icon-yinxingqia"></i>
+      <text>绑定银行卡</text>
+    </view>
+  </view>
+</view>

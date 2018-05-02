@@ -1,0 +1,6 @@
+{
+  "navigationBarTitleText": "账号信息录入",
+  "usingComponents": {
+    "model": "/components/model/model"
+  }
+}

@@ -1,0 +1,41 @@
+/* pages/login/login.wxss */
+.projectName {
+  font-size: 36rpx;
+  color: #101010;
+  padding: 190rpx 0 100rpx 0;
+}
+
+.login__view {
+  width: 100%;
+}
+
+.login__view .section {
+  border-bottom: 2rpx solid #ccc;
+  height: 100rpx;
+  margin: 0 90rpx;
+  display: flex;
+  align-items: center;
+  font-size: 28rpx;
+}
+
+.login__view input {
+  height: 80rpx;
+  width: 100%;
+}
+
+.login__view .section i {
+  margin-right: 20rpx;
+}
+
+.btn__login {
+  color: #fff;
+  font-size: 28rpx;
+  width: 100%;
+  margin-top: 60rpx;
+  line-height: 72rpx;
+  border-radius: 36rpx;
+}
+
+.section.noBorder {
+  border-bottom: 0 none;
+}

@@ -1,0 +1,82 @@
+<!--pages/signAudit/signDetail/signDetail.wxml-->
+<model 
+  showCancel
+  model-hidden="{{is_model_Hidden}}" 
+  model-msg="{{is_model_Msg}}" 
+  model-title="{{is_model_title}}"
+  showTextarea="{{showTextarea}}"
+  bindemitSure="navigateIndex"
+  bindemitTextarea="getTextvalue"
+/>
+<view class="aduit__detail" wx:if="{{detailData.type === 3}}">
+  <view class="section">
+    <view class="section__title">申请时间：</view>
+    <view>{{detailData.gmtCreate}}</view>
+  </view>
+
+  <view class="section">
+    <view class="section__title">姓名：</view>
+    <view>{{detailData.principal}}</view>
+  </view>
+
+  <view class="section">
+    <view class="section__title">身份证：</view>
+    <view>{{detailData.principalIdCard}}</view>
+  </view>
+
+  <view class="section autoHeight">
+    <view class="section__title">电子签名：</view>
+    <view class="flex__image" wx:if="{{picList.length > 0}}">
+      <image wx:for="{{picList}}" wx:key="item" class="image" 
+        mode="aspectFit" src="{{item}}"
+        data-imgsrc="{{item}}"
+        bindtap="previewImg">
+      </image>
+    </view>
+    <view class="view__nopic" wx:else>暂无图片</view>
+  </view>
+</view>
+
+<view class="aduit__detail" wx:else>
+  <view class="section">
+    <view class="section__title">申请时间：</view>
+    <view>{{detailData.gmtCreate}}</view>
+  </view>
+
+  <view class="section">
+    <view class="section__title">企业名称：</view>
+    <view>{{detailData.epName}}</view>
+  </view>
+
+  <view class="section">
+    <view class="section__title uscc">社会统一信用代码：</view>
+    <view>{{detailData.uscc}}</view>
+  </view>
+
+  <view class="section">
+    <view class="section__title">法人姓名：</view>
+    <view>{{detailData.principal}}</view>
+  </view>
+
+  <view class="section">
+    <view class="section__title">身份证：</view>
+    <view>{{detailData.principalIdCard}}</view>
+  </view>
+
+  <view class="section autoHeight">
+    <view class="section__title">营业执照：</view>
+    <view class="flex__image" wx:if="{{picList.length > 0}}">
+      <image wx:for="{{picList}}" wx:key="item" class="image" 
+        mode="aspectFit" src="{{item}}"
+        data-imgsrc="{{item}}"
+        bindtap="previewImg">
+      </image>
+    </view>
+    <view class="view__nopic" wx:else>暂无图片</view>
+  </view>
+</view>
+
+<view class='footer'>
+  <button class="btn__uncross" bindtap="auditUncross">审核不通过</button>
+  <button class="btn__cross" bindtap="auditCross">审核通过</button>
+</view>

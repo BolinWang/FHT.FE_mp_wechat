@@ -1,0 +1,26 @@
+<!--pages/signAudit/signAudit.wxml-->
+<block wx:for="{{auditList}}" wx:key="item.id">
+  <view class="section__items" data-index="{{index}}" bindtap="getDetailData">
+    <!-- <view class="picItem item__nopic" wx:if="{{picList.length === 0}}">无图</view>
+    <view class="picItem item__haspic" wx:else>有图</view> -->
+    <view class="section">
+      <view class="section__title">申请时间：</view>
+      <view>{{item.gmtCreate}}</view>
+    </view>
+    <view class="section">
+      <view class="section__title">申请组织：</view>
+      <view>{{item.organizationName}}</view>
+    </view>
+    <view class="section border">
+      <view class="section__title">审核类型：</view>
+      <view>{{item.typeStr}}</view>
+    </view>
+    <view class="deliver"></view>
+    <view class="flex__oprate">
+      <view>查看详情</view>
+      <i class="iconfont icon-right"></i>
+    </view>
+  </view>
+</block>
+<view class="loading" hidden="{{!isLoading}}">正在加载...</view>  
+<view class="loading complete" hidden="{{!isLoadTotal}}">无更多数据</view>

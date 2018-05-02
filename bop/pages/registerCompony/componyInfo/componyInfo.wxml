@@ -1,0 +1,21 @@
+<!--pages/registerCompony/componyInfo/componyInfo.wxml-->
+<model 
+  model-hidden="{{is_model_Hidden}}" 
+  model-msg="{{is_model_Msg}}" 
+  model-title="{{is_model_title}}"
+  bindemitSure="navigateIndex"
+/> 
+<view class="section border">
+  <view class="section__title">姓名：</view>
+  <input name="name" id="name" 
+    bindinput="bindKeyInput" placeholder="请输入姓名" value="{{name}}" />
+</view>
+
+<view class="section">
+  <view class="section__title">手机号码：</view>
+  <input name="mobile" type="number" id="mobile" 
+    bindinput="bindKeyInput" placeholder="请输入手机号码" value="{{mobile}}" />
+</view>
+
+<button class="btn__fixed" bindtap="registerPerson">确定</button>
+

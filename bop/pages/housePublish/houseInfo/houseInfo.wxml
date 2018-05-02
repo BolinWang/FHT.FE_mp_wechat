@@ -1,0 +1,88 @@
+<!--pages/housePublish/houseInfo/houseInfo.wxml-->
+<model 
+  showCancel
+  model-hidden="{{is_model_Hidden}}" 
+  model-msg="{{is_model_Msg}}" 
+  model-title="{{is_model_title}}"
+  showTextarea="{{showTextarea}}"
+  bindemitSure="navigateIndex"
+/>
+<view class="aduit__detail">
+  <view class="section autoHeight">
+    <view class="section__title">房源地址：</view>
+    <view>{{detailData.houseAddress}}</view>
+  </view>
+
+  <view class="section">
+    <view class="section__title">所属板块：</view>
+    <view>{{detailData.zoneName}}</view>
+  </view>
+
+  <view class="section">
+    <view class="section__title">套房信息：</view>
+    <view>{{detailData.houseInfo}}</view>
+  </view>
+
+  <view class="section flex__room">
+    <view>
+      <view class="section__title">装修风格：</view>
+      {{detailData.decorationDegree}}
+    </view>
+    <view>
+      <view class="section__title">房源层高：</view>
+      {{detailData.floorName}}/{{detailData.floorAmount}}
+    </view>
+  </view>
+
+  <view class="section">
+    <view class="section__title">户型信息：</view>
+    <view>{{detailData.houseTypeInfo}}</view>
+  </view>
+
+  <view class="section">
+    <view class="section__title">看房电话：</view>
+    <view>{{detailData.contactInfo}}</view>
+  </view>
+
+  <view class="section autoHeight" style="flex-wrap: wrap;" 
+    wx:if="{{detailData.houseRentType === 2}}">
+    <view class="section__title">公共设施：</view>
+    <view class="tag__item" wx:for="{{detailData.facilityItems}}" wx:key="{{index}}">
+      {{item}}
+    </view>
+  </view>
+
+  <view class="section autoHeight">
+    <view class="section__title">房源描述：</view>
+    <view>{{detailData.houseDesc}}</view>
+  </view>
+
+  <view class="section" wx:if="{{detailData.houseRentType === 2}}">
+    <view class="section__title">房间信息：</view>
+    <view>{{detailData.houseInfo}}</view>
+  </view>
+
+  <view class="section autoHeight">
+    <view class="section__title">房间设施：</view>
+    <view wx:for="{{detailData.roomFacilityItems}}" wx:key="{{index}}">
+      <view class="tag__item">{{item}}</view>
+    </view>
+  </view>
+
+  <view class="section autoHeight">
+    <view class="section__title">房间照片：</view>
+    <view class="flex__image" wx:if="{{picList.length > 0}}">
+      <image wx:for="{{picList}}" wx:key="item" class="image" 
+        mode="aspectFit" src="{{item}}"
+        data-imgsrc="{{item}}"
+        bindtap="previewImg">
+      </image>
+    </view>
+    <view class="view__nopic" wx:else>暂无图片</view>
+  </view>
+</view>
+
+<view class='footer'>
+  <button class="btn__uncross" bindtap="auditUncross">审核不通过</button>
+  <button class="btn__cross" bindtap="auditCross">审核通过</button>
+</view>
