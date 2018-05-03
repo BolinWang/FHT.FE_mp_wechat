@@ -1,0 +1,17 @@
+<!--index.wxml-->
+<view class="container">
+  <view class="center">
+    <image src="/images/logo.png" class="login" />
+  </view>
+  <view class="loginBox">
+    <view class="inputBox">
+      <input type="text" class="inputs" type="number" placeholder="请输入手机号码" value="{{username}}" bindinput="inputName" />
+      <view class="iconfont icon-shouji"></view>
+    </view>
+    <view class="inputBox">
+      <input type="password" class="inputs" placeholder="请输入密码" bindinput="inputPsd" />
+      <view class="iconfont icon-unie607"></view>
+    </view>
+  </view> 
+  <button type="defalut" class="loginBtn" bindtap="bindViewTap">登录</button>
+</view>
