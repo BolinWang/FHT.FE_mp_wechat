@@ -1,0 +1,120 @@
+<view class="container">
+  <view class="userFix" wx:if="{{isShow}}">
+    <view class="userMsg">当前登录：<i class="blue">{{userMobile}}</i></view>
+    <button class="loginOut" bindtap="loginOut">退出</button>
+  </view>
+  <view class="noDataBox" wx:if="{{isNoData}}">
+    <image src="/images/noData.svg" class="noData" />
+  </view>
+  <view class="bgColor {{isNoData ? '' : 'bgPadding'}}">
+    <block wx:for="{{items}}" wx:key="unique" wx:for-index="idx">
+      <view class="list">
+        <image src="/images/{{item.status == 1 ? 'status1' : 'status2'}}.png" class="dataStatus" />
+        <view class="paddingLeft">
+          <view class="flex">
+            <view class="title">提现流水号:</view>
+            <view class="content">{{item.applyNo}}</view>
+          </view>
+          <view class="flex">
+            <view class="title">提现组织:</view>
+            <view class="content">{{item.orgName}}</view>
+          </view>
+          <view class="flex">
+            <view class="title">提现时间:</view>
+            <view class="content">{{item.applyTime}}</view>
+          </view>
+          <view class="flex">
+            <view class="title">提现人:</view>
+            <view class="content">{{item.applyUserName}}</view>
+          </view>
+          <view class="borderTop">   
+            <view class="flex">
+              <view class="half flex">
+                <view class="title">提现金额:</view>
+                <view class="content blue">{{item.applyMoney}}</view>
+              </view>
+              <view class="half flex">
+                <view class="title">提现手续费:</view>
+                <view class="content">{{item.withdrawFee}}</view>
+              </view>
+            </view>
+            <view class="flex">
+              <view class="half flex">
+                <view class="title">实际打款:</view>
+                <view class="content red">{{item.actualMoney}}</view>
+              </view>
+              <view class="half flex">
+                <view class="title">提现账户:</view>
+                <view class="content">
+                  <button type="defalut" class="lookBtn" 
+                    data-line="{{item}}" 
+                    data-index="{{idx}}"
+                    bindtap="lookFn">查看</button>
+                </view>
+              </view>
+            </view>
+          </view>
+          <view class="flex borderTop">
+            <view class="title">备注说明:</view>
+            <view class="content">{{item.remark}}</view>
+          </view>
+          <view class="flex borderTop" wx:if="{{item.payStatus == 2}}">
+            <view class="title">连连反馈:</view>
+            <view class="content"><i class="red">【失败】</i>{{item.payFailReason}}</view>
+          </view>
+          <view class="flex borderTop" wx:elif="{{(item.status == 2 && item.payStatus == 5)}}">
+            <view class="title">连连反馈:</view>
+            <view class="content">复核</view>
+          </view>
+        </view>
+       
+        <view class="flex noPadding buttonArr">
+          <view class="half textCenter blue rightBorder {{(item.status == 1 || (item.status == 2 && item.payStatus != 4)) ? '' : 'disabled'}}" 
+            data-line="{{item}}" 
+            data-index="{{idx}}"
+            data-disabled="{{(item.status == 1 || (item.status == 2 && item.payStatus != 4)) ? false : true}}"
+            bindtap="cancelApply">
+            撤销申请
+          </view>
+          <view class="half textCenter applyBtn {{(item.status == 1 || (item.status == 2 && item.payStatus == 5)) ? '' : 'disabled1'}}" 
+            data-line="{{item}}" 
+            data-index="{{idx}}"
+            data-disabled="{{(item.status == 1 || (item.status == 2 && item.payStatus == 5)) ? false : true}}"
+            bindtap="loan">
+            {{item.status == 2 && item.payStatus == 5 ? '确认放款' : '放款处理'}}
+          </view>
+        </view>
+      </view>
+    </block>
+    <view class="clear"></view>
+  </view>
+  
+  <!--放款处理-->
+  <modal hidden="{{applyModel}}" title="确定提现" confirm-text="确定" cancel-text="取消" bindcancel="cancel" bindconfirm="confirmApply">  
+    确定向尾号 <i class="blue">{{payeeShortCardNo}}</i> 的账户打款 <i class="red">{{actualMoney}}</i> 金额吗？
+  </modal>
+  <!--撤销申请-->
+  <modal hidden="{{cancelModel}}" title="撤销申请" confirm-text="确定" cancel-text="取消" bindcancel="cancelInput" bindconfirm="confirmCancel"> 
+    <view class="reasonTitle">确定撤销用户的提现申请吗？请输入原因</view> 
+    <textarea 
+    focus="{{!cancelModel}}"
+    cursor-spacing="100"
+    fixed="true"
+    bindinput="getReason"
+    class="refuseReason"
+    placeholder="请输入取消原因，最多20个字符"
+    value="{{refuseReason}}"
+    maxlength="20" />
+  </modal>
+  <!--查看-->
+  <modal hidden="{{lookModel}}" confirm-text="关闭" bindconfirm="cancel" no-cancel="true">  
+    <view class="flex lookFlex">
+      <view class="title">开户人姓名:</view>
+      <view class="content">{{cardName}}</view>
+    </view>
+    <view class="flex lookFlex">
+      <view class="title">银行卡号:</view>
+      <view class="content">{{cardNo}}</view>
+    </view>
+  </modal>
+</view>
