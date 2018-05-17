@@ -38,6 +38,12 @@
         {{item.roomCode}}
       </view>
     </view>
+    <view class="section autoHeight">
+      <view class="section__title">房源标签: </view>
+      <view class="tag__item" wx:for="{{item.tags}}" wx:key="{{index}}">
+        {{item}}
+      </view>
+    </view>
     <view class="deliver"></view>
     <view class="flex__oprate">
       <view>查看详情</view>

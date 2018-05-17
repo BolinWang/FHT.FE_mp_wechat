@@ -141,3 +141,14 @@ page {
   white-space: nowrap;
   padding: 10rpx 0 10rpx 15rpx;
 }
+
+.tag__item {
+  padding: 3rpx 6rpx;
+  border: 2rpx solid #FF9800;
+  border-radius: 5rpx;
+  color: #FF9800;
+  margin-right: 10rpx;
+  font-size: 24rpx;
+  line-height: 1.6;
+  margin: 10rpx;
+}
