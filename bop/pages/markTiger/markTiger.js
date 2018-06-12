@@ -9,6 +9,7 @@ Page({
   data: {
     spiltRate: '',
     mobile: '',
+    managerMobile: '',
     is_model_Hidden: true,
     is_model_title: '',
     is_model_Msg: ''
@@ -35,7 +36,15 @@ Page({
       })
       return false
     }
-    if (!app.validate.validateMobile(this.data.mobile)) {
+    if (!this.data.managerMobile) {
+      wx.showToast({
+        title: '请输入城市管家手机号',
+        icon: 'none',
+        duration: 2000
+      })
+      return false
+    }
+    if (!app.validate.validateMobile(this.data.mobile) || !app.validate.validateMobile(this.data.managerMobile)) {
       wx.showToast({
         title: '请输入正确的手机号',
         icon: 'none',
@@ -69,14 +78,23 @@ Page({
         spiltRate: this.data.spiltRate
       }
     }).then((response) => {
-      wx.showToast({
-        title: '成功',
-        icon: 'success',
-        duration: 2000
+      app.fetch('https://flying-api.mdguanjia.com/api/manager/addTempOrg', {
+        orgId: response.orgId,
+        orgName: response.orgName,
+        orgMobile: this.data.mobile,
+        managerMobile: this.data.managerMobile
+      },{
+        isFlying: true
+      }).then((response) => {
+        wx.showToast({
+          title: '成功',
+          icon: 'success',
+          duration: 2000
+        })
+        setTimeout(function () {
+          wx.navigateBack()
+        }, 1500)
       })
-      setTimeout(function () {
-        wx.navigateBack()
-      }, 1500)
     })
   },
 

@@ -6,6 +6,7 @@
   model-title="{{is_model_title}}"
   bindemitSure="navigateIndex"
 /> 
+
 <view class="section border">
   <view class="section__title">组织的主账号：</view>
   <input type="number" name="mobile" id="mobile" 
@@ -16,6 +17,12 @@
   <view class="section__title">设置出房服务费率%：</view>
   <input type="number" name="spiltRate" id="spiltRate" 
     bindinput="bindKeyInput" placeholder="请输入出房服务费率" value="{{spiltRate}}" />
+</view>
+
+<view class="section border">
+  <view class="section__title">城市管家手机号：</view>
+  <input type="number" name="managerMobile" id="managerMobile" 
+    bindinput="bindKeyInput" placeholder="请输入城市管家手机号" value="{{managerMobile}}" />
 </view>
 
 <button class="btn__fixed" bindtap="markTiger">确定</button>

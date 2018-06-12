@@ -30,18 +30,18 @@ App({
     userInfo: null,
     sessionId: ''
   },
-  fetch: function (url, data) {
+  fetch: function (url, data, params = {}) {
     wx.showLoading({
       title: '加载中',
     })
     const promise = new Promise((resolve, reject) => {
       let that = this
-      let postData = Object.assign(data, defaultConfig)
-      if (postData.method != 'login') {
+      let postData = params.isFlying ? data : Object.assign(data, defaultConfig)
+      if (postData.method != 'login' && !params.isFlying) {
         postData.sessionId = that.globalData.sessionId
       }
       wx.request({
-        url: basePath + url,
+        url: params.isFlying ? url : (basePath + url),
         data: postData,
         method: 'POST',
         header: { 'content-type': 'application/json' },
