@@ -5,7 +5,7 @@ const defaultConfig = {
   reqId: "0010C2379272774D6EC087B917CE2A71438DEF90",
   sign: "8F4C4A8E9D850EDD9692DE38723D0543"
 }
-const basePath = 'https://dev.mdguanjia.com/bop/'
+const basePath = 'https://api.mdguanjia.com/bop/'
 App({
   onLaunch: function () {
     // 判断sessionId跳过登录
