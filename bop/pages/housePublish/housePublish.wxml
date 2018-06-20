@@ -1,4 +1,9 @@
 <!--pages/housePublish/housePublish.wxml-->
+<view class="tab__menu_box">
+ <text class='tab__menu {{housingType===2?"tab__borders":""}}' data-current="2" catchtap="menuTap">分散式</text>
+ <text class='tab__menu {{housingType===1?"tab__borders":""}}' data-current="1" catchtap="menuTap">集中式</text>
+</view>
+
 <view class="section__search">
   <view class="search__wrap" style="{{placeholderStyle}}">
     <i class="iconfont icon-sousuo"></i>
@@ -8,48 +13,53 @@
   </view>
   <text class="mainColor" wx:if="{{startSearch}}" bindtap="cancelSearch">取消</text>
 </view>
-<block wx:for="{{auditList}}" wx:key="item.id">
-  <view class="section__items" data-index="{{index}}" bindtap="getDetailData">
-     <view class="picItem item__nopic" wx:if="{{!item.hasPic}}">无图</view>
-    <view class="picItem item__haspic" wx:else>有图</view>  
-    <view class="section">
-      <view class="section__title">提交时间：</view>
-      <view>{{item.publishTimeStr}}</view>
-    </view>
-    <view class="section">
-      <view class="section__title">提交用户：</view>
-      <view>{{item.publisher}}</view>
-    </view>
-    <view class="section">
-      <view class="section__title">房源位置：</view>
-      <view>{{item.houseResource}}</view>
-    </view>
-    <view class="section autoHeight">
-      <view class="section__title">小区房间：</view>
-      <view class="roomDetail">{{item.houseName}}</view>
-    </view>
-    <view class="section flex__room">
-      <view>
-        <view class="section__title">房源类型：</view>
-        {{item.typeStr}}
+
+<view>
+  <block wx:for="{{auditList}}" wx:key="item.id">
+    <view class="section__items" data-index="{{index}}" bindtap="getDetailData">
+      <view wx:if="{{housingType === 2}}">
+        <view class="picItem item__nopic" wx:if="{{!item.hasPic}}">无图</view>
+        <view class="picItem item__haspic" wx:else>有图</view>  
       </view>
-      <view>
+      <view class="section">
+        <view class="section__title">提交时间：</view>
+        <view>{{item.publishTimeStr}}</view>
+      </view>
+      <view class="section">
+        <view class="section__title">提交用户：</view>
+        <view>{{item.publisher}}</view>
+      </view>
+      <view class="section">
+        <view class="section__title">房源位置：</view>
+        <view>{{item.houseResource}}</view>
+      </view>
+      <view wx:if="{{housingType === 2}}" class="section autoHeight">
+        <view class="section__title">小区房间：</view>
+        <view class="roomDetail">{{item.houseName}}</view>
+      </view>
+      <view wx:else class="section autoHeight">
+        <view class="section__title">精品公寓：</view>
+        <view class="roomDetail">【{{item.estateName}}】{{item.subdistrictAddress}}</view>
+      </view>
+      <view wx:if="{{housingType === 2}}" class="section">
         <view class="section__title">房源编码：</view>
         {{item.roomCode}}
       </view>
-    </view>
-    <view class="section autoHeight">
-      <view class="section__title">房源标签: </view>
-      <view class="tag__item" wx:for="{{item.tags}}" wx:key="{{index}}">
-        {{item}}
+      <view class="section autoHeight">
+        <view class="section__title">房源标签: </view>
+        <view class="tag__item" wx:for="{{item.tags}}" wx:key="{{index}}">
+          {{item}}
+        </view>
+      </view>
+      <view class="deliver"></view>
+      <view class="flex__oprate">
+        <view>查看详情</view>
+        <i class="iconfont icon-right"></i>
       </view>
     </view>
-    <view class="deliver"></view>
-    <view class="flex__oprate">
-      <view>查看详情</view>
-      <i class="iconfont icon-right"></i>
-    </view>
-  </view>
-</block>
-<view class="loading" hidden="{{!isLoading}}">正在加载...</view>  
+  </block>
+</view>
+
+<view class="loading" hidden="{{!isLoading}}">正在加载...</view>
 <view class="loading complete" hidden="{{!isLoadTotal}}">无更多数据</view>
+

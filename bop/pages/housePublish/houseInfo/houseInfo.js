@@ -6,6 +6,10 @@ const auditReason = [
   '电话信息错误',
   '面积信息错误'
 ]
+const accordPicList = [
+  '符合图招',
+  '不符合图招'
+]
 import utils from '../../../utils/util'
 Page({
 
@@ -13,12 +17,15 @@ Page({
    * 页面的初始数据
    */
   data: {
+    housingType: 2,
+    optionsData: {},
     detailData: {},
     picList: [],
     is_model_Hidden: true,
     is_model_title: '',
     is_model_Msg: '',
-    crossType: null
+    crossType: null,
+    reviewRemark: ''
   },
 
   /**
@@ -39,14 +46,24 @@ Page({
   /**
    * 审核完成跳转列表页
    */
-  navigateIndex(e, reviewRemark) {
+  navigateIndex(e) {
+    const saveApi = this.data.housingType === 2 ? 'saveReviewStatus' : 'saveEstatePublishStatus'
+    let saveParams = this.data.housingType === 2 ? {
+      reviewCheckId: this.data.detailData.reviewCheckId,
+      reviewStatus: this.data.crossType,
+      accordPic: this.data.accordPic,
+      reviewRemark: this.data.reviewRemark
+    } : {
+      estateId: this.data.optionsData.estateId,
+      estateTypeId: this.data.optionsData.estateTypeId,
+      groupCode: this.data.optionsData.groupCode,
+      reviewStatus: this.data.crossType,
+      accordPic: this.data.accordPic,
+      reviewRemark: this.data.reviewRemark
+    }
     app.fetch('market/review', {
-      method: 'saveReviewStatus',
-      params: utils.ObjectMap({
-        reviewCheckId: this.data.detailData.reviewCheckId,
-        reviewStatus: this.data.crossType,
-        reviewRemark: reviewRemark
-      })
+      method: saveApi,
+      params: utils.ObjectMap(saveParams)
     }).then((response) => {
       wx.showToast({
         title: '成功',
@@ -64,11 +81,27 @@ Page({
    */
   auditCross() {
     this.data.crossType = 2
-    this.setData({
-      'reviewRemark': '',
-      'is_model_Hidden': false,
-      'is_model_title': '信息无误',
-      'is_model_Msg': '确认审核通过'
+    let that = this
+    wx.showActionSheet({
+      itemList: accordPicList,
+      itemFontsize: '24rpx',
+      success: function (res) {
+        const resIndex = res.tapIndex
+        that.data.accordPic = 2 - resIndex
+        that.setData({
+          'reviewRemark': '',
+          'is_model_Hidden': false,
+          'is_model_title': accordPicList[resIndex],
+          'is_model_Msg': '确认审核通过'
+        })
+      },
+      fail: function (res) {
+        wx.showToast({
+          title: '请选择是否符合图招',
+          icon: 'none',
+          duration: 2000
+        })
+      }
     })
   },
 
@@ -77,7 +110,7 @@ Page({
    */
   auditUncross() {
     this.data.crossType = 3
-    const that = this
+    let that = this
     wx.showActionSheet({
       itemList: auditReason,
       itemFontsize: '24rpx',
@@ -103,18 +136,31 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    for (let key in options) {
+      if (key !== 'groupCode') {
+        options[key] = options[key] * 1
+      }
+    }
+    this.setData({
+      'housingType': options.housingType || 2,
+      'optionsData': options
+    })
     app.fetch('market/review', {
       method: 'queryReviewCheckRoomDetail',
-      params: {
-        reviewCheckId: options.reviewCheckId * 1,
-        housingType: 2
-      }
+      params: options
     }).then((response) => {
       let detailData = utils.deepClone(response.result)
-      detailData.roomInfosFormat = detailData.roomInfos ? detailData.roomInfos[0] : ''
-      let picList = detailData.picUrls.map((item) => {
-        return item.picUrl
-      })
+      let picList = []
+      if (options.housingType === 2) {
+        detailData.roomInfosFormat = detailData.roomInfos ? detailData.roomInfos[0] : ''
+        picList = detailData.picUrls.map((item) => {
+          return item.picUrl
+        })
+      } else {
+        picList = detailData.roomTypePicUrls.map((item) => {
+          return item.picUrl
+        })
+      }
       this.setData({
         'detailData': detailData,
         'picList': picList

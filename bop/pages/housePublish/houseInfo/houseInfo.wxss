@@ -5,6 +5,7 @@ page {
 .aduit__detail {
   padding: 32rpx;
   background: #fff;
+  padding-bottom: 102rpx;
 }
 .section {
   height: 60rpx;

@@ -24,6 +24,10 @@ Component({
     showTextarea: {
       type: Boolean,
       value: false
+    },
+    reviewRemark: {
+      type: String,
+      value: ''
     }
   },
   data: {
@@ -56,7 +60,7 @@ Component({
           modelHidden: true
         })
       } else {
-        this.triggerEvent('emitSure')
+        this.triggerEvent('emitSure', this.data.reviewRemark)
         this.setData({
           modelHidden: true
         })

@@ -15,9 +15,11 @@ Page({
     showClear: false,
     startSearch: false,
     pageNo: 1,
+    pageSize: 10,
     totalPages: 1,
     isLoading: false,
-    isLoadTotal: false
+    isLoadTotal: false,
+    housingType: 2 // 2: 分散式 1: 集中式
   },
 
   formatHouseResource(item) {
@@ -31,6 +33,30 @@ Page({
       buildingNameStr + unitCodeStr +
       item.floorName + '楼 ' + item.roomNo + '号 ' + '- ' + (item.roomName || '整套房间'));
   },
+
+  /**
+   * 选项卡分散式/集中式切换
+   */
+  menuTap: function (e) {
+    //获取到绑定的数据
+    var current = e.currentTarget.dataset.current
+    // 初始化数据
+    this.setData({
+      auditList: [],
+      keyword: '',
+      placeholder: '搜索',
+      placeholderStyle: 'text-align: center',
+      showClear: false,
+      startSearch: false,
+      pageNo: 1,
+      pageSize: 10,
+      totalPages: 1,
+      isLoading: false,
+      isLoadTotal: false,
+      housingType: current * 1
+    })
+    this.getAuditList()
+  },
   
   /**
    * 获取页面数据
@@ -40,10 +66,10 @@ Page({
       method: 'queryReviewCheckListByPage',
       params: utils.ObjectMap({
         reviewStatus: 1,
-        housingType: 2,
+        housingType: this.data.housingType,
         keyword: this.data.keyword,
         pageNo: this.data.pageNo,
-        pageSize: 9999
+        pageSize: this.data.pageSize
       })
     }).then((response) => {
       if (!response.list || response.list.length === 0) {
@@ -56,11 +82,15 @@ Page({
           'auditList': [],
           'totalPages': 1
         })
+        wx.hideNavigationBarLoading()
+        wx.stopPullDownRefresh()
         return false
       }
       response.list.map((item) => {
         item.publishTimeStr = utils.formatTime(item.publishTime)
-        item.houseName = this.formatRoomName(item)
+        if (this.data.housingType === 2) {
+          item.houseName = this.formatRoomName(item)
+        }
         item.houseResource = this.formatHouseResource(item)
         item.typeStr = ['普通', '金融', '金融申请中'][item.houseFinanceType - 1] || '数据错误'
       })
@@ -72,7 +102,7 @@ Page({
       } else {
         this.setData({
           'auditList': response.list,
-          'totalPages': response.totalPages || 1
+          'totalPages': response.record ? Math.ceil(response.record / this.data.pageSize) : 1
         })
       }
       if (type === 'refresh') {
@@ -87,9 +117,23 @@ Page({
    */
   getDetailData(e) {
     const targetIndex = e.currentTarget.dataset.index
-    const reviewCheckId = this.data.auditList[targetIndex].reviewCheckId
+    const rowData = this.data.auditList[targetIndex]
+    let params = this.data.housingType === 2 ? {
+      housingType: 2,
+      reviewCheckId: rowData.reviewCheckId
+    } : {
+      housingType: 1,
+      estateId: rowData.estateId,
+      estateTypeId: rowData.estateTypeId,
+      groupCode: rowData.groupCode
+    }
+    let navUrlParams = ''
+    for (let key in params) {
+      let param = key + "=" + params[key] + '&'
+      navUrlParams += param
+    }
     wx.navigateTo({
-      url: 'houseInfo/houseInfo?reviewCheckId=' + reviewCheckId
+      url: 'houseInfo/houseInfo?' + navUrlParams
     })
   },
 
@@ -112,6 +156,7 @@ Page({
     this.setData({
       'startSearch': false,
       'keyword': '',
+      'showClear': false,
       'placeholder': '搜索',
       'placeholderStyle': 'text-align: center'
     })

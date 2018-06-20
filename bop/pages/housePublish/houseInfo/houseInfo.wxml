@@ -7,7 +7,7 @@
   showTextarea="{{showTextarea}}"
   bindemitSure="navigateIndex"
 />
-<view class="aduit__detail">
+<view class="aduit__detail" wx:if="{{housingType===2}}">
   <view class="section autoHeight">
     <view class="section__title">房源地址：</view>
     <view>{{detailData.houseAddress}}</view>
@@ -71,6 +71,64 @@
 
   <view class="section autoHeight">
     <view class="section__title">房间照片：</view>
+    <view class="flex__image" wx:if="{{picList.length > 0}}">
+      <image wx:for="{{picList}}" wx:key="item" class="image" 
+        mode="aspectFit" src="{{item}}"
+        data-imgsrc="{{item}}"
+        bindtap="previewImg">
+      </image>
+    </view>
+    <view class="view__nopic" wx:else>暂无图片</view>
+  </view>
+</view>
+<view class="aduit__detail" wx:else>
+  <view class="section">
+    <view class="section__title">公寓名称：</view>
+    <view>{{detailData.estateName}}</view>
+  </view>
+  <view class="section autoHeight">
+    <view class="section__title">房源地址：</view>
+    <view>{{detailData.estateAddress}}</view>
+  </view>
+
+  <view class="section">
+    <view class="section__title">所属板块：</view>
+    <view>{{detailData.zoneName}}</view>
+  </view>
+
+  <view class="section">
+    <view class="section__title">看房电话：</view>
+    <view>{{detailData.contactInfo}}</view>
+  </view>
+
+  <view class="section autoHeight" style="flex-wrap: wrap;">
+    <view class="section__title">配套服务：</view>
+    <view class="tag__item" wx:for="{{detailData.services}}" wx:key="{{index}}">
+      {{item}}
+    </view>
+  </view>
+
+  <view class="section autoHeight" style="flex-wrap: wrap;">
+    <view class="section__title">门店服务：</view>
+    <view wx:for="{{detailData.storeServices}}" wx:key="{{index}}">
+      <view class="tag__item">{{item}}</view>
+    </view>
+  </view>
+
+  <view class="section autoHeight" style="flex-wrap: wrap;">
+    <view class="section__title">周边设施：</view>
+    <view wx:for="{{detailData.surroundings}}" wx:key="{{index}}">
+      <view class="tag__item">{{item}}</view>
+    </view>
+  </view>
+
+  <view class="section autoHeight">
+    <view class="section__title">公寓简介：</view>
+    <view>{{detailData.introduction}}</view>
+  </view>
+
+  <view class="section autoHeight">
+    <view class="section__title">房型照片：</view>
     <view class="flex__image" wx:if="{{picList.length > 0}}">
       <image wx:for="{{picList}}" wx:key="item" class="image" 
         mode="aspectFit" src="{{item}}"
