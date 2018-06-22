@@ -6,6 +6,7 @@ const auditReason = [
   '电话信息错误',
   '面积信息错误'
 ]
+
 const accordPicList = [
   '符合图招',
   '不符合图招'
@@ -24,6 +25,7 @@ Page({
     is_model_Hidden: true,
     is_model_title: '',
     is_model_Msg: '',
+    showReasons: false,
     crossType: null,
     reviewRemark: ''
   },
@@ -47,19 +49,22 @@ Page({
    * 审核完成跳转列表页
    */
   navigateIndex(e) {
+    let discrepancyReason = e.detail || ''
     const saveApi = this.data.housingType === 2 ? 'saveReviewStatus' : 'saveEstatePublishStatus'
     let saveParams = this.data.housingType === 2 ? {
       reviewCheckId: this.data.detailData.reviewCheckId,
       reviewStatus: this.data.crossType,
       accordPic: this.data.accordPic,
-      reviewRemark: this.data.reviewRemark
+      reviewRemark: this.data.reviewRemark,
+      discrepancyReason
     } : {
       estateId: this.data.optionsData.estateId,
       estateTypeId: this.data.optionsData.estateTypeId,
       groupCode: this.data.optionsData.groupCode,
       reviewStatus: this.data.crossType,
       accordPic: this.data.accordPic,
-      reviewRemark: this.data.reviewRemark
+      reviewRemark: this.data.reviewRemark,
+      discrepancyReason
     }
     app.fetch('market/review', {
       method: saveApi,
@@ -88,6 +93,16 @@ Page({
       success: function (res) {
         const resIndex = res.tapIndex
         that.data.accordPic = 2 - resIndex
+        // 不符合图招原因
+        if (resIndex === 1) {
+          that.setData({
+            'reviewRemark': '',
+            'showReasons': true,
+            'is_model_Hidden': false,
+            'is_model_title': accordPicList[resIndex]
+          })
+          return false
+        } 
         that.setData({
           'reviewRemark': '',
           'is_model_Hidden': false,

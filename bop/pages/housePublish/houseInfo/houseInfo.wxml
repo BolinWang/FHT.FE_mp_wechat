@@ -5,6 +5,7 @@
   model-msg="{{is_model_Msg}}" 
   model-title="{{is_model_title}}"
   showTextarea="{{showTextarea}}"
+  showReasons="{{showReasons}}"
   bindemitSure="navigateIndex"
 />
 <view class="aduit__detail" wx:if="{{housingType===2}}">

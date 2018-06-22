@@ -1,4 +1,6 @@
 /* components/model/model.wxss */
+@import "../../lib/weui.wxss"
+
 .mask_layer {  
   width: 100%;  
   height: 100%;  
@@ -33,7 +35,7 @@
   font-size: 32rpx;
   display: flex;
   align-items: center;
-  max-height: 300rpx; 
+  max-height: 500rpx; 
   padding: 40rpx 70rpx;
 }  
   
@@ -80,3 +82,4 @@
   padding: 10rpx;
   min-height: 120rpx;
 }
+
