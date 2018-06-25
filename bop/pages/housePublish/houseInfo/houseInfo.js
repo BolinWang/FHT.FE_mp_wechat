@@ -105,6 +105,7 @@ Page({
         } 
         that.setData({
           'reviewRemark': '',
+          'showReasons': false,
           'is_model_Hidden': false,
           'is_model_title': accordPicList[resIndex],
           'is_model_Msg': '确认审核通过'
