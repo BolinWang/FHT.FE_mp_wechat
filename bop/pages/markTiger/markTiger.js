@@ -38,13 +38,13 @@ Page({
     }
     if (!this.data.managerMobile) {
       wx.showToast({
-        title: '请输入城市管家手机号',
+        title: '请输入城市管家姓名',
         icon: 'none',
         duration: 2000
       })
       return false
     }
-    if (!app.validate.validateMobile(this.data.mobile) || !app.validate.validateMobile(this.data.managerMobile)) {
+    if (!app.validate.validateMobile(this.data.mobile)) {
       wx.showToast({
         title: '请输入正确的手机号',
         icon: 'none',
@@ -78,7 +78,7 @@ Page({
         spiltRate: this.data.spiltRate
       }
     }).then((response) => {
-      app.fetch('https://flying-api.mdguanjia.com/api/manager/addTempOrg', {
+      app.fetch('https://flying-api.mdguanjia.com/api/user/addTempOrg', {
         orgId: response.orgId,
         orgName: response.orgName,
         orgMobile: this.data.mobile,

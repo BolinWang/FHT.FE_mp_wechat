@@ -20,9 +20,9 @@
 </view>
 
 <view class="section border">
-  <view class="section__title">城市管家手机号：</view>
-  <input type="number" name="managerMobile" id="managerMobile" 
-    bindinput="bindKeyInput" placeholder="请输入城市管家手机号" value="{{managerMobile}}" />
+  <view class="section__title">城市管家姓名：</view>
+  <input type="text" name="managerMobile" id="managerMobile" 
+    bindinput="bindKeyInput" placeholder="请输入城市管家姓名" value="{{managerMobile}}" />
 </view>
 
 <button class="btn__fixed" bindtap="markTiger">确定</button>
