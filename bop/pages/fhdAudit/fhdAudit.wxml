@@ -1,0 +1,28 @@
+<!--pages/fhdAudit/fhdAudit.wxml-->
+<block wx:for="{{auditList}}" wx:key="item.id">
+  <view class="section__items" data-index="{{index}}" bindtap="getDetailData">
+    <view class="section">
+      <view class="section__title">申请时间：</view>
+      <view>{{item.gmtCreate}}</view>
+    </view>
+    <view class="section">
+      <view class="section__title">机构名称：</view>
+      <view>{{item.name}}</view>
+    </view>
+    <view class="section">
+      <view class="section__title">机构类型：</view>
+      <view>{{item.typeStr}}</view>
+    </view>
+     <view class="section border">
+      <view class="section__title">城市管家：</view>
+      <view>{{item.createManagerName}}</view>
+    </view>
+    <view class="deliver"></view>
+    <view class="flex__oprate">
+      <view>查看详情</view>
+      <i class="iconfont icon-right"></i>
+    </view>
+  </view>
+</block>
+<view class="loading" hidden="{{!isLoading}}">正在加载...</view>  
+<view class="loading complete" hidden="{{!isLoadTotal}}">无更多数据</view>

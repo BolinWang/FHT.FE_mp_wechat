@@ -13,16 +13,30 @@
     bindinput="bindKeyInput" placeholder="请输入主账号手机号" value="{{mobile}}" />
 </view>
 
-<view class="section">
+<view class="section border">
   <view class="section__title">设置出房服务费率%：</view>
-  <input type="number" name="spiltRate" id="spiltRate" 
-    bindinput="bindKeyInput" placeholder="请输入出房服务费率" value="{{spiltRate}}" />
+  <input type="number" name="splitFee" id="splitFee" 
+    bindinput="bindKeyInput" placeholder="请输入出房服务费率" value="{{splitFee}}" />
 </view>
 
-<view class="section border">
-  <view class="section__title">城市管家姓名：</view>
-  <input type="text" name="managerMobile" id="managerMobile" 
-    bindinput="bindKeyInput" placeholder="请输入城市管家姓名" value="{{managerMobile}}" />
+<picker 
+  bindchange="bindPickerChange" 
+  value="{{index}}" 
+  range="{{managerList}}"
+  range-key="nameAndMobile">
+  <view class="section border">
+    <view class="picker">
+      <span style="width: 10.5em;display: inline-block;">城市管家：</span>
+      <span wx:if="{{index}}">{{managerList[index].nameAndMobile}}</span>
+      <span wx:else style="color: #777">请选择城市管家</span>
+    </view>
+  </view>
+</picker>
+
+<view class="section">
+  <view class="section__title">房源体量：</view>
+  <input type="number" name="volumn" id="volumn" 
+    bindinput="bindKeyInput" placeholder="0 / 正整数，可不填" value="{{volumn}}" />
 </view>
 
 <button class="btn__fixed" bindtap="markTiger">确定</button>

@@ -11,7 +11,9 @@
     "pages/markTiger/markTiger",
     "pages/signAudit/signDetail/signDetail",
     "pages/housePublish/houseInfo/houseInfo",
-    "pages/registerCompony/componyInfo/componyInfo"
+    "pages/registerCompony/componyInfo/componyInfo",
+    "pages/fhdAudit/fhdAudit",
+    "pages/fhdAudit/fhdDetail/fhdDetail"
   ],
   "window": {
     "backgroundTextStyle": "light",

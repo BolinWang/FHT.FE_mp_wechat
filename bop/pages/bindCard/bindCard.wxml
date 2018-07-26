@@ -6,23 +6,88 @@
   model-title="{{is_model_title}}"
   bindemitSure="navigateIndex"
 /> 
-<view class="section border">
-  <view class="section__title">组织的主账号：</view>
-  <input type="number" name="mobile" id="mobile" 
-    bindinput="bindKeyInput" placeholder="请输入主账号手机号" value="{{mobile}}" />
+<view wx:if="{{mobileInput}}">
+  <view class="section border">
+    <view class="section__title">组织的主账号：</view>
+    <input type="number" name="mobile" id="mobile" 
+      focus
+      confirm-type="search"
+      bindinput="bindKeyInput" 
+      bindconfirm="searchByMobile"
+      placeholder="请输入主账号手机号" 
+      value="{{queryData.mobile}}" />
+  </view>
+  <button class="btn__primary" bindtap="searchByMobile">搜索</button>
 </view>
 
-<view class="section border">
-  <view class="section__title">开户人姓名：</view>
-  <input name="userName" id="userName" 
-    bindinput="bindKeyInput" placeholder="请输入开户人姓名" value="{{userName}}" />
-</view>
+<view wx:else>
+  <view class="section border">
+    <view class="section__title">姓名：</view>
+    <input value="{{queryData.name}}" disabled />
+  </view>
 
-<view class="section">
-  <view class="section__title">银行卡号：</view>
-  <input type="number" name="userCardNo" id="userCardNo" 
-    bindinput="bindKeyInput" placeholder="请输入银行卡号" value="{{userCardNo}}" />
-</view>
+  <view class="section border">
+    <view class="section__title">手机号码：</view>
+    <input value="{{queryData.mobile}}" disabled />
+  </view>
 
-<button class="btn__fixed" bindtap="bindCard">确定</button>
+  <view class="section border">
+    <view class="section__title">身份证号：</view>
+    <input value="{{queryData.idNo}}" disabled />
+  </view> 
+
+  <view class="section border">
+    <view class="section__title">实名认证：</view>
+    <input value="{{queryData.isRealName ? '已实名' : '未实名'}}" disabled />
+  </view>
+  <view style="font-size: 26rpx; color: #666; line-height: 80rpx; padding: 0 32rpx;">请填写以下信息</view>
+  <picker 
+    bindchange="bindPickerChange" 
+    value="{{index}}" 
+    range="{{cardTypeList}}"
+    range-key="name">
+    <view class="section border">
+      <view class="picker">
+        <span style="width: 7.6em;display: inline-block;">银行卡类型：</span>
+        <span wx:if="{{index}}">{{cardTypeList[index].name}}</span>
+        <span wx:else style="color: #777">请选择银行卡类型</span>
+      </view>
+    </view>
+  </picker>
+  
+  <view class="section border">
+    <view class="section__title">开户人姓名：</view>
+    <input name="accountName" id="accountName" 
+      bindinput="bindKeyInput" placeholder="请输入开户人姓名" value="{{queryData.accountName}}" />
+  </view>
+
+  <view class="section border">
+    <view class="section__title">银行卡号：</view>
+    <input type="number" name="cardNo" id="cardNo" 
+      bindinput="bindKeyInput" placeholder="请输入银行卡号" value="{{queryData.cardNo}}" />
+  </view>
+
+  <view class="section" wx:if="{{index * 1 === 0}}">
+    <view class="section__title">开户人身份证：</view>
+    <input type="number" name="accountIdNo" id="accountIdNo" 
+      bindinput="bindKeyInput" placeholder="请输入开户人身份证" value="{{queryData.accountIdNo}}" />
+  </view>
+
+  <picker 
+    wx:elif="{index * 1 === 1}}"
+    bindchange="bankChange" 
+    value="{{bankIndex}}" 
+    range="{{bankList}}"
+    range-key="name">
+    <view class="section border">
+      <view class="picker">
+        <span style="width: 7.6em;display: inline-block;">开户银行：</span>
+        <span wx:if="{{bankIndex}}">{{bankList[bankIndex].name}}</span>
+        <span wx:else style="color: #777">请选择开户银行</span>
+      </view>
+    </view>
+  </picker>
+
+  <button class="btn__fixed" bindtap="bindCard">确定绑卡</button>
+</view>
 

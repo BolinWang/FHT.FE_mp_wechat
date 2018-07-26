@@ -15,6 +15,17 @@ page {
   line-height: 72rpx;
 }
 
+.btn__primary {
+  width: 100%;
+  color: #fff;
+  font-size: 28rpx;
+  background: #FF9800;
+  border: 0 none;
+  border-radius: 0;
+  height: 72rpx;
+  line-height: 72rpx;
+}
+
 .section {
   height: 90rpx;
   line-height: 90rpx;

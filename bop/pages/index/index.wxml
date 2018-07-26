@@ -16,7 +16,7 @@
       <text>个人账号注册</text>
     </view>
     <view class="flex__item setborder" data-path="registerCompony" bindtap="navigateTo">
-      <i class="iconfont icon-shenfenzheng"></i>
+      <i class="iconfont icon-guanyanren"></i>
       <text>企业账号注册</text>
     </view>
     <view class="flex__item" data-path="housePublish" bindtap="navigateTo">
@@ -35,5 +35,9 @@
       <i class="iconfont icon-yinxingqia"></i>
       <text>绑定银行卡</text>
     </view>
+    <view class="flex__item" data-path="fhdAudit" bindtap="navigateTo" style="width: 100%">
+      <i class="iconfont icon-shenfenzheng"></i>
+      <text>飞虎队机构审核</text>
+    </view> 
   </view>
 </view>
