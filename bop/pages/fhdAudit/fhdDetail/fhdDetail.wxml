@@ -33,7 +33,7 @@
   <view class="section flex__room">
     <view>
       <view class="section__title">房源体量：</view>
-      {{detailData.volunm}}
+      {{detailData.volumn}}
     </view>
     <view>
       <view class="section__title">出房费率：</view>
