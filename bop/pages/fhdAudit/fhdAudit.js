@@ -32,6 +32,10 @@ Page({
           icon: 'none',
           duration: 2000
         })
+        this.setData({
+          'isLoading': false,
+          'auditList': []
+        })
         return false
       }
       response.content.map((item) => {

@@ -65,7 +65,11 @@ App({
             wx.hideLoading()
           }, 1000)
           if (res.data.code == 0) {
-            resolve(res.data.data)
+            if (params.response) {
+              resolve(res.data)
+            } else {
+              resolve(res.data.data)
+            }
           } else if (res.data.code == 1016) {
             wx.removeStorage({
               key: 'BOP_ADMIN',

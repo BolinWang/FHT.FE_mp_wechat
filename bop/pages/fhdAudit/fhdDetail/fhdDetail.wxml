@@ -58,11 +58,11 @@
 
   <view class="section autoHeight">
     <view class="section__title">平台代理收租服务：</view>
-    <view class="flex__image" wx:if="{{detailData.attractionFlowImage && detailData.attractionFlowImage.length > 0}}">
-      <image wx:for="{{detailData.attractionFlowImage}}" wx:key="item" class="image" 
+    <view class="flex__image" wx:if="{{detailData.proxyImage && detailData.proxyImage.length > 0}}">
+      <image wx:for="{{detailData.proxyImage}}" wx:key="item" class="image" 
         mode="aspectFit" src="{{item}}"
         data-imgsrc="{{item}}"
-        data-type="attractionFlowImage"
+        data-type="proxyImage"
         bindtap="previewImg">
       </image>
     </view>
@@ -71,11 +71,11 @@
 
   <view class="section autoHeight">
     <view class="section__title">房源发布和租客引流服务：</view>
-    <view class="flex__image" wx:if="{{detailData.proxyImage && detailData.proxyImage.length > 0}}">
-      <image wx:for="{{detailData.proxyImage}}" wx:key="item" class="image" 
+    <view class="flex__image" wx:if="{{detailData.attractionFlowImage && detailData.attractionFlowImage.length > 0}}">
+      <image wx:for="{{detailData.attractionFlowImage}}" wx:key="item" class="image" 
         mode="aspectFit" src="{{item}}"
         data-imgsrc="{{item}}"
-        data-type="proxyImage"
+        data-type="attractionFlowImage"
         bindtap="previewImg">
       </image>
     </view>
@@ -161,11 +161,11 @@
 
   <view class="section autoHeight">
     <view class="section__title">平台代理收租服务：</view>
-    <view class="flex__image" wx:if="{{detailData.attractionFlowImage && detailData.attractionFlowImage.length > 0}}">
-      <image wx:for="{{detailData.attractionFlowImage}}" wx:key="item" class="image" 
+    <view class="flex__image" wx:if="{{detailData.proxyImage && detailData.proxyImage.length > 0}}">
+      <image wx:for="{{detailData.proxyImage}}" wx:key="item" class="image" 
         mode="aspectFit" src="{{item}}"
         data-imgsrc="{{item}}"
-        data-type="attractionFlowImage"
+        data-type="proxyImage"
         bindtap="previewImg">
       </image>
     </view>
@@ -174,11 +174,11 @@
 
   <view class="section autoHeight">
     <view class="section__title">房源发布和租客引流服务：</view>
-    <view class="flex__image" wx:if="{{detailData.proxyImage && detailData.proxyImage.length > 0}}">
-      <image wx:for="{{detailData.proxyImage}}" wx:key="item" class="image" 
+    <view class="flex__image" wx:if="{{detailData.attractionFlowImage && detailData.attractionFlowImage.length > 0}}">
+      <image wx:for="{{detailData.attractionFlowImage}}" wx:key="item" class="image" 
         mode="aspectFit" src="{{item}}"
         data-imgsrc="{{item}}"
-        data-type="proxyImage"
+        data-type="attractionFlowImage"
         bindtap="previewImg">
       </image>
     </view>

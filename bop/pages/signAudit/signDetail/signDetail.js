@@ -68,6 +68,7 @@ Page({
     this.data.crossType = 2
     this.setData({
       'is_model_Hidden': false,
+      'showTextarea': false,
       'is_model_title': '信息无误',
       'is_model_Msg': '确认审核通过'
     })

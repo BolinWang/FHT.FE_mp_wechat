@@ -41,15 +41,30 @@ Page({
         gmtCreate: '',
         reason
       })
+    },{
+      response: true
     }).then((response) => {
-      wx.showToast({
-        title: '成功',
-        icon: 'success',
-        duration: 2000
-      })
-      setTimeout(function () {
-        wx.navigateBack()
-      }, 1500)
+      if (response.message !== '操作成功') {
+        wx.showModal({
+          title: '审核结果变更为【不通过】',
+          content: response.message || '银行卡信息有误',
+          showCancel: false,
+          success: function (res) {
+            if (res.confirm) {
+              wx.navigateBack()
+            }
+          }
+        })
+      }else {
+        wx.showToast({
+          title: '操作成功',
+          icon: 'success',
+          duration: 2000
+        })
+        setTimeout(function () {
+          wx.navigateBack()
+        }, 1500)
+      }
     })
   },
 
@@ -67,6 +82,7 @@ Page({
     this.data.crossType = 1
     this.setData({
       'is_model_Hidden': false,
+      'showTextarea': false,
       'is_model_title': '信息无误',
       'is_model_Msg': '确认审核通过'
     })
