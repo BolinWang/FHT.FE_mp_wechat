@@ -46,9 +46,13 @@
     <view>{{detailData.accountName}}</view>
   </view>
 
-  <view class="section">
+  <view class="section" wx:if="{{detailData.bankCardType === 1}}">
     <view class="section__title" style="width: 7em">开户人身份证：</view>
     <view>{{detailData.accountIdNum}}</view>
+  </view>
+  <view class="section" wx:else>
+    <view class="section__title" style="width: 7em">开户银行：</view>
+    <view>{{detailData.accountBank}}</view>
   </view>
 
   <view class="section">
@@ -149,9 +153,13 @@
     <view>{{detailData.accountName}}</view>
   </view>
 
-  <view class="section">
+  <view class="section" wx:if="{{detailData.bankCardType === 1}}">
     <view class="section__title" style="width: 7em">开户人身份证：</view>
     <view>{{detailData.accountIdNum}}</view>
+  </view>
+  <view class="section" wx:else>
+    <view class="section__title" style="width: 7em">开户银行：</view>
+    <view>{{detailData.accountBank}}</view>
   </view>
 
   <view class="section">
