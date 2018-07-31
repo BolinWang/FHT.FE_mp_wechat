@@ -162,7 +162,7 @@ Page({
       method: 'updateBankCard',
       params: {
         ...this.data.queryData,
-        cardType: this.data.index === 3 ? 3 : 1,
+        cardType: this.data.index * 1 === 1 ? 3 : 1,
         bankCode: this.data.bankIndex ? defaultBankMap[this.data.bankIndex].value : '',
         bankName: this.data.bankIndex ? defaultBankMap[this.data.bankIndex].name : ''
       }

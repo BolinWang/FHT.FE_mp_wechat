@@ -37,14 +37,6 @@ Page({
       })
       return false
     }
-    if (!this.data.index) {
-      wx.showToast({
-        title: '请选择城市管家',
-        icon: 'none',
-        duration: 2000
-      })
-      return false
-    }
     if (!app.validate.validateMobile(this.data.mobile)) {
       wx.showToast({
         title: '请输入正确的手机号',
@@ -53,9 +45,17 @@ Page({
       })
       return false
     }
-    if (!this.data.splitFee) {
+    if (!this.data.splitFee || this.data.splitFee * 1 === 0 || this.data.splitFee * 1 === 100) {
       wx.showToast({
-        title: '请输入出房服务费率',
+        title: '请输入出房服务费率，0-100的正整数',
+        icon: 'none',
+        duration: 2000
+      })
+      return false
+    }
+    if (!this.data.index) {
+      wx.showToast({
+        title: '请选择城市管家',
         icon: 'none',
         duration: 2000
       })
