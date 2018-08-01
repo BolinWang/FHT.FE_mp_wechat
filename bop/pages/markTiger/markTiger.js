@@ -116,7 +116,7 @@ Page({
       params: {
         mobile: this.data.mobile,
         splitFee: this.data.splitFee,
-        id: this.data.managerList[this.data.index].id,
+        id: this.data.managerListFilter[this.data.index].id,
         volumn: this.data.volumn
       }
     }).then((response) => {
