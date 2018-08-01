@@ -1,0 +1,20 @@
+{
+  "name": "bop",
+  "authors": [
+    "王玲波 <454949876@qq.com>"
+  ],
+  "description": "",
+  "main": "",
+  "license": "MIT",
+  "homepage": "",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "zanui-weapp": "^3.1.0"
+  }
+}

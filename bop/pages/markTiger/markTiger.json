@@ -1,5 +1,7 @@
 {
   "usingComponents": {
-    "model": "/components/model/model"
+    "model": "/components/model/model",
+    "zan-search": "/vendors/zanui-weapp/dist/search/index",
+    "zan-panel": "/vendors/zanui-weapp/dist/panel/index"
   }
 }

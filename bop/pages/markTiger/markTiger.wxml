@@ -19,24 +19,41 @@
     bindinput="bindKeyInput" placeholder="请输入出房服务费率" value="{{splitFee}}" />
 </view>
 
-<picker 
-  bindchange="bindPickerChange" 
-  value="{{index}}" 
-  range="{{managerList}}"
-  range-key="nameAndMobile">
-  <view class="section border">
-    <view class="picker">
-      <span style="width: 10.5em;display: inline-block;">城市管家：</span>
-      <span wx:if="{{index}}">{{managerList[index].nameAndMobile}}</span>
-      <span wx:else style="color: #777">请选择城市管家</span>
-    </view>
-  </view>
-</picker>
-
-<view class="section">
+<view class="section border">
   <view class="section__title">房源体量：</view>
   <input type="number" name="volumn" id="volumn" 
     bindinput="bindKeyInput" placeholder="0 / 正整数，可不填" value="{{volumn}}" />
 </view>
+
+<zan-panel title='城市管家'>
+  <view class="section border">
+    <view style="width: 230rpx;">输入关键词：</view>
+    <zan-search
+      placeholder="城市管家姓名/手机号"
+      bindchange="searchChange"
+      bindsearch="searchDone"
+    >
+    </zan-search>
+  </view>
+  <view class="section">
+    <view style="width: 265rpx;">选择城市管家：</view>
+    <picker
+      mode="selector"
+      bindchange="bindPickerChange"
+      style="font-size: 26rpx;"
+      range="{{ managerListFilter }}"
+      range-key="nameAndMobile"
+      value="{{ index }}"
+      wx:if="{{ managerListFilter.length > 0 }}"
+    >
+      <view class="picker">
+        {{ managerListFilter[index] ? managerListFilter[index].name + ' ' + managerListFilter[index].mobile : '点我选择' }} 
+      </view>
+    </picker>
+    <view wx:else>
+       搜索【{{inputValue}}】无数据
+    </view>
+</view>
+</zan-panel>
 
 <button class="btn__fixed" bindtap="markTiger">确定</button>

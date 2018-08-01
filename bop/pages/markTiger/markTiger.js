@@ -10,10 +10,49 @@ Page({
     splitFee: '35',
     mobile: '',
     volumn: '',
-    managerList: '',
+    inputValue: '',
+    managerList: [],
+    managerListFilter: [],
     is_model_Hidden: true,
     is_model_title: '',
     is_model_Msg: ''
+  },
+  searchChange(e) {
+    this.setData({
+      inputValue: e.detail.value
+    })
+    this.getFilterData()
+  },
+
+  searchDone(e) {
+    this.setData({
+      inputValue: e.detail.value
+    })
+    this.getFilterData()
+  },
+
+  getFilterData() {
+    let _value = this.data.inputValue
+    let managerListFilter = []
+    if (_value) {
+      managerListFilter = this.data.managerList.filter(item => {
+        return (item.name.toLowerCase().includes(_value.toLowerCase()) || item.mobile.includes(_value))
+      })
+    } else {
+      managerListFilter = this.data.managerList
+    }
+    this.setData({
+      index: '',
+      managerListFilter
+    }, () => {
+
+    })
+  },
+
+  pickerChange(e) {
+    this.setData({
+      rangeIndex: e.detail.value
+    })
   },
 
   /**
@@ -117,7 +156,8 @@ Page({
         item.nameAndMobile = `${item.name} ${item.mobile}`
       })
       this.setData({
-        'managerList': response
+        'managerList': response,
+        'managerListFilter': response
       })
     })
   },

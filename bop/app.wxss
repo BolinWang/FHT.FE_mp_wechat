@@ -1,4 +1,28 @@
 /**app.wxss**/
+@import 'vendors/zanui-weapp/dist/index.wxss';
+/* pop */
+.pop--top {
+  width: 100vw;
+  padding: 15rpx;
+  background: rgba(0, 0, 0, 0.7);
+  color: #fff;
+  font-size: 24rpx;
+  text-align: center;
+}
+
+.pop__container {
+  overflow: hidden;
+  background: #fff;
+}
+
+.pop__container--bottom {
+  width: 100vw;
+}
+
+.pop__container--left, .pop__container--right {
+  height: 100vh;
+}
+
 .container {
   height: 100%;
   display: flex;
