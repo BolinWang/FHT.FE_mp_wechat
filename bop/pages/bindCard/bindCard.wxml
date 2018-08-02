@@ -69,7 +69,7 @@
 
   <view class="section" wx:if="{{index * 1 === 0}}">
     <view class="section__title">开户人身份证：</view>
-    <input type="number" name="accountIdNo" id="accountIdNo" 
+    <input name="accountIdNo" id="accountIdNo" 
       bindinput="bindKeyInput" placeholder="请输入开户人身份证" value="{{queryData.accountIdNo}}" />
   </view>
 
