@@ -1,0 +1,12 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/webView/webView"
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#FF9800",
+    "navigationBarTitleText": "麦邻租房",
+    "navigationBarTextStyle": "#fff"
+  }
+}
