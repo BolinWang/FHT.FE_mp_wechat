@@ -12,8 +12,8 @@
 	},
 	"compileType": "miniprogram",
 	"libVersion": "1.9.98",
-	"appid": "touristappid",
-	"projectname": "wxDemo",
+	"appid": "wx3f42ba44c05bab38",
+	"projectname": "mailin",
 	"condition": {
 		"search": {
 			"current": -1,
