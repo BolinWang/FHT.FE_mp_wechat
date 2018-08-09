@@ -19,5 +19,7 @@
       <switch slot="footer" checked/>
     </zan-cell>
   </zan-cell-group>
+
+  <image src="/images/htgl.svg" style="width: 120rpx;"></image>
 </view>
 
