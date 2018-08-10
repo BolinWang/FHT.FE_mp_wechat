@@ -2,12 +2,13 @@ const Ajax = require('../../utils/util.js')
 let appInstance = getApp()
 Page({
   data: {
+    balanceMoney: '',
     items: [],
     userMobile: '',
     applyModel: true,
     cancelModel: true,
     lookModel: true,
-    isShow:false,
+    isShow: false,
     payeeShortCardNo: '',
     actualMoney: '',
     current: '',
@@ -68,6 +69,17 @@ Page({
     wx.stopPullDownRefresh();
     
   },
+  queryBalance () {
+    Ajax({
+      url: '/withdraw',
+      method: 'queryBalance',
+    }).then(res => {
+      this.setData({
+        balanceMoney: res.data
+      })
+    }).catch(res => {
+    })
+  },
   getDataList () {//获取数据列表
     wx.showLoading({
       title:'数据加载中'
@@ -89,7 +101,7 @@ Page({
           items: []
         })
       }
-      
+      this.queryBalance()
     }).catch(res => {
     })
   } ,

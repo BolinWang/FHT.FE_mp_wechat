@@ -17,3 +17,16 @@
 .icon-unie607:before { content: "\e6d5"; }
 
 .icon-shouji:before { content: "\e612"; }
+
+.clearfix:after {
+  visibility: hidden;
+  display: block;
+  font-size: 0;
+  content: " ";
+  clear: both;
+  height: 0;
+}
+
+.flex {
+  display: flex;
+}

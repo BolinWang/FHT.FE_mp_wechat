@@ -9,13 +9,18 @@
   width: 100%;
   z-index: 2;
   font-size: 30rpx;
-  height: 80rpx;
-  line-height: 80rpx;
   background: #fff;
+  border-bottom: 2rpx solid #ddd;
+}
+.flex.flex-column {
+  flex-direction: column;
+}
+.flex-container {
+  justify-content: space-between;
+  align-items: center;
+  padding: 20rpx 40rpx;
 }
 .userMsg {
-  float: left;
-  padding-left: 40rpx;
   color: #666;
 }
 
@@ -30,9 +35,6 @@
   font-size: 24rpx;
   text-align: center;
   border: 2rpx solid rgba(70, 128, 255, 1);
-  float: right;
-  margin-right: 20rpx;
-  margin-top: 16rpx;
 }
 .reasonTitle {
   color:#000;
@@ -58,7 +60,7 @@
   background: #F5F5F5;
 }
 .bgPadding {
-  padding-top: 80rpx;
+  padding-top: 130rpx;
 }
 .list {
   line-height: 48rpx;
