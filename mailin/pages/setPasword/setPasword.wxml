@@ -1,0 +1,17 @@
+<!--pages/setPasword/setPasword.wxml-->
+<!--pages/forgetPassword/forgetPassword.wxml-->
+<view class="container">
+ <view class="tittle">设置密码</view>
+ <text class="pasText">为了您的账户安全，请设置密码</text>
+ <view calss='forgtet-box'>
+   <view class="inp-box">
+     <view class="inp-Item">
+        <input type='password' placeholder-class="phcolor" class="inp" placeholder='请设置6-12位的新密码' bindinput='getPsd'></input>
+      </view>
+   </view>
+   <view class="btn">
+    <button class="btn-tex" bindtap='submit'>完成并登陆</button>
+   </view>
+ </view>
+
+</view>

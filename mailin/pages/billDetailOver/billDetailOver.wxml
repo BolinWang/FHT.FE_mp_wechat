@@ -1,0 +1,31 @@
+<!--pages/billDetailOver/billDetailOver.wxml-->
+<view class='container'>
+  <view class="view-box" wx:for-item="billItem" wx:for = '{{billDescList}}' wx:key="index">
+    <view class="title">{{billItem.title}}</view>
+     <view class="view-item-box">
+       <view class="item" wx:for-item="billDesc" wx:for = '{{billItem.desc}}' wx:key="index">
+         <text class="name">{{billDesc.name}}</text>
+         <text class="name-text-inf" data-item='{{billDesc.content}}' bindtap='getDesc' wx:if="{{billDesc.content.length>0}}">详细信息</text>
+         <text class="name-tex {{billDesc.name=='优惠金额'?'name-text-red':''}}{{billDesc.value=='未支付'?'name-text-yel':''}}">{{billDesc.value}}</text>
+       </view>
+     </view>
+  </view>
+  <!-- <view class="bottom" hidden='{{!payStype.desc[0].value}}'>
+     <view class="bot-free">应付总额:  <text class='name-text-yel'>{{billmoney}}</text></view>
+     <view class='btn-go'>
+       <navigator url="/pages/payment/payment?free={{billmoney}}">立即支付</navigator>
+     </view>
+  </view> -->
+</view>
+<view class="mypopup" hidden="{{showModalStatus}}">
+  <view class="commodity_screen" bindtap="hideModal" ></view>  
+  <view  class="commodity_attr_box" >
+    <view  class="view-title">详细信息</view>
+    <view class="popbox">
+       <view class="item" wx:for="{{poplist}}" wx:key='index'>
+        <text class='name'>{{item.name}}</text>
+        <text class='name-tex'>{{item.value}}</text>
+       </view>
+    </view>
+  </view>
+</view>

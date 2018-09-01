@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="22px" height="19px" viewBox="0 0 22 19" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 51 (57462) - http://www.bohemiancoding.com/sketch -->
+    <title>bill</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="v1.0.0" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="账单_待付账单" transform="translate(-20.000000, -161.000000)">
+            <rect fill="#F7F7F7" x="0" y="0" width="375" height="667"></rect>
+            <g id="item01" transform="translate(0.000000, 141.000000)">
+                <rect id="Rectangle-24" fill="#FFFFFF" x="0" y="0" width="375" height="84"></rect>
+                <g id="bill" transform="translate(20.000000, 20.000000)">
+                    <rect id="Rectangle-2" fill="#666666" x="0" y="0" width="22" height="4"></rect>
+                    <path d="M2.5,1.54 L2.5,18.0088887 C2.5,18.3982076 3.05190572,18.6765511 3.25686538,18.4698158 L3.36165978,18.3889905 L5.95724468,16.8881856 L8.0532972,18.1197647 L8.15507492,18.1988317 C8.22812657,18.2725162 8.71187343,18.2725162 8.84560253,18.1467158 L11,16.5773407 L11.2943975,16.7917951 L13.2150749,18.1988317 C13.2881266,18.2725162 13.7718734,18.2725162 13.9040221,18.1478718 L16.0121682,16.5995155 L18.6383402,18.1180064 L18.7431346,18.1988317 C19.0252257,18.4833666 19.5,18.2918116 19.5,17.7379046 L19.5,1.54 L2.5,1.54 Z" id="Shape" stroke="#666666" fill="#FFFFFF" fill-rule="nonzero"></path>
+                    <rect id="Rectangle-3" stroke="#999999" stroke-width="1.5" x="6.25" y="12.75" width="3.5" height="1"></rect>
+                    <rect id="Rectangle-3" stroke="#999999" stroke-width="1.5" x="6.25" y="9.25" width="9.5" height="1"></rect>
+                    <rect id="Rectangle-3" stroke="#999999" stroke-width="1.5" x="6.25" y="5.75" width="7.5" height="1"></rect>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

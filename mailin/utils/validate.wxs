@@ -1,0 +1,68 @@
+function validaTime(str) {
+  var str2 = str.toString()
+  str2 = str2.substring(0, 4) + '.' + str2.substring(4, 6)+ '.' + str2.substring(6, 8)
+  return str2
+}
+function validaBtn(str) {  //1-立即签约，2-立即申请，3-查看申请进度，4-查看申请失败原因，5-立即支付，6-联系房东，99-已完成订单
+  var str2 = [{
+    value:1,
+    key:'立即签约'
+  },{
+    value: 5,
+    key: '立即支付'
+  },{
+    value: 6,
+    key: '联系房东'
+  },{
+      value: 99,
+      key: '已完成订单'
+  }]
+  for(var i=0;i<str2.length;i++){
+    if (str2[i].value == str){
+      return str2[i].key
+    }
+  }
+}
+function orderType(val){
+  //1 - 预定，2 - 续租，3 - 换房, 4 - 预留；
+  var str2 = [{
+    value: 1,
+    key: '租房'
+  }, {
+    value: 2,
+    key: '租金'
+  }, {
+    value: 3,
+    key: '换房'
+  }, {
+    value: 4,
+    key: '定金'
+  }]
+  return str2[val-1].key
+}
+function showTime(signVal,payVal,btn){
+  var valtext =''
+   if(btn==1){
+     valtext = '温馨提醒：'+Math.ceil(signVal/1000/60)+'分钟内未完成签约，订单将自动取消。' 
+   }else{
+     if (Math.ceil(signVal/1000/60)>60) {
+       valtext = '温馨提醒：' + Math.ceil(payVal / 1000 / 60 / 60) + '小时内未完成支付，订单将自动取消'
+     }else{
+       valtext = '温馨提醒：' + Math.ceil(payVal / 1000 / 60) + '分钟内未完成支付，订单将自动取消'
+     }
+   }
+
+  return valtext
+}
+function overBtn(item) {  //查看合同 2 ordertype=3   orderStatu=3&&ordertype=4  办理入住    
+   //已取消  status=4 type =4 
+  var btntext = (item.orderStatus == 4 && '已取消') ||(item.orderStatus == 3 && item.orderType == 4)&&'办理入住' ||null
+  return btntext
+}
+module.exports = {
+  validaTime: validaTime,
+  validaBtn: validaBtn,
+  orderType: orderType,
+  showTime: showTime,
+  overBtn: overBtn
+}

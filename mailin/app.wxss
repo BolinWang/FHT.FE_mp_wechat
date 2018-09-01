@@ -1,15 +1,14 @@
 /**app.wxss**/
-
+@import "/components/index.wxss";
 /*iconfont*/
 @font-face {
-  font-family: 'iconfont';  /* project id 779840 */
-  src: url('//at.alicdn.com/t/font_779840_hiqemnqiiew.eot');
-  src: url('//at.alicdn.com/t/font_779840_hiqemnqiiew.eot?#iefix') format('embedded-opentype'),
-  url('//at.alicdn.com/t/font_779840_hiqemnqiiew.woff') format('woff'),
-  url('//at.alicdn.com/t/font_779840_hiqemnqiiew.ttf') format('truetype'),
-  url('//at.alicdn.com/t/font_779840_hiqemnqiiew.svg#iconfont') format('svg');
+  font-family: 'iconfont';  /* project id 643320 */
+  src: url('//at.alicdn.com/t/font_643320_7w5z2pho5p2.eot');
+  src: url('//at.alicdn.com/t/font_643320_7w5z2pho5p2.eot?#iefix') format('embedded-opentype'),
+  url('//at.alicdn.com/t/font_643320_7w5z2pho5p2.woff') format('woff'),
+  url('//at.alicdn.com/t/font_643320_7w5z2pho5p2.ttf') format('truetype'),
+  url('//at.alicdn.com/t/font_643320_7w5z2pho5p2.svg#iconfont') format('svg');
 }
-
 .iconfont {
   font-family:"iconfont" !important;
   font-size:32rpx;
@@ -17,7 +16,7 @@
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
-
+.icon-xiangpica:before { content: "\e606"; }
 .icon-dianfei:before { content: "\e62a"; }
 
 .icon-shuifei:before { content: "\e62d"; }
@@ -78,4 +77,11 @@
   content: " ";
   clear: both;
   height: 0;
+}
+html,body,view{
+  font-family: PingFangSC-Regular;
+}
+page{
+  height: 100%;
+  min-height: 100%;
 }

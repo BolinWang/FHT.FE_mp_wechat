@@ -1,0 +1,47 @@
+<!--pages/personalCenter/personalCenter.wxml-->
+<!-- <text>pages/personalCenter/personalCenter.wxml</text> -->
+<view class="container">
+ <view class="bck"></view>
+ <view class="per-box">
+   <view class="box-infor">
+      <view class="pho-box" wx:if="avatarUrl">
+        <view class='crop'>
+          <image class="photo" src="{{avatarUrl}}"></image>
+        </view>
+      </view>
+      <view class="out" bindtap='dropOut'>
+        <image class="out-icon" src="../../images/tuichu.svg"></image>
+      </view>
+      <view class="per-inf">
+         <view class="name">{{nickName}}</view>
+         <view class="phone">{{mobile}}</view>
+      </view>
+   </view>
+   <view class="tab-go">
+      <view class="goItem">
+       <navigator class="agreement" url="/pages/order/Order">
+         <text class="prompt">{{orderCount}}</text>
+         <image class="goIcon" src="../../images/qyrz.svg"></image>
+         <text class="goText">签约入驻</text>
+        </navigator>
+      </view>
+      <view class="goItem">
+       <navigator class="agreement" url="/pages/bill/bill">
+         <text class="prompt">{{billCount}}</text>
+         <image class="goIcon" src="../../images/zfjf.svg"></image>
+         <text class="goText">房租缴费</text>
+        </navigator>
+      </view>
+      <view class="goItem">
+       <navigator class="agreement" url="/pages/contractList/contractList">
+         <!-- <text class="prompt">12</text> -->
+         <image class="goIcon" src="../../images/htgl.svg"></image>
+         <text class="goText">合同管理</text>
+        </navigator>
+      </view>
+   </view>
+   <view class="logo-icon">
+     <image class="log-icon" src="../../images/mlLogo.jpg"></image>
+   </view>
+  </view>
+</view>

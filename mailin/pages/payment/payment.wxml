@@ -1,0 +1,15 @@
+<!--pages/payment/payment.wxml-->
+<view class="container">
+  <view class="free-box">
+    <view class='title'>需支付</view>
+    <view class="free">{{money}}</view>
+  </view>
+  <zan-cell-group title-width="90">
+     <zan-cell is-link title="优惠卷" value="{{coupon}}"  border="{{ false }}" url='/pages/couponChoose/couponChoose?billNo={{billNo}}&source={{source}}'/>
+  </zan-cell-group>
+  <view class="btoom">
+    <view class="btn" bindtap='goPay'>
+        微信支付
+    </view>
+  </view>
+</view>

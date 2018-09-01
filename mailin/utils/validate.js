@@ -27,11 +27,22 @@ const validatAlphabets = str => {
   const reg = /^[A-Za-z]+$/
   return reg.test(str)
 }
-
+// 手机号码隐藏
+const passwordHidden = str => {
+  let str2 = str.substr(0, 3) + "****" + str.substr(7);
+  return str2
+}
+//时间截取
+const validaTime = str =>{
+  let str2 = `${str.substr(0, 3)}-${str.substr(4, 2)}-${str.substr(6, 2)}`
+  return str2
+}
 module.exports = {
   validateMobile,
   validateURL,
   validateLowerCase,
   validateUpperCase,
-  validatAlphabets
+  validatAlphabets,
+  passwordHidden,
+  validaTime
 }

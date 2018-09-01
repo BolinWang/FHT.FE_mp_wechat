@@ -1,0 +1,149 @@
+/* pages/contractList/contractList.wxss */
+.container{
+  min-height: 100%;
+  width:100%;
+  display: flex;
+  padding-top:40px;
+  box-sizing: border-box;
+  background: #f7f7f7;
+  flex-flow: column;
+  position: relative;
+}
+.tab{
+  height:44px;
+  display: flex;
+  position: absolute;
+  z-index: 10;
+  top:0;
+  width:100%;
+  background: #ffffff;
+}
+.tab-item{
+  flex:1;
+  text-align: center;
+  color: #333333;
+  line-height: 44px;
+  letter-spacing: -0.34px;
+  font-size: 28rpx;
+}
+.tab-active{
+  box-sizing: border-box;
+  line-height: 42px;
+  border-bottom:2px solid #FF8C07;
+  padding-bottom:10px;
+  color: #FF8C07
+}
+.scroll-box{
+  flex:1;
+  height:100%;
+  min-height: 100%;
+  position: relative;
+  /* padding-top:40px; */
+  background: #f7f7f7;
+  box-sizing: border-box;
+}
+.pending{
+  padding:0 40rpx;
+  box-sizing: border-box;
+  height:100%;
+  width:100%;
+  overflow: auto;
+}
+.list{
+  position: absolute;
+  top:0;
+  left: 0;
+  right:0;
+  bottom: 0;
+}
+.header{
+  text-align: center;
+  font-size:26rpx;
+  color:#999999;
+  line-height:81rpx;
+}
+.box-card{
+  background: #FFFFFF;
+  box-shadow: 0 2px 8px 0 rgba(0,0,0,0.07);
+  padding:0 30rpx 20rpx 30rpx;
+  border-radius: 6px; 
+  margin-bottom:40rpx;
+}
+.mar-top{
+  margin-top:40rpx;
+}
+.title{
+  font-size: 36rpx;
+  color: #999999;
+  letter-spacing: -0.43px;
+  padding:30rpx 0 20rpx 0;
+}
+.room-inf{
+  font-size: 28rpx;
+  color: #C5C5C5;
+}
+.inf-item{
+  display: flex;
+  padding-bottom: 10rpx;
+}
+.inf-name{
+  padding-right: 10rpx;
+}
+.inf-text{
+  flex:1;
+}
+.inf-text-s{
+  flex:1;
+  color: #FFFF8C07;
+}
+
+.box-two .title{
+  color: #333333;
+}
+.box-two .room-inf{
+  color: #666666;
+}
+.k-box{
+  height:100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-flow: column;
+  padding-right:40rpx;
+
+}
+.k-img{
+  width: 216rpx;
+  height:194rpx;
+}
+.k-text{
+  font-size: 14px;
+  color: #C5C5C5;
+  letter-spacing: 0;
+  padding-top:40rpx;
+}
+.swiper-box{
+  position: absolute;
+  z-index: 100;
+  top:0;
+  height: 100%;
+  left: 0;
+  background: rgba(37, 36, 36, 0.63);
+  width: 100%;
+}
+.swiper-b{
+  height: 100%;
+  width: 100%;
+}
+.image-url-box{
+  display: flex;
+  height: 100%;
+  width: 100%;
+   opacity:1;
+  justify-content: center;
+  align-items: center;
+}
+.image-url-box image{
+  width:320px;
+  min-height: 80%;
+}

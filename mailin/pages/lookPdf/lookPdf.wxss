@@ -1,0 +1,7 @@
+/* pages/lookPdf/lookPdf.wxss */
+.pdf-box{
+  height:200rpx;
+  width:100%;
+  background: #ffffff;
+  overflow: hidden;
+}

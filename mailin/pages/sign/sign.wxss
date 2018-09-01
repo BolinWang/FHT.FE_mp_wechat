@@ -1,0 +1,56 @@
+/* pages/sign/sign.wxss */
+.canvas{
+  height:100%;
+  width:100%;
+  background:#ffffff;
+}
+image{
+  height:100%;
+  width:100%;
+}
+.container{
+  height:100%;
+  position: relative;
+}
+.clearBtn{
+  position: absolute;
+  left:0;
+  width:100rpx;
+  bottom: 150rpx;
+  padding:0 40rpx 80rpx 40rpx;
+}
+.clear{
+  color:#e5e5e5;
+  font-size: 30px;
+}
+.btn-border{
+  height:100rpx;
+  line-height: 100rpx;
+  text-align: center;
+  width:100rpx;
+  border-radius: 8rpx;
+  border: 1px dashed #b0b2b7;
+}
+.cleartext{
+  color:  #b0b2b7;
+  font-size: 24rpx;
+  line-height: 60rpx;
+  display: flex;
+  width:100rpx;
+}
+.title{
+  position: absolute;
+  top:0;
+  left: 0;
+  right: 0;
+}
+.saveBtn{
+  position: absolute;
+  left:0;
+  width:100%;
+  line-height: 100rpx;
+  color: #fff;
+  bottom:0;
+  text-align: center;
+  background: #FF9800;
+}

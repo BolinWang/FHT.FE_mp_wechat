@@ -1,0 +1,121 @@
+<!--pages/contractList/contractList.wxml-->
+
+<view class="container">
+<wxs module="validate" src="../../utils/validate.wxs"></wxs>
+  <view class="tab">
+   <view class="tab-item" wx:for-item="itemName" wx:for="{{tablist}}" wx:key="value" >
+     <text class="tab-text {{itemName.value==activeTab?'tab-active':''}}" data-current="{{itemName.value}}" bindtap='tabChoose'>{{itemName.label}}</text>
+   </view>
+  </view>
+   
+  <swiper current="{{activeTab}}"  style="height:{{winHeight}}rpx" class="scroll-box" duration="300"  bindchange="swiperTab">
+    <swiper-item class="pending">
+       <view class="header" hidden='{{showPullDown}}'>
+           <view>刷新中……</view>
+        </view>
+       <view class="k-box" hidden='{{contractList.length!=0}}'>
+         <image class="k-img" src="../../images/k-box.png"></image>
+         <view class="k-text">暂无数据</view>
+       </view>
+      <view class="box-card box-two {{showPullDown==true&&index==0?'mar-top':''}}"  wx:for="{{contractList}}" wx:for-item="item" wx:key="contractId" data-item="{{item}}" bindtap='getfile'>
+        <view class="title" >
+           {{item.contractName}}{{index}}
+         </view>
+         <view class="room-inf">
+           <view class="inf-item">
+            <text class="inf-name">房间</text>
+            <text class="inf-text">{{item.roomName}}</text>
+           </view>
+           <view class="inf-item">
+            <text class="inf-name">合同编号</text>
+            <text class="inf-text">{{item.contractNo}}</text>
+           </view>
+           <view class="inf-item">
+            <text class="inf-name">合同时间</text>
+            <text class="inf-text">{{validate.validaTime(item.startDate)}}~{{validate.validaTime(item.endDate)}}</text>
+           </view>
+            <view class="inf-item">
+            <text class="inf-name">生成时间</text>
+            <text class="inf-text" hidden="item.status!=4">{{validate.validaTime(item.startDate)}}</text>  
+               <text class="inf-text-s" hidden="item.status==4">生成中</text>
+           </view>
+         </view>
+      </view>
+    </swiper-item >
+    <swiper-item class="pending">
+      <view class="header" hidden='{{showPullDown}}'>
+           <view>刷新中……</view>
+        </view>
+        <view class="k-box" hidden='{{contractList.length!=0}}'>
+         <image class="k-img" src="../../images/k-box.png"></image>
+         <view class="k-text">暂无数据</view>
+       </view>
+      <view class="box-card box-two {{showPullDown==true&&index==0?'mar-top':''}}"  wx:for="{{contractList}}" wx:for-item="item" wx:key="contractId" data-item="{{item}}" bindtap='getfile'>
+        <view class="title" >
+           {{item.contractName}}{{index}}
+         </view>
+         <view class="room-inf">
+           <view class="inf-item">
+            <text class="inf-name">房间</text>
+            <text class="inf-text">{{item.roomName}}</text>
+           </view>
+           <view class="inf-item">
+            <text class="inf-name">合同编号</text>
+            <text class="inf-text">{{item.contractNo}}</text>
+           </view>
+           <view class="inf-item">
+            <text class="inf-name">合同时间</text>
+            <text class="inf-text">{{validate.validaTime(item.startDate)}}~{{validate.validaTime(item.endDate)}}</text>
+           </view>
+            <view class="inf-item">
+            <text class="inf-name">生成时间</text>
+            <text class="inf-text">{{validate.validaTime(item.startDate)}}</text>
+           </view>
+         </view>
+      </view>
+    </swiper-item>
+    <swiper-item class="pending">
+       <view class="header" hidden='{{showPullDown}}'>
+           <view>刷新中……</view>
+        </view>
+        <view class="k-box" hidden='{{contractList.length!=0}}'>
+         <image class="k-img" src="../../images/k-box.png"></image>
+         <view class="k-text">暂无数据</view>
+       </view>
+      <view class="box-card {{showPullDown==true&&index==0?'mar-top':''}}"  wx:for="{{contractList}}" wx:for-item="item" data-item="{{item}}" wx:key="contractId" bindtap='getfile'>
+        <!-- <navigator class="forget" url='/pages/lookPdf/lookPdf?contractNo={{item.contractNo}}'> -->
+         <view class="title" >
+           {{item.contractName}}{{index}}
+         </view>
+         <view class="room-inf">
+           <view class="inf-item">
+            <text class="inf-name">房间</text>
+            <text class="inf-text">{{item.roomName}}</text>
+           </view>
+           <view class="inf-item">
+            <text class="inf-name">合同编号</text>
+            <text class="inf-text">{{item.contractNo}}</text>
+           </view>
+           <view class="inf-item">
+            <text class="inf-name">合同时间</text>
+            <text class="inf-text">{{validate.validaTime(item.startDate)}}~{{validate.validaTime(item.endDate)}}</text>
+           </view>
+            <view class="inf-item">
+            <text class="inf-name">生成时间</text>
+            <text class="inf-text">{{validate.validaTime(item.startDate)}}</text>
+           </view>
+         </view>
+        <!-- </navigator> -->
+      </view>
+    </swiper-item>
+</swiper> 
+<view class="swiper-box" hidden='{{swiperbox}}'>
+   <swiper class="swiper-b" catchtap="onItemClick" indicator-dots >
+    <swiper-item wx:for="{{urlList}}" wx:key="*this">
+      <view class="image-url-box">
+       <image src="{{item}}"></image>
+      </view>
+    </swiper-item>
+   </swiper>
+</view>
+</view>

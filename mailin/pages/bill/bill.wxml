@@ -1,0 +1,71 @@
+<!--pages/bill/bill.wxml-->
+
+<view class="container">
+<wxs module="validate" src="../../utils/validate.wxs"></wxs>
+  <view class="tab">
+   <view class="tab-item" wx:for-item="itemName" wx:for="{{tablist}}" wx:key="value" >
+     <text class="tab-text {{itemName.value==activeTab?'tab-active':''}}" data-current="{{itemName.value}}" bindtap='tabChoose'>{{itemName.label}}</text>
+   </view>
+  </view>
+   
+  <swiper current="{{activeTab}}"  style="height:{{winHeight}}rpx" class="scroll-box" duration="300"  bindchange="swiperTab">
+    <swiper-item class="pending">
+       <view class="header" hidden='{{showPullDown}}'>
+           <view>刷新中……</view>
+        </view>
+       <view class="k-box" hidden='{{billList.length!=0}}'>
+         <image class="k-img" src="../../images/k-box.png"></image>
+         <view class="k-text">暂无数据</view>
+       </view>
+       <view class="view-box {{showPullDown?'pad-to':''}}">
+         <view class="box-item" wx:for='{{billList}}'  wx:key="billNo">
+           <navigator class="box" url='/pages/billDetail/billDetail?billNo={{item.billNo}}&billmoney={{item.billFee}}'>
+             <view class="item-icon">
+               <image class="icon-bill" src="../../images/bill.svg"></image>
+             </view>
+             <view class="item-center">
+               <view class="item-center-big">
+                 <text class="item-name">{{item.billName}}</text>
+                 <text class="money">{{item.billFee}}</text>
+               </view>
+               <view class="item-little">
+                 <text class="item-time">{{item.createDate}}</text>
+                 <text class="item-go">立即支付</text>
+               </view>
+             </view>
+           </navigator>
+         </view>
+       </view>
+    </swiper-item >
+    <swiper-item class="pending">
+      <view class="header" hidden='{{showPullDown}}'>
+           <view>刷新中……</view>
+        </view>
+       <view class="k-box" hidden='{{billList.length!=0}}'>
+         <image class="k-img" src="../../images/k-box.png"></image>
+         <view class="k-text">暂无数据</view>
+       </view>
+       <view class="view-box {{showPullDown?'pad-to':''}}">
+         <view class="box-item" wx:for='{{billList}}' wx:key="billNo">
+           <navigator class="box" url='/pages/billDetailOver/billDetailOver?billNo={{item.billNo}}'>
+             <view class="item-icon">
+               <image class="icon-bill" src="../../images/bill.svg"></image>
+             </view>
+             <view class="item-center">
+               <view class="item-center-big">
+                 <text class="item-name">{{item.billName}}</text>
+                 <text class="money">{{item.billFee}}</text>
+               </view>
+               <view class="item-little">
+                 <text class="item-time">{{item.createDate}}</text>
+               </view>
+             </view>
+           </navigator>
+         </view>
+       </view>
+    </swiper-item>
+   
+        
+           
+</swiper> 
+</view>

@@ -1,0 +1,25 @@
+<!--pages/sign/sign.wxml-->
+
+<view class='container'>
+  <zan-panel class="title"  title='请在下方区域手写签名，务必使用真实姓名' >
+  </zan-panel>
+   <canvas class="canvas" 
+    canvas-id="myCanvas"
+    bindtouchmove='move'
+    bindtouchstart='start'
+    bindtouchend='end'
+    bindtouchcancel='cancel'
+    bindlongtap='tap'
+    disable-scroll='true'
+    binderror='error'
+    ></canvas>
+   <view class="clearBtn">
+      <text class="cleartext">清除</text>
+      <view class="btn-border">
+          <icon bindtap='clearClick' class='clear iconfont icon-xiangpica'></icon>
+      </view>
+   </view>
+   <view bindtap='saveClick' class="saveBtn" >保存图片</view>
+<!-- <image id='signatureImg' src='{{signImage}}'></image> -->
+</view>
+

@@ -1,0 +1,137 @@
+/* pages/bill/bill.wxss */
+.container{
+  min-height: 100%;
+  width:100%;
+  display: flex;
+  padding-top:40px;
+  box-sizing: border-box;
+  background: #f7f7f7;
+  flex-flow: column;
+  position: relative;
+}
+.tab{
+  height:44px;
+  display: flex;
+  position: absolute;
+  z-index: 10;
+  top:0;
+  width:100%;
+  background: #ffffff;
+}
+.tab-item{
+  flex:1;
+  text-align: center;
+  color: #333333;
+  line-height: 44px;
+  letter-spacing: -0.34px;
+  font-size: 28rpx;
+}
+.tab-active{
+  box-sizing: border-box;
+  line-height: 42px;
+  border-bottom:2px solid #FF8C07;
+  padding-bottom:10px;
+  color: #FF8C07
+}
+.scroll-box{
+  flex:1;
+  height:100%;
+  min-height: 100%;
+  position: relative;
+  /* padding-top:40px; */
+  background: #f7f7f7;
+  box-sizing: border-box;
+}
+.pending{
+  box-sizing: border-box;
+  height:100%;
+  width:100%;
+  overflow: auto;
+}
+.list{
+  position: absolute;
+  top:0;
+  left: 0;
+  right:0;
+  bottom: 0;
+}
+.header{
+  text-align: center;
+  font-size:26rpx;
+  color:#999999;
+  line-height:81rpx;
+}
+.view-box{
+  flex:1;
+}
+.box-item{
+  height:168rpx;
+  display: flex;
+  background: #ffffff;
+  box-sizing: border-box;
+  border-bottom: 2rpx solid #E5E5E5;
+}
+.box{
+  flex:1;
+  padding:40rpx 40rpx;
+  display: flex;
+}
+.item-center{
+  flex:1;
+  display: flex;
+  flex-flow: column;
+  justify-content: space-between;
+}
+.item-center-big{
+  font-size: 32rpx;
+  color: #333333;
+  letter-spacing: 0;
+  line-height: 32rpx;
+  display: flex;
+}
+.item-name{
+  flex:1;
+}
+.item-little{
+  font-size: 24rpx;
+  color: #C5C5C5;
+  letter-spacing: 0;
+  display: flex;
+  line-height: 24rpx;
+}
+.item-time{
+  flex:1;
+}
+.item-go{
+  color: #FF8C07;
+}
+.item-icon{
+   width:36rpx;
+   padding-right: 34rpx;
+}
+.icon-bill{
+  width:36rpx;
+  height:36rpx;
+}
+.k-box{
+  height:100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-flow: column;
+  padding-right:40rpx;
+
+}
+.k-img{
+  width: 216rpx;
+  height:194rpx;
+}
+.k-text{
+  font-size: 14px;
+  color: #C5C5C5;
+  letter-spacing: 0;
+  padding-top:40rpx;
+}
+.pad-to{
+  padding-top:16rpx;
+}

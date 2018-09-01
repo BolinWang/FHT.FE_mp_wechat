@@ -18,6 +18,10 @@
       <i class="mainColor iconfont icon-shuifei" slot="icon"></i>
       <switch slot="footer" checked/>
     </zan-cell>
+     <zan-cell title="签名" is-link url="/pages/sign/sign">
+      <i class="mainColor iconfont icon-hetongguanli" slot="icon"></i>
+    </zan-cell>
   </zan-cell-group>
+  <image src="../images/htgl.svg"></image>
 </view>
 

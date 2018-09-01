@@ -1,0 +1,6 @@
+<!--pages/lookPdf/lookPdf.wxml-->
+<!-- <text>pages/lookPdf/lookPdf.wxml 查看pdf</text> -->
+<view class="pdf-box">
+  <web-view   src="{{pdfUrl}}">
+  </web-view>
+</view>

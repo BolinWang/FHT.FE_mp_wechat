@@ -1,0 +1,56 @@
+/* pages/paymentsucces/paymentSucces.wxss */
+.container{
+  min-height:100%;
+  background: #f5f5f5;
+  padding:0 70rpx;
+  box-sizing: border-box
+}
+.icon-box{
+  padding-top:100rpx;
+  padding-bottom: 30rpx;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.icon-image{
+  height:96rpx;
+  width: 96rpx;
+}
+.text{
+  text-align: center;
+  font-size: 28rpx;
+  color: #1AAD19;
+  line-height: 28rpx;
+}
+.money{
+  padding:100rpx 0 40rpx 0;
+  font-size: 56rpx;
+  color: #151515;
+  text-align: center;
+  letter-spacing: 0;
+  line-height: 56rpx;
+  border-bottom: 2rpx solid #E5E5E5;
+}
+.goDetail{
+  display: flex;
+  font-size: 24rpx;
+  color: #888888;
+  text-align: left;
+  line-height: 38rpx;
+  padding-bottom: 240rpx;
+}
+.text-r{
+  text-align: right;
+}
+.btn{
+  margin:0 auto;
+  border: 1px solid #1AAD19;
+  border-radius: 23.5px;
+  width:270rpx;
+  height:70rpx;
+  line-height: 70rpx;
+  text-align: center;
+  font-size: 32rpx;
+  color: #1AAD19;
+  letter-spacing: -0.1px;
+}

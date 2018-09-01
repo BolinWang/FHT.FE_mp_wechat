@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="14px" height="14px" viewBox="0 0 14 14" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 51 (57462) - http://www.bohemiancoding.com/sketch -->
+    <title>shanchu </title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <rect id="path-1" x="30" y="170" width="315" height="300" rx="10"></rect>
+        <filter x="-4.1%" y="-3.7%" width="108.3%" height="108.7%" filterUnits="objectBoundingBox" id="filter-2">
+            <feOffset dx="0" dy="2" in="SourceAlpha" result="shadowOffsetOuter1"></feOffset>
+            <feGaussianBlur stdDeviation="4" in="shadowOffsetOuter1" result="shadowBlurOuter1"></feGaussianBlur>
+            <feColorMatrix values="0 0 0 0 0   0 0 0 0 0   0 0 0 0 0  0 0 0 0.0691519475 0" type="matrix" in="shadowBlurOuter1"></feColorMatrix>
+        </filter>
+    </defs>
+    <g id="v1.0.0" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="密码登陆" transform="translate(-306.000000, -267.000000)">
+            <rect fill="#EDEFF2" x="0" y="0" width="375" height="667"></rect>
+            <rect id="Rectangle-4" fill="#FFFFFF" x="0" y="0" width="375" height="667"></rect>
+            <g id="Rectangle-3">
+                <use fill="black" fill-opacity="1" filter="url(#filter-2)" xlink:href="#path-1"></use>
+                <use fill="#FFFFFF" fill-rule="evenodd" xlink:href="#path-1"></use>
+            </g>
+            <g id="删除" transform="translate(306.000000, 267.000000)">
+                <circle id="Oval" fill="#D8D8D8" cx="7" cy="7" r="7"></circle>
+                <path d="M8.22094816,7 L9.74713336,8.5261852 C10.0842889,8.86334072 10.0842889,9.40997783 9.74713336,9.74713336 C9.40997783,10.0842889 8.86334072,10.0842889 8.5261852,9.74713336 L7,8.22094816 L5.4738148,9.74713336 C5.13665928,10.0842889 4.59002217,10.0842889 4.25286664,9.74713336 C3.91571112,9.40997783 3.91571112,8.86334072 4.25286664,8.5261852 L5.77905184,7 L4.25286664,5.4738148 C3.91571112,5.13665928 3.91571112,4.59002217 4.25286664,4.25286664 C4.59002217,3.91571112 5.13665928,3.91571112 5.4738148,4.25286664 L7,5.77905184 L8.5261852,4.25286664 C8.86334072,3.91571112 9.40997783,3.91571112 9.74713336,4.25286664 C10.0842889,4.59002217 10.0842889,5.13665928 9.74713336,5.4738148 L8.22094816,7 Z" id="Combined-Shape" fill="#FFFFFF"></path>
+            </g>
+        </g>
+    </g>
+</svg>
