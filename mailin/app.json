@@ -22,8 +22,8 @@
   ],
   "window": {
     "backgroundTextStyle": "light",
-    "navigationBarBackgroundColor": "#FF9800",
+    "navigationBarBackgroundColor": "#fff",
     "navigationBarTitleText": "麦邻租房",
-    "navigationBarTextStyle": "#fff"
+    "navigationBarTextStyle": "black"
   }
 }

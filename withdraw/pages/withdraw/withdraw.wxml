@@ -1,7 +1,16 @@
 <view class="container">
   <view class="userFix" wx:if="{{isShow}}">
-    <view class="userMsg">当前登录：<i class="blue">{{userMobile}}</i></view>
-    <button class="loginOut" bindtap="loginOut">退出</button>
+    <view class="flex flex-container">
+      <view class="flex flex-column">
+        <view class="userMsg">当前登录：<i class="blue">{{userMobile}}</i></view>
+        <view class="userMsg">
+          连连余额：<i class="red">{{balanceMoney}}</i>
+        </view>
+      </view>
+      <view>
+        <button class="loginOut" bindtap="loginOut">退出</button>
+      </view>
+    </view>
   </view>
   <view class="noDataBox" wx:if="{{isNoData}}">
     <image src="/images/noData.svg" class="noData" />
