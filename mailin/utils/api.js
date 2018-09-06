@@ -60,21 +60,11 @@ const fetch = (config) => {
           })
         } else {
           console.log(res)
-          if (config.method == 'forgetPassword'){
-            if (res.data.code == 1001){
-                wx.showToast({
-                  title: '验证码错误',
-                  icon: 'none',
-                  duration: 2000
-                })
-              }
-          }else{
-            wx.showToast({
-              title: res.data.message || '网络异常',
-              icon: 'none',
-              duration: 2000
-            })
-          }
+          wx.showToast({
+            title: res.data.message || '网络异常',
+            icon: 'none',
+            duration: 2000
+          })
           reject(res.data.message)
         }
       },
