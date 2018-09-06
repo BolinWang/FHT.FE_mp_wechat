@@ -10,16 +10,21 @@
     bindtouchend='end'
     bindtouchcancel='cancel'
     bindlongtap='tap'
+    style = 'height:{{canvash-50}}px'
     disable-scroll='true'
     binderror='error'
-    ></canvas>
-   <view class="clearBtn">
-      <text class="cleartext">清除</text>
-      <view class="btn-border">
-          <icon bindtap='clearClick' class='clear iconfont icon-xiangpica'></icon>
-      </view>
-   </view>
-   <view bindtap='saveClick' class="saveBtn" >保存图片</view>
+    >
+      <cover-view class="controls">
+         <cover-view class="clearBtn" bindtap='clearClick'>
+            <cover-view class="cleartext">清除</cover-view>
+            <cover-view class="btn-border">
+                <!-- <cover-view  bindtap='clearClick' class='clear iconfont icon-xiangpica pad-h'></cover-view> -->
+                <cover-image  class="pad-h" src="../../images/xpc.svg" />
+            </cover-view>
+        </cover-view>
+      </cover-view>
+    </canvas>
+     <view bindtap='saveClick' class="saveBtn" >保存图片</view>
 <!-- <image id='signatureImg' src='{{signImage}}'></image> -->
 </view>
 

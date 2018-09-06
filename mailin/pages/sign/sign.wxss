@@ -4,6 +4,7 @@
   width:100%;
   background:#ffffff;
 }
+
 image{
   height:100%;
   width:100%;
@@ -16,6 +17,7 @@ image{
   position: absolute;
   left:0;
   width:100rpx;
+  z-index: 100;
   bottom: 150rpx;
   padding:0 40rpx 80rpx 40rpx;
 }
@@ -27,9 +29,14 @@ image{
   height:100rpx;
   line-height: 100rpx;
   text-align: center;
+  background: #fff;
   width:100rpx;
+  box-sizing: border-box;
   border-radius: 8rpx;
   border: 1px dashed #b0b2b7;
+}
+.pad-h{
+  padding-top:10rpx;
 }
 .cleartext{
   color:  #b0b2b7;
@@ -42,15 +49,22 @@ image{
   position: absolute;
   top:0;
   left: 0;
+  z-index:100;
   right: 0;
 }
 .saveBtn{
   position: absolute;
   left:0;
+  z-index: 100;
   width:100%;
-  line-height: 100rpx;
+  line-height: 50px;
   color: #fff;
   bottom:0;
   text-align: center;
   background: #FF9800;
+}
+.controls{
+  position: relative;
+  top: 80%;
+  height: 400rpx;
 }

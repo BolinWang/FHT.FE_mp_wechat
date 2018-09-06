@@ -55,6 +55,7 @@ Page({
     // })
   },
   goPay(){   // 去支付 
+    let that =this
     Ajax({
       url: '/payment',
       method: 'wechatSign',
@@ -75,7 +76,7 @@ Page({
         'paySign': res.data.sign,
         'success': function (response) {
           wx.navigateTo({
-            url: `/pages/paymentSucces/paymentSucces?money=${this.data.money}`,
+            url: `/pages/paymentSucces/paymentSucces?money=${that.data.money}`,
           })
         },
         'fail': function (response) {

@@ -20,8 +20,9 @@ wx.getSystemInfo({
     */
     data: {
       signImage: '',
-      contractNo:null,
-      activeTab:null,
+      contractNo: null,
+      activeTab: null,
+      canvash: canvash
     },
     // 画布的触摸移动开始手势响应
     start: function (event) {
