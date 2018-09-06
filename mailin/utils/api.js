@@ -1,6 +1,6 @@
 const app = getApp()
 // basePath api请求路径
-const basePath = 'https://test.mdguanjia.com/myhome/api' 
+const basePath = 'https://test.mdguanjia.com/myhome/api'
 let version='1.0'
 const fetch = (config) => {
   let defaultConfig = {
@@ -13,14 +13,14 @@ const fetch = (config) => {
     devId: 'h5',
     reqId: 'h5'
   }
-  
+
   // wx.getSystemInfo({
   //   success: function (res) {
   //     defaultConfig.devId = res.model;
   //   },
   // })
   return  new Promise((resolve, reject) => {
-  
+
     let that = this  //后面需要更改整合
     config.params= Object.assign(config.params, defaultConfig)
     let postData = {
@@ -28,7 +28,7 @@ const fetch = (config) => {
       params: config.params,
       v: config.v||version
     }
-    
+
     if (config.url != '/customer' || config.method == 'createLoginPassword') {
      if(!wx.getStorageSync('sessionId')){
        wx.reLaunch({
@@ -60,11 +60,20 @@ const fetch = (config) => {
           })
         } else {
           console.log(res)
-          wx.showToast({
-            title: res.data.message || '网络异常',
-            icon: 'none',
-            duration: 2000
-          })
+          if (config.method == 'forgetPassword'){
+            if (res.data.code == 1001){
+                wx.showToast({
+                  title: '验证码错误',
+                  icon: 'none',
+                  duration: 2000
+                })
+              }
+          }else{
+            wx.showToast({
+              title: res.data.message || '网络异常',
+              icon: 'none',
+              duration: 2000
+            })
           reject(res.data.message)
         }
       },
