@@ -22,7 +22,7 @@
        <navigator class="agreement" url="/pages/order/Order">
          <text class="prompt">{{orderCount}}</text>
          <image class="goIcon" src="../../images/qyrz.svg"></image>
-         <text class="goText">签约入驻</text>
+         <text class="goText">签约入住</text>
         </navigator>
       </view>
       <view class="goItem">

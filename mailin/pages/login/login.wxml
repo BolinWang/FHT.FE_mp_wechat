@@ -16,7 +16,7 @@
               <input type='password' placeholder-class="phcolor" class="inp" placeholder='请输入密码' maxlength='12' bindinput='getPassword'></input>
             </view>
             <view class="btn">
-              <button class="btn-tex" bindtap='goLogin'>登陆</button>
+              <button class="btn-tex" bindtap='goLogin'>登录</button>
             </view>
             <view class="text">
               <navigator class="forget" url="/pages/forgetPassword/forgetPassword">忘记密码</navigator>
@@ -32,11 +32,11 @@
               <button class='btn-v' hover-class="none" disabled="{{codeDis}}" bindtap='sendCode'>{{textTime}}</button>
             </view>
             <view class="btn">
-              <button class="btn-tex" form-type='submit'>登陆</button>
+              <button class="btn-tex" form-type='submit'>登录</button>
             </view>
           </form>
             <view class='text'>
-              <view class="des">登陆注册表示
+              <view class="des">登录注册表示同意
                 <navigator class="agreement" url="/pages/agreeMent/agreeMent">《麦邻租房用户协议》</navigator> 
               </view>
             </view>
