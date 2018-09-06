@@ -74,6 +74,7 @@ const fetch = (config) => {
               icon: 'none',
               duration: 2000
             })
+          }
           reject(res.data.message)
         }
       },
