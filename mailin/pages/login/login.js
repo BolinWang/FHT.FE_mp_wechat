@@ -95,6 +95,13 @@ Page({
   //发送手机验证码
   sendCode(){
     let that = this
+    if (!that.data.mobile){
+      wx.showToast({
+        title: '手机号不能为空',
+        icon: 'none'
+      })
+      return false;
+    }
     Ajax({
       url: '/customer',
       method: 'sendCheckcode',
@@ -133,7 +140,6 @@ Page({
           icon: 'none'
         })
       }
-
     }).catch(res => {
       console.log(res)
     })
