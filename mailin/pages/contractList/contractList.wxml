@@ -7,7 +7,7 @@
      <text class="tab-text {{itemName.value==activeTab?'tab-active':''}}" data-current="{{itemName.value}}" bindtap='tabChoose'>{{itemName.label}}</text>
    </view>
   </view>
-   
+
   <swiper current="{{activeTab}}"  style="height:{{winHeight}}rpx" class="scroll-box" duration="300"  bindchange="swiperTab">
     <swiper-item class="pending">
        <view class="header" hidden='{{showPullDown}}'>
@@ -36,8 +36,8 @@
            </view>
             <view class="inf-item">
             <text class="inf-name">生成时间</text>
-            <text class="inf-text" hidden="item.status!=4">{{validate.validaTime(item.startDate)}}</text>  
-               <text class="inf-text-s" hidden="item.status==4">生成中</text>
+            <text class="inf-text" wx:if="{{item.status!=4}}">{{validate.validaTime(item.startDate)}}</text>
+            <text class="inf-text-s" wx:if="{{item.status==4}}">生成中</text>
            </view>
          </view>
       </view>
@@ -108,7 +108,7 @@
         <!-- </navigator> -->
       </view>
     </swiper-item>
-</swiper> 
+</swiper>
 <view class="swiper-box" hidden='{{swiperbox}}'>
    <swiper class="swiper-b" catchtap="onItemClick" indicator-dots >
     <swiper-item wx:for="{{urlList}}" wx:key="*this">
