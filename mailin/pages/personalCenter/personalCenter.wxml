@@ -20,14 +20,14 @@
    <view class="tab-go">
       <view class="goItem">
        <navigator class="agreement" url="/pages/order/Order">
-         <text class="prompt">{{orderCount}}</text>
+         <text class="prompt" wx:if="{{orderCount!=0}}">{{orderCount}}</text>
          <image class="goIcon" src="../../images/qyrz.svg"></image>
          <text class="goText">签约入住</text>
         </navigator>
       </view>
       <view class="goItem">
        <navigator class="agreement" url="/pages/bill/bill">
-         <text class="prompt">{{billCount}}</text>
+         <text class="prompt"  wx:if="{{billCount!=0}}">{{billCount}}</text>
          <image class="goIcon" src="../../images/zfjf.svg"></image>
          <text class="goText">房租缴费</text>
         </navigator>
