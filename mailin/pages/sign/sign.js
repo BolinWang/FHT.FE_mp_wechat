@@ -106,6 +106,7 @@ wx.getSystemInfo({
       //清除画布
       content.clearRect(0, 0, canvasw, canvash)
       content.draw(true)
+      console.log('2345')
     },
     signContract(){
       Ajax({

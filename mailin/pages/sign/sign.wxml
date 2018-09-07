@@ -18,13 +18,12 @@
          <cover-view class="clearBtn" bindtap='clearClick'>
             <cover-view class="cleartext">清除</cover-view>
             <cover-view class="btn-border">
-                <!-- <cover-view  bindtap='clearClick' class='clear iconfont icon-xiangpica pad-h'></cover-view> -->
                 <cover-image  class="pad-h" src="../../images/xpc.svg" />
             </cover-view>
         </cover-view>
       </cover-view>
     </canvas>
-     <view bindtap='saveClick' class="saveBtn" >保存图片</view>
+     <view bindtap='saveClick' class="saveBtn" >提交</view>
 <!-- <image id='signatureImg' src='{{signImage}}'></image> -->
 </view>
 

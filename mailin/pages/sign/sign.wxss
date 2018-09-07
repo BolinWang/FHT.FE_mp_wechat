@@ -14,11 +14,11 @@ image{
   position: relative;
 }
 .clearBtn{
-  position: absolute;
+  position:relative;
   left:0;
   width:100rpx;
-  z-index: 100;
-  bottom: 150rpx;
+  z-index:100;
+  bottom:0rpx;
   padding:0 40rpx 80rpx 40rpx;
 }
 .clear{
@@ -29,14 +29,20 @@ image{
   height:100rpx;
   line-height: 100rpx;
   text-align: center;
-  background: #fff;
   width:100rpx;
+  position: relative;
   box-sizing: border-box;
   border-radius: 8rpx;
-  border: 1px dashed #b0b2b7;
+  border: 2rpx dashed #b0b2b7;
 }
 .pad-h{
-  padding-top:10rpx;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    box-sizing: border-box;
+    padding:20rpx;
 }
 .cleartext{
   color:  #b0b2b7;
