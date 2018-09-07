@@ -5,7 +5,7 @@
   </view>
   <view class="text">支付成功</view>
   <view class="money">
-    ¥2344
+    {{money}}
   </view>
   <view class="goDetail">
    <text>备注说明</text>
