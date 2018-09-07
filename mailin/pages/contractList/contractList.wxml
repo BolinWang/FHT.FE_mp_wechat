@@ -19,7 +19,7 @@
        </view>
       <view class="box-card box-two {{showPullDown==true&&index==0?'mar-top':''}}"  wx:for="{{contractList}}" wx:for-item="item" wx:key="contractId" data-item="{{item}}" bindtap='getfile'>
         <view class="title" >
-           {{item.contractName}}{{index}}
+           {{item.contractName}}
          </view>
          <view class="room-inf">
            <view class="inf-item">
@@ -52,7 +52,7 @@
        </view>
       <view class="box-card box-two {{showPullDown==true&&index==0?'mar-top':''}}"  wx:for="{{contractList}}" wx:for-item="item" wx:key="contractId" data-item="{{item}}" bindtap='getfile'>
         <view class="title" >
-           {{item.contractName}}{{index}}
+           {{item.contractName}}
          </view>
          <view class="room-inf">
            <view class="inf-item">
@@ -85,7 +85,7 @@
       <view class="box-card {{showPullDown==true&&index==0?'mar-top':''}}"  wx:for="{{contractList}}" wx:for-item="item" data-item="{{item}}" wx:key="contractId" bindtap='getfile'>
         <!-- <navigator class="forget" url='/pages/lookPdf/lookPdf?contractNo={{item.contractNo}}'> -->
          <view class="title" >
-           {{item.contractName}}{{index}}
+           {{item.contractName}}
          </view>
          <view class="room-inf">
            <view class="inf-item">
