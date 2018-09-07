@@ -15,7 +15,7 @@ Page({
     }, {
         id: '1',
         title: '验证码登录'
-      }],
+      }],   
     tabActive:'0',
     mobile:null,
     textTime:'获取验证码',
