@@ -94,7 +94,7 @@
 }
 .inf-text-s{
   flex:1;
-  color: #FFFF8C07;
+  color: #FF8C07;
 }
 
 .box-two .title{
