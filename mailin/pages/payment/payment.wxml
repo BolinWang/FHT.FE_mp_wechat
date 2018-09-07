@@ -5,7 +5,7 @@
     <view class="free">{{money}}</view>
   </view>
   <zan-cell-group title-width="90">
-     <zan-cell is-link title="优惠卷" value="{{coupon}}"  border="{{ false }}" url='/pages/couponChoose/couponChoose?billNo={{billNo}}&source={{source}}'/>
+     <zan-cell is-link title="优惠券" value="{{coupon}}"  border="{{ false }}" url='/pages/couponChoose/couponChoose?billNo={{billNo}}&source={{source}}'/>
   </zan-cell-group>
   <view class="btoom">
     <view class="btn" bindtap='goPay'>
