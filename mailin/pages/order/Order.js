@@ -323,11 +323,15 @@ Page({
         openId: null
       }
     }).then(res => {
-       console.log(res)
-       this.setData({
-         orderList: res.data.orderList || [],
-         showPullDown: true
-       })
+      console.log(res)
+      this.setData({
+        orderList: res.data.orderList || [],
+      })
+      setTimeout(() => {
+        this.setData({
+          showPullDown: true
+        })
+      }, 500)
     })
   },
 
