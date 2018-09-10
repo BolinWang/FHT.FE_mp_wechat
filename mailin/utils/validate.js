@@ -37,6 +37,18 @@ const validaTime = str =>{
   let str2 = `${str.substr(0, 3)}-${str.substr(4, 2)}-${str.substr(6, 2)}`
   return str2
 }
+
+const buttonClicked=(self)=> {
+  self.setData({
+    buttonClicked: true
+  })
+  setTimeout(function () {
+    self.setData({
+      buttonClicked: false
+    })
+  }, 500)
+}
+
 module.exports = {
   validateMobile,
   validateURL,
@@ -44,5 +56,6 @@ module.exports = {
   validateUpperCase,
   validatAlphabets,
   passwordHidden,
-  validaTime
+  validaTime,
+  buttonClicked
 }

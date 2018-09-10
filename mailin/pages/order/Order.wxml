@@ -63,7 +63,7 @@
           </view>
           <view class='btn-bottom'>
             <view class='btn-item' data-ordertype='{{item.orderType}}' data-order='{{item.orderNo}}' bindtap='cancelOrder'>取消订单</view>
-            <view class='btn-item' data-item='{{item}}' bindtap='goNext'>{{validate.validaBtn(item.showButton)}}</view>
+            <view class='btn-item' data-item='{{item}}' bindtap="{{!buttonClicked?'goNext':''}}">{{validate.validaBtn(item.showButton)}}</view>
             <view class='btn-item' data-item='{{item}}' wx:if="{{item.showButton == 1}}"  bindtap='goLookPdf'>查看合同</view>
           </view>
         </view>
