@@ -147,6 +147,7 @@ letter-spacing: -0.29px;
   display: flex;
   flex-flow: wrap;
   justify-content:flex-end;
+  margin-top: 14rpx;
 }
 .box-bottom{
   border-top: 2rpx solid #E5E5E5;
