@@ -47,7 +47,7 @@ Page({
         })
       }
       this.setData({
-        nickName: res.data.nickName,
+        nickName: res.data.nickName ||'',
         mobile: passwordHidden(res.data.mobile),
       })
     })   

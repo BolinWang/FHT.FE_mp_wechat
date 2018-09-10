@@ -34,6 +34,7 @@ Page({
     this.getbillList()
   },
   getbillList(){
+
     Ajax({
       url: '/bill',
       method:'bills',
@@ -42,9 +43,10 @@ Page({
         status: this.data.activeTab+1
       }
     }).then(res => {
+
        this.setData({
          billList:res.data.bills,
-         showPullDown:true
+         showPullDown: true
        })
     })
   },
@@ -103,6 +105,7 @@ Page({
     this.setData({
       showPullDown: false
     })
+    this.getbillList()
   },
 
   /**

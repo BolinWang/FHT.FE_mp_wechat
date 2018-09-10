@@ -11,7 +11,8 @@ Page({
    source:null,
    billNo:null,
    couponReceiveId:null,
-   money:null
+   money:null,
+   gopay:true
   },
 
   /**
@@ -56,6 +57,12 @@ Page({
   },
   goPay(){   // 去支付 
     let that =this
+    if (!this.data.gopay){
+      return
+    }
+    this.setData({
+      gopay: false
+    })
     Ajax({
       url: '/payment',
       method: 'wechatSign',
@@ -75,7 +82,7 @@ Page({
         'signType': 'MD5',           // 签名算法，暂支持 MD5
         'paySign': res.data.sign,
         'success': function (response) {
-          wx.navigateTo({
+          wx.redirectTo({
              url: `/pages/paymentSucces/paymentSucces?money=${that.data.money}`,
           })
         },
@@ -83,6 +90,7 @@ Page({
         }
       })
     })
+
   },
   /**
    * 生命周期函数--监听页面显示

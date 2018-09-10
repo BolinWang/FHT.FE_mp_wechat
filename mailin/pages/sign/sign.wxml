@@ -18,7 +18,7 @@
          <cover-view class="clearBtn" bindtap='clearClick'>
             <cover-view class="cleartext">清除</cover-view>
             <cover-view class="btn-border">
-                <cover-image  class="pad-h" src="../../images/xpc.svg" />
+                <cover-image  class="pad-h" src="../../images/xpc.png" />
             </cover-view>
         </cover-view>
       </cover-view>

@@ -20,7 +20,9 @@
 <view class="mypopup" hidden="{{showModalStatus}}">
   <view class="commodity_screen" bindtap="hideModal" ></view>  
   <view  class="commodity_attr_box" >
-    <view  class="view-title">详细信息</view>
+    <view  class="view-title">详细信息
+     <view bindtap="hideModal" class="close">X</view>
+    </view>
     <view class="popbox">
        <view class="item" wx:for="{{poplist}}" wx:key='index'>
         <text class='name'>{{item.name}}</text>

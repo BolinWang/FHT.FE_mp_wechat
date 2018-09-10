@@ -11,7 +11,7 @@ Page({
   },
   getPsd(e){
     this.setData({
-      password: e.detail.value
+      password: e.detail.value.replace(/\s+/g, '')
     })
   },
    submit(){

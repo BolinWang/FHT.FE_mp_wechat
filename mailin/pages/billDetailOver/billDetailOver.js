@@ -48,6 +48,7 @@ Page({
     Ajax({
       url: '/bill',
       method: 'billDetail',
+      v: '3.0.6',
       params: {
         billNo: this.data.billNo
       }

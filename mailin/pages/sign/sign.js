@@ -109,6 +109,7 @@ wx.getSystemInfo({
       console.log('2345')
     },
     signContract(){
+      let that = this
       Ajax({
         url: '/contract',
         method: 'signContract',
@@ -117,9 +118,20 @@ wx.getSystemInfo({
           sealData: this.data.signImage
         }
       }).then(res => {
-        wx.navigateTo({
-          url: `/pages/order/Order?activeTab=${this.data.activeTab}`
+        wx.showModal({
+          title: '提示',
+          content: '您已签约成功，请前去支付',
+          success: function (res) {
+            if (res.confirm) {
+              wx.navigateTo({
+                url: `/pages/order/Order?activeTab=${that.data.activeTab}`
+              })
+            } else if (res.cancel) {
+              console.log('用户点击取消')
+            }
+          }
         })
+       
       })
     },
     //保存图片

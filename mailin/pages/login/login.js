@@ -77,19 +77,19 @@ Page({
   // 获取手机号码
   getMobile(e){
     this.setData({
-      mobile: e.detail.value
+      mobile: e.detail.value.replace(/\s+/g, '')
     })
   
   },
   getUsername(e){
     this.setData({
-      username: e.detail.value
+      username: e.detail.value.replace(/\s+/g, '')
     })
   },
   //获取密码
   getPassword(e){
     this.setData({
-      password: e.detail.value
+      password: e.detail.value.replace(/\s+/g, '')
     })
   },
   //发送手机验证码
@@ -148,8 +148,8 @@ Page({
   formSubmitcode(e){
     let that = this
     this.setData({
-      mobile: e.detail.value.mobile,
-      vcode: e.detail.value.vcode
+      mobile: e.detail.value.mobile.replace(/\s+/g, ''),
+      vcode: e.detail.value.vcode.replace(/\s+/g, '')
     })
     Ajax({
       url: '/customer',

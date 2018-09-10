@@ -22,19 +22,19 @@ Page({
   },
   getMobile(e){
     this.setData({
-      mobile: e.detail.value
+      mobile: e.detail.value.replace(/\s+/g, '')
     })
   },
   //获取验证码
   getVcode(e){
     this.setData({
-      vcode: e.detail.value
+      vcode: e.detail.value.replace(/\s+/g, '')
     })
   },
   //获取密码
   getPassword(e){
     this.setData({
-      password: e.detail.value
+      password: e.detail.value.replace(/\s+/g, '')
     })
   },
   //重置密码
