@@ -11,7 +11,7 @@
      </view>
   </view>
   <view class="bottom" hidden='{{!payStype.desc[0].value}}'>
-     <view class="bot-free">应付总额:  <text class='name-text-yel'>{{billmoney}}</text></view>
+     <view class="bot-free">应付总额:  <text class='name-text-yel'>¥ {{billmoney}}</text></view>
      <view class='btn-go'>
        <navigator url="/pages/payment/payment?billNo={{billNo}}&source=2&money={{billmoney}}">立即支付</navigator>
      </view>
