@@ -4,10 +4,10 @@
   <view class='view-box'>
     <view class="k-box" hidden='{{couponList.length!=0}}'>
          <image class="k-img" src="../../images/k-box.png"></image>
-         <view class="k-text">暂无可用优惠卷～</view>
+         <view class="k-text">暂无可用优惠券～</view>
     </view>
     <view bindtap='chooseActive'   data-inf='{{itemName}}'   class="item {{canuse==itemName.couponId?'item-active':''}} {{itemName.status!=1?'item-hui':''}}" wx:for="{{couponList}}" wx:key="{{index}}" wx:for-item="itemName" >
-      <view class="icon-t">抵用卷</view>
+      <view class="icon-t">抵用券</view>
       <view class="box-left">
         <view class="money">{{itemName.discountAmount}}</view>
         <view class='explain'>{{itemName.ruleDesc}}</view>
@@ -15,7 +15,7 @@
       <view class='box-right'>
         <view class="name">{{itemName.couponName}}</view>
         <view class='name-des'>{{itemName.useRange}}</view>
-        <view class='time'>{{itemName.startDate}}-{{itemName.endDate}}</view>
+        <view class='time'>{{itemName.startTime}}-{{itemName.endTime}}</view>
       </view>
       <view class="check" hidden='{{canuse != itemName.couponId}}'>
          <image src="../../images/selected.svg"></image>
