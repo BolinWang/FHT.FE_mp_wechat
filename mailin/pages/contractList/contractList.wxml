@@ -36,7 +36,7 @@
            </view>
             <view class="inf-item">
             <text class="inf-name">生成时间</text>
-            <text class="inf-text" wx:if="{{item.status!=4}}">{{validate.validaTime(item.startDate)}}</text>
+            <text class="inf-text" wx:if="{{item.status!=4}}">{{validate.validaTime(item.createDate)}}</text>
             <text class="inf-text-s" wx:if="{{item.status==4}}">生成中</text>
            </view>
          </view>
@@ -69,7 +69,7 @@
            </view>
             <view class="inf-item">
             <text class="inf-name">生成时间</text>
-            <text class="inf-text">{{validate.validaTime(item.startDate)}}</text>
+            <text class="inf-text">{{validate.validaTime(item.createDate)}}</text>
            </view>
          </view>
       </view>
@@ -102,7 +102,7 @@
            </view>
             <view class="inf-item">
             <text class="inf-name">生成时间</text>
-            <text class="inf-text">{{validate.validaTime(item.startDate)}}</text>
+            <text class="inf-text">{{validate.validaTime(item.createDate)}}</text>
            </view>
          </view>
         <!-- </navigator> -->

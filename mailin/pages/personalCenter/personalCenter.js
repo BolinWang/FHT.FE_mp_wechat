@@ -10,10 +10,10 @@ Page({
   data: {
     avatarUrl: '../../images/Group.svg',
     sessionId: null,
-    nickName: null,
-    mobile: null,
-    billCount: null, // 未处理账单数 
-    orderCount: null  //未处理订单数 
+    nickName: '',
+    mobile: '',
+    billCount: '', // 未处理账单数 
+    orderCount: ''  //未处理订单数 
   },
 
   /**

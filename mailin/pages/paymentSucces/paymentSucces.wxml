@@ -11,7 +11,7 @@
    <text>备注说明</text>
    <text class="text-r">微信支付</text>
   </view>
-  <view class="btn">
-    <navigator url="/pages/personalCenter/personalCenter" >完成</navigator>
+  <view class="btn-go">
+    <navigator hover-class="none" url="/pages/personalCenter/personalCenter" >完成</navigator>
   </view>
 </view>

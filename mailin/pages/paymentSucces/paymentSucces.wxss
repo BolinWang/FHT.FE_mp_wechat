@@ -41,8 +41,9 @@
 }
 .text-r{
   text-align: right;
+  flex:1;
 }
-.btn{
+.btn-go{
   margin:0 auto;
   border: 1px solid #1AAD19;
   border-radius: 23.5px;

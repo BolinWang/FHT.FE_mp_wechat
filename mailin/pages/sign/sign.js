@@ -118,9 +118,11 @@ wx.getSystemInfo({
           sealData: this.data.signImage
         }
       }).then(res => {
+        wx.hideLoading()
         wx.showModal({
           title: '提示',
           content: '您已签约成功，请前去支付',
+          showCancel:false,
           success: function (res) {
             if (res.confirm) {
               wx.navigateTo({
@@ -137,6 +139,7 @@ wx.getSystemInfo({
     //保存图片
     saveClick: function () {
       var that = this
+      wx.showLoading()
       wx.canvasGetImageData({
         canvasId: 'myCanvas',
         x: 0,

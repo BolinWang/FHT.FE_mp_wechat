@@ -107,6 +107,7 @@ Page({
     })
   },
   signContract(item){  //签约
+ 
     this.testContract(item).then(res => {
  
           //当订单状态为未付款，且 合同签约状态为未签约或者生成中时
@@ -123,7 +124,7 @@ Page({
               })
             } else {
               //改价用户是否存在
-              while(res.operator != null) {
+              if(res.operator != null) {
                 this.getOrderList();
                 wx.showToast({
                   title: '房东正在修改价格，请稍后重试',
@@ -237,6 +238,7 @@ Page({
     });
   },
   payTest(item) {  //支付按钮 source ==1订单类型
+    if (item.orderType==1){
     this.testContract(item).then(res => {
      //当前状态为预留或者定金直接前去支付
       if (item.orderType==4){
@@ -255,7 +257,7 @@ Page({
                   wx.showToast({
                     title: '房东正在修改价格，请稍后重试',
                     icon: 'none',
-                    duration: 2000
+                    duration: 1000
                   })
                 }
               }
@@ -264,7 +266,7 @@ Page({
               wx.showToast({
                 title: '订单价格已变更，正在为您刷新',
                 icon: 'none',
-                duration: 2000
+                duration: 1000
               })
             }
          } else{
@@ -273,19 +275,21 @@ Page({
               wx.showToast({
                 title: '房东已取消订单，该订单已失效',
                 icon: 'none',
-                duration: 2000
+                duration: 1000
               })
             }else{
               wx.showToast({
                 title: '订单状态已变更，正在为您刷新',
                 icon: 'none',
-                duration: 2000
+                duration: 1000
               })
            }
             this.getOrderList()
           }
         }
-    })
+    })}else{
+      this.goPay(item)
+    }
   },
   goPay(item){  //去支付页面
     wx.navigateTo({
@@ -313,8 +317,9 @@ Page({
         openId: null
       }
     }).then(res => {
+       console.log(res)
        this.setData({
-         orderList: res.data.orderList,
+         orderList: res.data.orderList || [],
          showPullDown: true
        })
     })
@@ -355,6 +360,11 @@ Page({
     this.setData({
       showPullDown: false
     })
+    wx.showNavigationBarLoading()
+    setTimeout(() => {
+      wx.hideNavigationBarLoading() //完成停止加载
+      wx.stopPullDownRefresh() //停止下拉刷新
+    }, 1500);
     this.getOrderList()
 
   },

@@ -59,10 +59,21 @@ function overBtn(item) {  //查看合同 2 ordertype=3   orderStatu=3&&ordertype
   var btntext = (item.orderStatus == 4 && '已取消') ||(item.orderStatus == 3 && item.orderType == 4)&&'办理入住' ||null
   return btntext
 }
+// function timeParse(item){
+//   var time = new Date(item);
+//   var year = time.getFullYear();
+//   var month = time.getMonth() + 1;
+//   var date = time.getDate();
+//   var hours = time.getHours();
+//   var minutes = time.getMinutes();
+//   var seconds = time.getSeconds();
+//   return year + '.' + add0(month) + '.' + add0(date);
+// }
 module.exports = {
   validaTime: validaTime,
   validaBtn: validaBtn,
   orderType: orderType,
   showTime: showTime,
   overBtn: overBtn
+  // timeParse:timeParse
 }
