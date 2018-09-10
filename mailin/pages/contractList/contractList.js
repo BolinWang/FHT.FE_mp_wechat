@@ -102,7 +102,7 @@ Page({
       }).then(res => {
         console.log(res)
         this.setData({
-          contractList: res.data.contractList,
+          contractList: res.data.contractList.slice(0, 20),
           showPullDown:true
         })
       })
