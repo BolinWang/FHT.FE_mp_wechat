@@ -47,8 +47,8 @@
   height:100%;
   width:100%;
   overflow: auto;
- padding: 0 40rpx;
-
+  padding: 0 40rpx;
+  -webkit-overflow-scrolling: touch;
 }
 .header{
   text-align: center;
