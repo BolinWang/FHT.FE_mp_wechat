@@ -6,12 +6,12 @@
        <view class="item" wx:for-item="billDesc" wx:for = '{{billItem.desc}}' wx:key="index">
          <text class="name">{{billDesc.name}}</text>
          <text class="name-text-inf" data-item='{{billDesc.content}}' bindtap='getDesc' wx:if="{{billDesc.content.length>0}}">详细信息</text>
-         <text class="name-tex {{billDesc.name=='优惠金额'?'name-text-red':''}}{{billDesc.value=='未支付'?'name-text-yel':''}}">{{billDesc.value}}</text>
+         <text class="name-tex {{billDesc.name=='优惠金额'?'name-text-red':''}} {{billDesc.value=='待支付'?'name-text-yel':''}}">{{billDesc.value}}</text>
        </view>
      </view>
   </view>
   <view class="bottom" hidden='{{!payStype.desc[0].value}}'>
-     <view class="bot-free">应付总额:  <text class='name-text-yel'>{{billmoney}}</text></view>
+     <view class="bot-free">应付总额:  <text class='name-text-yel'>¥ {{billmoney}}</text></view>
      <view class='btn-go'>
        <navigator url="/pages/payment/payment?billNo={{billNo}}&source=2&money={{billmoney}}">立即支付</navigator>
      </view>

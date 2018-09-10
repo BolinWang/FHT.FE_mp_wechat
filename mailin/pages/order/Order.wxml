@@ -139,23 +139,23 @@
           </view> 
           <view class="item-boxs">
             <view class="item">
-            <view class='item-name'>房间</view>
-            <view class="item-text">{{item.roomName}}</view>
+              <view class='item-name'>房间</view>
+              <view class="item-text">{{item.roomName}}</view>
             </view>
             <view class="item" hidden='{{item.orderType===4}}'>
-            <view class='item-name'>租赁方式</view>
-            <view class="item-text">{{item.rentTypeName}}</view>
+              <view class='item-name'>租赁方式</view>
+              <view class="item-text">{{item.rentTypeName}}</view>
             </view>
             <view class="item" hidden='{{item.orderType===4}}'>
-            <view class='item-name'>租金</view>
-            <view class="item-text">{{item.rentFee}}</view>
+              <view class='item-name'>租金</view>
+              <view class="item-text">{{item.rentFee}}</view>
             </view>
             <view class="item" hidden='{{item.orderType===4}}'>
-            <view class='item-name' >押金</view>
-            <view class="item-text">{{item.depositFee}}</view>
+              <view class='item-name' >押金</view>
+              <view class="item-text">{{item.depositFee}}</view>
             </view>
-            <view class="item">
-              <view class='item-name' hidden='{{item.orderType!==4}}'>服务费</view>
+            <view class="item" hidden='{{item.orderType!==4}}'>
+              <view class='item-name'>服务费</view>
               <view class="item-text">{{item.serviceCharge}}</view>
             </view>
             <view class="item" hidden='{{item.orderType!==4}}'>
