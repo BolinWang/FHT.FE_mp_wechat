@@ -22,7 +22,8 @@ Page({
     codeDis: false,
     vcode:null,  //验证码
     password:null,
-    username:null
+    username:null,
+    activeInput: null
   },
   goLogin(){   //账号密码登陆
     if(!this.data.username){
@@ -172,6 +173,38 @@ Page({
          })
        }
     }).catch(res => {
+    })
+  },
+  clearInput(e) {
+    let inputType = e.currentTarget.dataset.inputType // 1.username 2.password 3.mobile
+    let tempData = {}
+    switch (e.currentTarget.dataset.inputType) {
+      case '1':
+        tempData = {
+          username: ''
+        }
+        break;
+      case '2':
+        tempData = {
+          password: ''
+        }
+        break;
+      case '3':
+        tempData = {
+          mobile: ''
+        }
+        break;
+    }
+    this.setData(tempData)
+  },
+  showClearIcon(e) {
+    this.setData({
+      activeInput: e.currentTarget.dataset.inputType
+    })
+  },
+  hideClearIcon(e) {
+    this.setData({
+      activeInput: '0'
     })
   },
   /**
