@@ -40,6 +40,7 @@ Page({
         status: this.data.activeTab+1
       }
     }).then(res => {
+      console.log(res.data.bills)
        this.setData({
          billList:res.data.bills,
          showPullDown: true

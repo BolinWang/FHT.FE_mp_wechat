@@ -111,7 +111,6 @@ Page({
     })
   },
   signContract(item){  //签约
-    console.log(item)
     // if (item.orderType === 4) {
   
     // }
@@ -198,7 +197,6 @@ Page({
         orderVersion: item.orderVersion
       }
     }).then(res =>{
-      console.log(res)
        resolve(res.data)
     }))
   },
@@ -351,7 +349,7 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-  
+    this.getOrderList()
   },
 
   /**

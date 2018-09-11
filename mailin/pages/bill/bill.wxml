@@ -18,18 +18,18 @@
          <view class="k-text">暂无数据</view>
        </view>
        <view class="view-box {{showPullDown?'pad-to':''}}">
-         <view class="box-item" wx:for='{{billList}}'  wx:key="billNo">
-           <navigator class="box" url='/pages/billDetail/billDetail?billNo={{item.billNo}}&billmoney={{item.billFee}}'>
+         <view class="box-item" wx:for='{{billList}}' wx:for-item="itemBill"  wx:key="billNo">
+           <navigator class="box" url='/pages/billDetail/billDetail?billNo={{itemBill.billNo}}&billmoney={{itemBill.billFee}}'>
              <view class="item-icon">
                <image class="icon-bill" src="../../images/bill.svg"></image>
              </view>
              <view class="item-center">
                <view class="item-center-big">
-                 <text class="item-name">{{item.billName}}</text>
-                 <text class="money">{{item.billFee}}</text>
+                 <text class="item-name">{{itemBill.billName}}</text>
+                 <text  class="money  {{itemBill.status == 2?'tabActive':''}}">{{itemBill.billFee}}</text>
                </view>
                <view class="item-little">
-                 <text class="item-time">{{item.createDate}}</text>
+                 <text class="item-time">{{itemBill.createDate}}</text>
                  <text class="item-go">立即支付</text>
                </view>
              </view>
@@ -54,7 +54,7 @@
              <view class="item-center">
                <view class="item-center-big">
                  <text class="item-name">{{item.billName}}</text>
-                 <text class="money">{{item.billFee}}</text>
+                 <text class="money  {{item.status == 2?'tabActive':''}}">{{item.billFee}}</text>
                </view>
                <view class="item-little">
                  <text class="item-time">{{item.createDate}}</text>

@@ -46,7 +46,7 @@
   box-sizing: border-box;
   height:100%;
   width:100%;
-  overflow: auto;
+  overflow:auto;
   padding:20rpx 40rpx;
   -webkit-overflow-scrolling: touch;
 }
