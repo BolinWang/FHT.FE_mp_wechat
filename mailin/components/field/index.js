@@ -24,6 +24,7 @@ Component({
       value: 'text'
     },
     placeholder: String,
+    placeholderClass: String,
     mode: {
       type: String,
       value: 'normal'
