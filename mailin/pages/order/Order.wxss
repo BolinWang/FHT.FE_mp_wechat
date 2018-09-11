@@ -47,12 +47,13 @@
   height:100%;
   width:100%;
   overflow: auto;
-  padding: 0 40rpx;
+  padding:20rpx 40rpx;
   -webkit-overflow-scrolling: touch;
 }
 .header{
   text-align: center;
   font-size:26rpx;
+  padding-bottom: 20rpx;
   color:#999999;
   line-height:81rpx;
 }

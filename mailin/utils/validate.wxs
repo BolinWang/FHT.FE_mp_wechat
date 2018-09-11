@@ -20,6 +20,8 @@ function validaBtn(str) {  //1-立即签约，2-立即申请，3-查看申请进
   for(var i=0;i<str2.length;i++){
     if (str2[i].value == str){
       return str2[i].key
+    }else{
+      return ''
     }
   }
 }
