@@ -27,10 +27,11 @@ Page({
     let canIf = e.currentTarget.dataset.inf.status
     if (canIf == 1){
       this.setData({
-        canuse: e.currentTarget.dataset.inf.couponId,
+        canuse: e.currentTarget.dataset.inf.customerId,
         coupon: e.currentTarget.dataset.inf.id,
         couponName: e.currentTarget.dataset.inf.couponName
       })
+      console.log(this.data.canuse)
     }
     
   },
@@ -45,8 +46,9 @@ Page({
 
       }
     }).then(res => {
+      console.log(res)
       wx.navigateTo({
-        url: `/pages/payment/payment?billNo=${that.data.orderBillNo}&source=${that.data.source}money=${res.data.billActualFee}&couponReceiveId=${this.data.coupon}&couponName=${this.data.couponName}`,
+        url: `/pages/payment/payment?billNo=${that.data.orderBillNo}&source=${that.data.source}&money=${res.data.billActualFee}&couponReceiveId=${that.data.coupon}&couponName=${that.data.couponName}`,
       })
 
     })
@@ -65,13 +67,15 @@ Page({
      this.setData({
        couponList: res.data.couponList
      })
-     res.data.couponList.forEach(function (value, key, arr) {
-       if (value.ifPredete==true){
-         that.setData({
-           canuse: value.couponId
-         })
-       }
-     })
+     console.log(res.data.couponList)
+    //  res.data.couponList.forEach(function (value, key, arr) {
+    //    if (value.ifPredete==true){
+    //      that.setData({
+    //        canuse: value.customerId
+    //      })
+    //      console.log(that.data.canuse)
+    //    }
+    //  })
    })
   },
   /**

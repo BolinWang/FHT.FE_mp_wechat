@@ -22,7 +22,8 @@ wx.getSystemInfo({
       signImage: '',
       contractNo: null,
       activeTab: null,
-      canvash: canvash
+      canvash: canvash,
+      hasDraw:null
     },
     // 画布的触摸移动开始手势响应
     start: function (event) {
@@ -31,6 +32,9 @@ wx.getSystemInfo({
       //获取触摸开始的 x,y
       let point = { x: event.changedTouches[0].x, y: event.changedTouches[0].y }
       touchs.push(point)
+      this.setData({
+        hasDraw: event.changedTouches[0].y
+      })
     },
 
     // 画布的触摸移动手势响应
@@ -106,9 +110,22 @@ wx.getSystemInfo({
       //清除画布
       content.clearRect(0, 0, canvasw, canvash)
       content.draw(true)
-      console.log('2345')
+      this.setData({
+        hasDraw: null
+      })
     },
     signContract(){
+      this.data.hasDraw !== null ?this.sign()
+        : wx.showModal({
+          title: '提示',
+          content: '画布为空，请先手绘签名再提交',
+          success: function (res) {
+            wx.hideLoading()
+          }
+          })
+     
+    },
+    sign() {
       let that = this
       Ajax({
         url: '/contract',
@@ -122,7 +139,7 @@ wx.getSystemInfo({
         wx.showModal({
           title: '提示',
           content: '您已签约成功，请前去支付',
-          showCancel:false,
+          showCancel: false,
           success: function (res) {
             if (res.confirm) {
               wx.navigateTo({
@@ -133,7 +150,7 @@ wx.getSystemInfo({
             }
           }
         })
-       
+
       })
     },
     //保存图片

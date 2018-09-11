@@ -7,7 +7,7 @@ Page({
    */
   data: {
    free:'',
-   coupon:'暂无可用',
+   coupon:'选择优惠卷',
    source:null,
    billNo:null,
    couponReceiveId:null,
@@ -18,14 +18,16 @@ Page({
   /**
    * 生命周期函数--监听页面加载
    */
+ 
   onLoad: function (options) {
     this.setData({
       source: options.source,
       billNo: options.billNo,
       money: options.money||null,
       couponReceiveId: options.couponReceiveId||null,
-      coupon: options.couponName || "暂无可用"
+      coupon: options.couponName || "选择优惠卷"
     })
+    console.log(this.data.billNo)
   },
 
   /**

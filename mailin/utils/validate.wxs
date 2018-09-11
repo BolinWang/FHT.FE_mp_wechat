@@ -17,13 +17,13 @@ function validaBtn(str) {  //1-立即签约，2-立即申请，3-查看申请进
       value: 99,
       key: '已完成订单'
   }]
+  
   for(var i=0;i<str2.length;i++){
     if (str2[i].value == str){
       return str2[i].key
-    }else{
-      return ''
-    }
+     }
   }
+  return ''
 }
 function orderType(val){
   //1 - 预定，2 - 续租，3 - 换房, 4 - 预留；
