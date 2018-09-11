@@ -186,5 +186,6 @@ letter-spacing: -0.29px;
 }
 .image-url-box image{
   width:320px;
+  
   min-height: 80%;
 }
