@@ -100,11 +100,14 @@ Page({
         params: {
         }
       }).then(res => {
-        console.log(res)
         this.setData({
-          contractList: res.data.contractList.slice(0, 20),
           showPullDown:true
         })
+        if (res.data.contractList.length>0){
+          this.setData({
+             contractList: res.data.contractList.slice(0, 20),
+          })
+        }
       })
   },
   /**
