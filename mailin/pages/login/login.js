@@ -60,6 +60,10 @@ Page({
           icon: 'none',
           title: '登陆成功',
         })
+        wx.setStorage({
+          key: 'MLZFUSERNAME',
+          data: that.data.username,
+        })
         wx.setStorageSync('sessionId', res.data.sessionId)
         app.globalData.sessionId = res.data.sessionId
         wx.redirectTo({
@@ -79,7 +83,6 @@ Page({
     this.setData({
       mobile: e.detail.value.replace(/\s+/g, '')
     })
-  
   },
   getUsername(e){
     this.setData({
@@ -116,14 +119,14 @@ Page({
           icon: 'none'
         })
         that.setData({
-          phoneCode: "60's"
+          phoneCode: "60's后重新获取"
         })
         //验证倒计时 60s
         let phoneCode = '60'
         let time=setInterval(()=>{
           phoneCode--
           that.setData({
-            textTime:`${phoneCode}'s`,
+            textTime:`${phoneCode}'s后重新获取`,
             codeDis:true
           })
          if (phoneCode==0){
@@ -175,14 +178,22 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-  
+    // 记录上次用户登录的用户名
+    wx.getStorage({
+      key: 'MLZFUSERNAME',
+      success: (res) => {
+        this.setData({
+          username: res.data
+        })
+      }
+    })
   },
 
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function () {
-  
+    
   },
 
   /**

@@ -10,7 +10,7 @@
         </view>
         <view class="inp-box" wx:if='{{tabActive==0}}'>
             <view class="inp-Item">
-              <input type='number' placeholder-class="phcolor" class="inp" placeholder='请输入手机号' bindinput='getUsername'></input>
+              <input type='number' placeholder-class="phcolor" class="inp" placeholder='请输入手机号' bindinput='getUsername' value="{{username}}"></input>
             </view>
             <view class="inp-Item">
               <input type='password' placeholder-class="phcolor" class="inp" placeholder='请输入密码' maxlength='12' bindinput='getPassword'></input>
