@@ -20,11 +20,9 @@ Page({
     billList:null,
   },
   tabChoose(e) {   //点击选择
-
     this.setData({
       activeTab: e.target.dataset.current
     })
-
   },
   swiperTab(e) {  //滑动选择
     this.setData({
@@ -34,7 +32,6 @@ Page({
     this.getbillList()
   },
   getbillList(){
-
     Ajax({
       url: '/bill',
       method:'bills',
@@ -43,7 +40,6 @@ Page({
         status: this.data.activeTab+1
       }
     }).then(res => {
-
        this.setData({
          billList:res.data.bills,
          showPullDown: true
@@ -55,6 +51,11 @@ Page({
    */
   onLoad: function (options) {
     var that = this;
+    if (options.activeTab !== undefined) {
+      that.setData({
+        activeTab: Number(options.activeTab) || 0
+      })
+    }
     //  高度自适应
     wx.getSystemInfo({
       success: function (res) {

@@ -12,6 +12,6 @@
    <text class="text-r">微信支付</text>
   </view>
   <view class="btn-go">
-    <navigator hover-class="none" url="/pages/personalCenter/personalCenter" >完成</navigator>
+    <navigator hover-class="none" url="/pages/bill/bill?activeTab=1" >完成</navigator>
   </view>
 </view>

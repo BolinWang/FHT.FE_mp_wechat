@@ -77,6 +77,9 @@ Page({
       }
     }).then(res => {
       console.log(res)
+      this.setData({
+        gopay: true
+      })
       wx.requestPayment({
         'timeStamp': res.data.timestamp.toString(), //时间戳
         'nonceStr': res.data.nonceStr,  //随机字符串
@@ -98,7 +101,9 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-  
+    // this.setData({
+    //   gopay: true
+    // })
   },
 
   /**

@@ -111,7 +111,10 @@ Page({
     })
   },
   signContract(item){  //签约
- 
+    console.log(item)
+    // if (item.orderType === 4) {
+  
+    // }
     this.testContract(item).then(res => {
  
           //当订单状态为未付款，且 合同签约状态为未签约或者生成中时
@@ -195,6 +198,7 @@ Page({
         orderVersion: item.orderVersion
       }
     }).then(res =>{
+      console.log(res)
        resolve(res.data)
     }))
   },
@@ -322,6 +326,9 @@ Page({
       }
     }).then(res => {
       console.log(res)
+      if (this.data.activeTab === 0 && res.data.orderList) {  // 金融房源在待处理账单不显示
+        res.data.orderList = res.data.orderList.filter(item => item.houseFinanceType === 1)
+      }
       this.setData({
         orderList: res.data.orderList || [],
       })

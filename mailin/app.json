@@ -1,19 +1,17 @@
 {
   "pages": [
+    "pages/lauchPage/lauchPage",
     "pages/login/login",
     "pages/sign/sign",
     "pages/personalCenter/personalCenter",
     "pages/bill/bill",
     "pages/contractList/contractList",
     "pages/order/Order",
-    
     "pages/setPasword/setPasword",
     "pages/forgetPassword/forgetPassword",
     "pages/index/index",
     "pages/webView/webView",
-    
     "pages/agreeMent/agreeMent",
-    
     "pages/lookPdf/lookPdf",
     "pages/billDetail/billDetail",
     "pages/payment/payment",
