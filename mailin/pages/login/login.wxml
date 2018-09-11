@@ -10,10 +10,12 @@
         </view>
         <view class="inp-box" wx:if='{{tabActive==0}}'>
             <view class="inp-Item">
-              <input type='number' placeholder-class="phcolor" class="inp" placeholder='请输入手机号' bindinput='getUsername' value="{{username}}"></input>
+              <input type='number' placeholder-class="phcolor" class="inp" placeholder='请输入手机号' bindinput='getUsername' bindfocus="showClearIcon" bindblur="hideClearIcon" value="{{username}}" data-input-type="1"></input>
+              <icon class="inp-clear-icon" type="clear" size="14" data-input-type="1" bindtap="clearInput" wx:if="{{username.length > 0 && activeInput === '1'}}"/>
             </view>
             <view class="inp-Item">
-              <input type='password' placeholder-class="phcolor" class="inp" placeholder='请输入密码' maxlength='12' bindinput='getPassword'></input>
+              <input type='password' value="{{password}}" placeholder-class="phcolor" class="inp" placeholder='请输入密码' maxlength='12' bindinput='getPassword' bindfocus="showClearIcon" bindblur="hideClearIcon" data-input-type="2"></input>
+              <icon class="inp-clear-icon" type="clear" size="14" data-input-type="2" bindtap="clearInput" wx:if="{{password.length > 0 && activeInput === '2'}}"/>
             </view>
             <view class="btn">
               <button class="btn-tex" bindtap='goLogin'>登录</button>
@@ -25,7 +27,8 @@
          <view class="inp-box" wx:else>
           <form bindsubmit='formSubmitcode'>
             <view class="inp-Item">
-              <input type='number'  placeholder-class="phcolor" class="inp" placeholder='请输入手机号' name="mobile" bindinput='getMobile'></input>
+              <input type='number'  placeholder-class="phcolor" class="inp" placeholder='请输入手机号' name="mobile" bindinput='getMobile' value="{{mobile}}" data-input-type="3" bindfocus="showClearIcon" bindblur="hideClearIcon"></input>
+              <icon class="inp-clear-icon" type="clear" size="14" data-input-type="3" bindtap="clearInput" wx:if="{{mobile.length > 0 && activeInput === '3'}}"/>
             </view>
             <view class="inp-Item">
               <input type='number' placeholder-class="phcolor" class="inp" placeholder='请输入验证码' name='vcode'></input>
