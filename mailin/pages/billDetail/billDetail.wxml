@@ -6,7 +6,7 @@
        <view class="item" wx:for-item="billDesc" wx:for = '{{billItem.desc}}' wx:key="index">
          <text class="name">{{billDesc.name}}</text>
          <text class="name-text-inf" data-item='{{billDesc.content}}' bindtap='getDesc' wx:if="{{billDesc.content.length>0}}">详细信息</text>
-         <text class="name-tex {{billDesc.name=='优惠金额'?'name-text-red':''}} {{billDesc.value=='待支付'?'name-text-yel':''}}">{{billDesc.value}}</text>
+         <text class="name-tex {{billDesc.name=='优惠金额'?'name-text-red':''}} {{billDesc.value=='待付款'?'name-text-yel':''}}">{{billDesc.value}}</text>
        </view>
      </view>
   </view>
