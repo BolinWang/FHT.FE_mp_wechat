@@ -7,7 +7,7 @@ Page({
    */
   data: {
    free:'',
-   coupon:'选择优惠卷',
+   coupon: '',
    source:null,
    billNo:null,
    couponReceiveId:null,
@@ -25,7 +25,7 @@ Page({
       billNo: options.billNo,
       money: options.money||null,
       couponReceiveId: options.couponReceiveId||null,
-      coupon: options.couponName || "选择优惠卷"
+      coupon: options.discountAmount ? `-¥${options.discountAmount}` : ""
     })
     console.log(this.data.billNo)
   },

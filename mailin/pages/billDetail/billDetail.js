@@ -11,7 +11,7 @@ Page({
     payStype:null,
     showModalStatus: true,
     poplist:null,
-    billmoney:null
+    billMoney:null
   },
   hideModal(){
     this.setData({
@@ -20,20 +20,22 @@ Page({
     })
   },
   getDesc(e){
-    
     this.setData({
       showModalStatus: false,
       poplist: e.currentTarget.dataset.item
     })
-    
+  },
+  showPic() {
+    console.log(1111)
   },
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    console.log(options)
      this.setData({
        billNo: options.billNo,
-       billmoney: options.billmoney
+       billMoney: options.billMoney
      })
   },
 

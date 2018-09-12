@@ -11,7 +11,8 @@ Page({
     orderBillNo:'',
     couponList:null,
     coupon:null,
-    couponName:null
+    couponName:null,
+    discountAmount: null
   },
 
   /**
@@ -29,7 +30,7 @@ Page({
       this.setData({
         canuse: e.currentTarget.dataset.inf.customerId,
         coupon: e.currentTarget.dataset.inf.id,
-        couponName: e.currentTarget.dataset.inf.couponName
+        discountAmount: e.currentTarget.dataset.inf.discountAmount
       })
       console.log(this.data.canuse)
     }
@@ -48,11 +49,9 @@ Page({
     }).then(res => {
       console.log(res)
       wx.navigateTo({
-        url: `/pages/payment/payment?billNo=${that.data.orderBillNo}&source=${that.data.source}&money=${res.data.billActualFee}&couponReceiveId=${that.data.coupon}&couponName=${that.data.couponName}`,
+        url: `/pages/payment/payment?billNo=${that.data.orderBillNo}&source=${that.data.source}&money=${res.data.billActualFee}&couponReceiveId=${that.data.coupon}&discountAmount=${that.data.discountAmount}`,
       })
-
     })
-   
   },
   getcouponList(){
     let that =this

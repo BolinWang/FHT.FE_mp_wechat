@@ -6,7 +6,10 @@
        <view class="item" wx:for-item="billDesc" wx:for = '{{billItem.desc}}' wx:key="index">
          <text class="name">{{billDesc.name}}</text>
          <text class="name-text-inf" data-item='{{billDesc.content}}' bindtap='getDesc' wx:if="{{billDesc.content.length>0}}">详细信息</text>
-         <text class="name-tex {{billDesc.name=='优惠金额'?'name-text-red':''}}{{billDesc.value=='退款中'?'name-text-yel':''}}">{{billDesc.value}}</text>
+         <text wx:if="{{billDesc.receipt}}" data-item="{{billDesc}}" bindtap='showPic' class="name-pic">
+          {{billDesc.value}}
+         </text>
+         <text wx:else class="{{billDesc.name=='优惠金额'?'name-text-red':''}}{{billDesc.value=='退款中'?'name-text-yel':''}}">{{billDesc.value}}</text>
        </view>
      </view>
   </view>
@@ -20,7 +23,10 @@
 <view class="mypopup" hidden="{{showModalStatus}}">
   <view class="commodity_screen" bindtap="hideModal" ></view>  
   <view  class="commodity_attr_box" >
-    <view  class="view-title">详细信息</view>
+    <view  class="view-title">
+      详细信息
+      <view bindtap="hideModal" class="close">X</view>
+    </view>
     <view class="popbox">
        <view class="item" wx:for="{{poplist}}" wx:key='index'>
         <text class='name'>{{item.name}}</text>
@@ -28,4 +34,13 @@
        </view>
     </view>
   </view>
+</view>
+<view class="swiper-box" hidden='{{swiperbox}}'>
+   <swiper class="swiper-b" catchtap="onItemClick" indicator-dots >
+    <swiper-item wx:for="{{urlList}}" wx:key="*this">
+      <view class="image-url-box">
+       <image src="{{item}}"></image>
+      </view>
+    </swiper-item>
+   </swiper>
 </view>

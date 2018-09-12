@@ -19,7 +19,7 @@
        </view>
        <view class="view-box {{showPullDown?'pad-to':''}}">
          <view class="box-item" wx:for='{{billList}}' wx:for-item="itemBill"  wx:key="billNo">
-           <navigator class="box" url='/pages/billDetail/billDetail?billNo={{itemBill.billNo}}&billmoney={{itemBill.billFee}}'>
+           <navigator class="box" url='/pages/billDetail/billDetail?billNo={{itemBill.billNo}}&billMoney={{itemBill.billFee}}'>
              <view class="item-icon">
                <image class="icon-bill" src="../../images/bill.svg"></image>
              </view>
@@ -47,7 +47,7 @@
        </view>
        <view class="view-box {{showPullDown?'pad-to':''}}">
          <view class="box-item" wx:for='{{billList}}' wx:key="billNo">
-           <navigator class="box" url='/pages/billDetailOver/billDetailOver?billNo={{item.billNo}}'>
+           <navigator class="box" url='/pages/billDetailOver/billDetailOver?billNo={{item.billNo}}&billMoney={{item.billFee}}'>
              <view class="item-icon">
                <image class="icon-bill" src="../../images/bill.svg"></image>
              </view>
@@ -64,8 +64,5 @@
          </view>
        </view>
     </swiper-item>
-   
-        
-           
 </swiper> 
 </view>

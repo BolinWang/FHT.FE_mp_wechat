@@ -12,7 +12,9 @@ Page({
     payStype: null,
     showModalStatus: true,
     poplist: null,
-    billmoney: null
+    billMoney: null,
+    urlList: null,
+    swiperbox: true
   },
   hideModal() {
     this.setData({
@@ -21,12 +23,29 @@ Page({
     })
   },
   getDesc(e) {
-
     this.setData({
       showModalStatus: false,
-      poplist: event.currentTarget.dataset.item
+      poplist: e.currentTarget.dataset.item
     })
-
+  },
+  showPic(e) {
+    let url = e.currentTarget.dataset.item.receipt
+    if (url.indexOf("image") != -1) {
+      url = url.split('pdfurl=')[1].split(',')
+      this.setData({
+        urlList: url,
+        swiperbox: false
+      })
+    } else {
+      wx.navigateTo({
+        url: `/pages/lookPdf/lookPdf?pdfUrl=${encodeURIComponent(url)}`
+      })
+    }
+  },
+  onItemClick() {  //关闭查看
+    this.setData({
+      swiperbox: true
+    });
   },
   /**
    * 生命周期函数--监听页面加载
@@ -34,7 +53,7 @@ Page({
   onLoad: function (options) {
     this.setData({
       billNo: options.billNo,
-      billmoney: options.billmoney
+      billMoney: options.billMoney
     })
   },
 

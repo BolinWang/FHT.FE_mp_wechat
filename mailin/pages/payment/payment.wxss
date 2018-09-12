@@ -43,3 +43,6 @@
   background: #3BA613;
   border-radius: 22px;
 }
+.coupon-text {
+  color: red;
+}
