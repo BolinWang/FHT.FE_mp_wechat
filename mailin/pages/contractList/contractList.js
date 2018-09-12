@@ -103,9 +103,13 @@ Page({
         this.setData({
           showPullDown:true
         })
-        if (res.data.contractList.length>0){
+        if (res.data.contractList && res.data.contractList.length>0){
           this.setData({
-             contractList: res.data.contractList.slice(0, 20),
+            contractList: res.data.contractList.slice(0, 20),
+          })
+        } else {
+          this.setData({
+            contractList: [],
           })
         }
       })

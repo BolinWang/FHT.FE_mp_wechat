@@ -142,7 +142,7 @@ wx.getSystemInfo({
           showCancel: false,
           success: function (res) {
             if (res.confirm) {
-              wx.navigateTo({
+              wx.redirectTo({
                 url: `/pages/order/Order?activeTab=${that.data.activeTab}`
               })
             } else if (res.cancel) {
