@@ -61,6 +61,14 @@ function overBtn(item) {  //查看合同 2 ordertype=3   orderStatu=3&&ordertype
   var btntext = (item.orderStatus == 4 && '已取消') ||(item.orderStatus == 3 && item.orderType == 4)&&'办理入住' ||null
   return btntext
 }
+function showAdd(str){
+  console.log(str)
+  var text = str==2 ? "+" : ''
+  console.log(text)
+  console.log('13')
+  
+  return text
+}
 // function timeParse(item){
 //   var time = new Date(item);
 //   var year = time.getFullYear();
@@ -76,6 +84,7 @@ module.exports = {
   validaBtn: validaBtn,
   orderType: orderType,
   showTime: showTime,
-  overBtn: overBtn
+  overBtn: overBtn,
+  showAdd: showAdd
   // timeParse:timeParse
 }
