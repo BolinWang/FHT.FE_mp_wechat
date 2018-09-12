@@ -216,7 +216,8 @@ Page({
       key: 'MLZFUSERNAME',
       success: (res) => {
         this.setData({
-          username: res.data
+          username: res.data,
+          mobile: res.data
         })
       }
     })

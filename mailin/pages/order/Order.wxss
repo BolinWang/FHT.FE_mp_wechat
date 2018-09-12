@@ -46,9 +46,7 @@
   box-sizing: border-box;
   height:100%;
   width:100%;
-  overflow:auto;
-  padding:20rpx 40rpx;
-  -webkit-overflow-scrolling: touch;
+  padding: 40rpx 0 0;
 }
 .header{
   text-align: center;
@@ -56,6 +54,14 @@
   padding-bottom: 20rpx;
   color:#999999;
   line-height:81rpx;
+}
+.order-list-container {
+  box-sizing: border-box;
+  height:100%;
+  width:100%;
+  padding: 0 40rpx;
+  overflow-y: scroll;
+  -webkit-overflow-scrolling: touch;
 }
 .view-box{
   flex:1;
