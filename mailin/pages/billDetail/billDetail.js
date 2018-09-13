@@ -54,11 +54,17 @@ Page({
         billNo: this.data.billNo
       }
     }).then(res => {
-      console.log(res)
+      // console.log(res)
       this.setData({
         payStype: res.data.pop(),
         billDescList:res.data
       })
+      console.log(res.data.pop())
+    })
+  },
+  goTell(e) {  // 拨打房东电话
+    wx.makePhoneCall({
+      phoneNumber: e.target.dataset.item.landlordMobile
     })
   },
   /**
