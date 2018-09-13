@@ -94,16 +94,15 @@ Page({
     })
   },
   goNext(e){    //待处理订单点击按钮
-      buttonClicked(this);
-      let item = e.target.dataset.item
-      if (item.showButton == 1) {  //签约
-        this.signContract(item)
-      } else if (item.showButton == 5) {  //立即支付
-        this.payTest(item)
-      } else if (item.showButton == 6) {  //联系房东
-        this.goTell(item)
-      }  
-    
+    buttonClicked(this);
+    let item = e.target.dataset.item
+    if (item.showButton == 1) {  //签约
+      this.signContract(item)
+    } else if (item.showButton == 5) {  //立即支付
+      this.payTest(item)
+    } else if (item.showButton == 6) {  //联系房东
+      this.goTell(item)
+    }  
  },
   goTell(item) {  //拨打房东电话
     wx.makePhoneCall({

@@ -10,10 +10,13 @@
        </view>
      </view>
   </view>
-  <view class="bottom" hidden='{{!payStype.desc[0].value}}'>
+  <view class="bottom">
      <view class="bot-free">应付总额:  <text class='name-text-yel'>¥ {{billMoney}}</text></view>
-     <view class='btn-go'>
+     <view wx:if="{{payStype.desc[0].value}}" class='btn-go'>
        <navigator url="/pages/payment/payment?billNo={{billNo}}&source=2&money={{billMoney}}">立即支付</navigator>
+     </view>
+     <view wx:else class='btn-go' bindtap="goTell" data-item="{{payStype.desc[0]}}">
+       联系房东
      </view>
   </view>
 </view>
