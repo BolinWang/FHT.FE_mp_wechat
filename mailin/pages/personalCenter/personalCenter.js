@@ -13,7 +13,7 @@ Page({
     nickName: '',
     mobile: '',
     billCount: '', // 未处理账单数 
-    orderCount: ''  //未处理订单数 
+    financeOrderCount: ''  //未处理订单数 
   },
 
   /**
@@ -66,7 +66,7 @@ Page({
       console.log(res)
       this.setData({
         billCount: res.data.unHandleOrder.billCount, // 未处理账单数 
-        orderCount: res.data.unHandleOrder.orderCount  //未处理订单数 
+        financeOrderCount: res.data.unHandleOrder.financeOrderCount  //未处理订单数 
       })
     })   
   },

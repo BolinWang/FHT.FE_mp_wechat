@@ -20,7 +20,7 @@
     <view class="tab-go">
       <view class="goItem">
         <navigator class="agreement" url="/pages/order/Order">
-          <text class="prompt" wx:if="{{orderCount!=0}}">{{orderCount}}</text>
+          <text class="prompt" wx:if="{{financeOrderCount!=0}}">{{financeOrderCount}}</text>
           <image class="goIcon" src="../../images/qyrz.svg"></image>
           <text class="goText">签约入住</text>
         </navigator>
