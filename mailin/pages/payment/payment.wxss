@@ -46,3 +46,6 @@
 .coupon-text {
   color: red;
 }
+.coupon-count {
+  color: #FF8C07;
+}

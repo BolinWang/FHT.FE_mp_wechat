@@ -6,60 +6,61 @@ Page({
    * 页面的初始数据
    */
   data: {
-   free:'',
-   coupon: '',
-   source:null,
-   billNo:null,
-   couponReceiveId:null,
-   money:null,
-   gopay:true
+    free: '',
+    coupon: '',
+    source: null,
+    billNo: null,
+    couponReceiveId: null,
+    money: null,
+    gopay: true,
+    couponList: [],
+    linkUrl: ''
+  },
+
+  getcouponList() {
+    Ajax({
+      url: '/coupon',
+      method: 'canUseCoupons',
+      params: {
+        billNo: this.data.billNo,
+      }
+    }).then(res => {
+      if (res.data.couponList) {
+        this.setData({
+          couponList: res.data.couponList.filter(item => item.status === 1),
+        })
+      }
+      if (this.data.coupon || this.data.couponList.length) {
+        this.setData({
+          linkUrl: `/pages/couponChoose/couponChoose?billNo=${this.data.billNo}&money=${this.data.money}`
+        })
+      }
+    })
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
- 
+
   onLoad: function (options) {
     this.setData({
-      source: options.source,
       billNo: options.billNo,
-      money: options.money||null,
-      couponReceiveId: options.couponReceiveId||null,
+      money: options.money || null,
+      couponReceiveId: options.couponReceiveId || null,
       coupon: options.discountAmount ? `-¥${options.discountAmount}` : ""
     })
     console.log(this.data.billNo)
+    this.getcouponList()
   },
 
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function () {
-    this.getOrder()
   },
-  getOrder(){
-    // Ajax({
-    //   url: '/coupon',
-    //   method: 'selectConpon',
-    //   v: '3.2.0',
-    //   params: {
-    //     source: this.data.source,
-    //     orderBillNo: this.data.billNo,
-    //     couponId: '-1'
-    //   }
-    // }).then(res => {
-    //   this.setData({
-    //     free: res.data.actualFee
-    //   })
-    //   if (res.data.ifPredete){
-    //     this.setData({
-    //       coupon: res.data.preCouponDesc
-    //     })
-    //   }
-    // })
-  },
-  goPay(){   // 去支付 
-    let that =this
-    if (!this.data.gopay){
+  goPay() {   // 去支付 
+    let that = this
+    if (!this.data.gopay) {
       return
     }
     this.setData({
@@ -71,7 +72,7 @@ Page({
       params: {
         signType: 'MD5',
         tradeNo: this.data.billNo,
-        miniProgram:true,
+        miniProgram: true,
         openid: wx.getStorageSync('openId'),
         couponReceiveId: this.data.couponReceiveId
       }
@@ -88,7 +89,7 @@ Page({
         'paySign': res.data.sign,
         'success': function (response) {
           wx.redirectTo({
-             url: `/pages/paymentSucces/paymentSucces?money=${that.data.money}`,
+            url: `/pages/paymentSucces/paymentSucces?money=${that.data.money}`,
           })
         },
         'fail': function (response) {
@@ -107,34 +108,34 @@ Page({
    * 生命周期函数--监听页面隐藏
    */
   onHide: function () {
-  
+
   },
 
   /**
    * 生命周期函数--监听页面卸载
    */
   onUnload: function () {
-  
+
   },
 
   /**
    * 页面相关事件处理函数--监听用户下拉动作
    */
   onPullDownRefresh: function () {
-  
+
   },
 
   /**
    * 页面上拉触底事件的处理函数
    */
   onReachBottom: function () {
-  
+
   },
 
   /**
    * 用户点击右上角分享
    */
   onShareAppMessage: function () {
-  
+
   }
 })

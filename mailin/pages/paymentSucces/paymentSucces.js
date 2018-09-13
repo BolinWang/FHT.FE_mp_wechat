@@ -5,7 +5,7 @@ Page({
    * 页面的初始数据
    */
   data: {
-    money: null
+    money: ''
   },
 
   /**
@@ -14,7 +14,7 @@ Page({
   onLoad: function (options) {
     console.log(options)
     this.setData({
-      money: options.money||null,
+      money: options.money || '',
     })
   },
 

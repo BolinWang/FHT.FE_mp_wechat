@@ -12,7 +12,8 @@ Page({
     couponList:null,
     coupon:null,
     couponName:null,
-    discountAmount: null
+    discountAmount: null,
+    money: null
   },
 
   /**
@@ -20,8 +21,8 @@ Page({
    */
   onLoad: function (options) {
     this.setData({
-      source: options.source,
-      orderBillNo: options.billNo
+      orderBillNo: options.billNo,
+      money: options.money,
     })
   },
   chooseActive(e){
@@ -34,27 +35,29 @@ Page({
       })
       console.log(this.data.canuse)
     }
-    
   },
   go(){
-    let that = this
+    if (!this.data.coupon) {
+      wx.navigateTo({
+        url: `/pages/payment/payment?billNo=${this.data.orderBillNo}&money=${this.data.money}`,
+      })
+      return
+    }
     Ajax({
       url: '/coupon',
       method: 'useCoupons',
       params: {
         billNo: this.data.orderBillNo,
         couponReceiveId: this.data.coupon,
-
       }
     }).then(res => {
       console.log(res)
       wx.navigateTo({
-        url: `/pages/payment/payment?billNo=${that.data.orderBillNo}&source=${that.data.source}&money=${res.data.billActualFee}&couponReceiveId=${that.data.coupon}&discountAmount=${that.data.discountAmount}`,
+        url: `/pages/payment/payment?billNo=${this.data.orderBillNo}&money=${res.data.billActualFee}&couponReceiveId=${this.data.coupon}&discountAmount=${this.data.discountAmount}`,
       })
     })
   },
   getcouponList(){
-    let that =this
    Ajax({
      url: '/coupon',
      method: 'canUseCoupons',
@@ -62,26 +65,17 @@ Page({
        billNo: this.data.orderBillNo,
      }
    }).then(res =>{
-
      this.setData({
        couponList: res.data.couponList
      })
      console.log(res.data.couponList)
-    //  res.data.couponList.forEach(function (value, key, arr) {
-    //    if (value.ifPredete==true){
-    //      that.setData({
-    //        canuse: value.customerId
-    //      })
-    //      console.log(that.data.canuse)
-    //    }
-    //  })
    })
   },
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function () {
-     this.getcouponList()
+    this.getcouponList()
   },
 
   /**

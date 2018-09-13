@@ -1,48 +1,60 @@
-
 <!--pages/bill/bill.wxml-->
 
 <view class="container">
-<wxs module="validate" src="../../utils/validate.wxs"></wxs>
+  <wxs module="validate" src="../../utils/validate.wxs"></wxs>
   <view class="tab">
-   <view class="tab-item" wx:for-item="itemName" wx:for="{{tablist}}" wx:key="value" >
-     <text class="tab-text {{itemName.value==activeTab?'tab-active':''}}" data-current="{{itemName.value}}" bindtap='tabChoose'>{{itemName.label}}</text>
-   </view>
+    <view class="tab-item" wx:for-item="itemName" wx:for="{{tablist}}" wx:key="value">
+      <text class="tab-text {{itemName.value==activeTab?'tab-active':''}}" data-current="{{itemName.value}}" bindtap='tabChoose'>{{itemName.label}}</text>
+    </view>
   </view>
-  <swiper current="{{activeTab}}"  style="height:{{winHeight}}rpx;" class="scroll-box" duration="300"  bindchange="swiperTab">
+  <swiper current="{{activeTab}}" style="height:{{winHeight}}rpx;" class="scroll-box" duration="300" bindchange="swiperTab">
     <swiper-item class="pending">
-       <view class="header" hidden='{{showPullDown}}'>
-           <view>刷新中……</view>
-        </view>
-       <view class="k-box" hidden='{{orderList.length!=0}}'>
-         <image class="k-img" src="../../images/k-box.png"></image>
-         <view class="k-text">暂无数据</view>
-       </view>
-       <view class="order-list-container" wx:if='{{orderList.length > 0}}'>
-        <view class="view-box" wx:for="{{orderList}}" wx:key="{{index}}" wx:for-item="item" > 
-        <!-- //" -->
+      <view class="header" hidden='{{showPullDown}}'>
+        <view>刷新中……</view>
+      </view>
+      <view class="k-box" hidden='{{orderList.length!=0}}'>
+        <image class="k-img" src="../../images/k-box.png"></image>
+        <view class="k-text">暂无数据</view>
+      </view>
+      <view class="order-list-container" wx:if='{{orderList.length > 0}}'>
+        <view class="view-box" wx:for="{{orderList}}" wx:key="{{index}}" wx:for-item="item">
+          <!-- //" -->
           <view class="title">
             <text class="title-text">订单号： {{item.orderNo}}</text>
-            <view class='typeBtn'>{{validate.orderType(item.orderType)}}</view> 
-          </view> 
+            <view class='typeBtn'>{{validate.orderType(item.orderType)}}</view>
+          </view>
           <view class="item-box">
             <view class="item">
-            <view class='item-name'>房间</view>
-            <view class="item-text">{{item.roomName}}</view>
+              <view class='item-name'>房间</view>
+              <view class="item-text">{{item.roomName}}</view>
             </view>
-            <view class="item" hidden='{{item.orderType===4||item.rentTypeName==null}}'>
-            <view class='item-name'>租赁方式</view>
-            <view class="item-text">{{item.rentTypeName}}</view>
+            <!-- <view class="item" hidden='{{item.orderType===4||item.rentTypeName==null}}'>
+              <view class='item-name'>租赁方式</view>
+              <view class="item-text">{{item.rentTypeName}}</view>
+            </view> -->
+            <view class="item" wx:if='{{item.orderType===4}}'>
+              <view class='item-name'>租赁方式</view>
+              <view class="item-text">{{item.rentTypeName}}</view>
+            </view>
+            <view class="item" wx:else>
+              <view class='item-name'>租赁方式</view>
+              <view class="item-text" wx:if="{{item.housingType === 1}}">
+                {{item.roomTypeName + '/' + item.rentTime + '/' +  item.rentPaymentType}}
+              </view>
+              <view class="item-text" wx:else>
+                {{item.rentTime + '/' + item.rentPaymentType}}
+              </view>
             </view>
             <view class="item" hidden='{{item.orderType===4}}'>
-            <view class='item-name'>租金</view>
-            <view class="item-text">{{item.rentFee}}</view>
+              <view class='item-name'>租金</view>
+              <view class="item-text">{{item.rentFee}}</view>
             </view>
             <view class="item" hidden='{{item.orderType===4}}'>
-            <view class='item-name' >押金</view>
-            <view class="item-text">{{item.depositFee}}</view>
+              <view class='item-name'>押金</view>
+              <view class="item-text">{{item.depositFee}}</view>
             </view>
             <view class="item" hidden='{{item.orderType==4}}'>
-              <view class='item-name' >服务费</view>
+              <view class='item-name'>服务费</view>
               <view class="item-text">{{item.serviceCharge}}</view>
             </view>
             <view class="item" hidden='{{item.orderType!==4}}'>
@@ -59,51 +71,60 @@
             </view>
           </view>
           <view class="box-bottom">
-            <view class="prompt" >
+            <view class="prompt">
               {{validate.showTime(item.signContractValidTime,item.paymentValidTime,item.showButton)}}
             </view>
             <view class='btn-bottom'>
               <view class='btn-item' data-ordertype='{{item.orderType||item.rentTypeName==null}}' data-order='{{item.orderNo}}' bindtap='cancelOrder'>取消订单</view>
-              <view class='btn-item' data-item='{{item}}' wx:if="{{validate.validaBtn(item.showButton) !== ''}}"  bindtap="{{!buttonClicked?'goNext':''}}" >{{ validate.validaBtn(item.showButton)}}</view>
+              <view class='btn-item' data-item='{{item}}' wx:if="{{validate.validaBtn(item.showButton) !== ''}}" bindtap="{{!buttonClicked?'goNext':''}}">{{ validate.validaBtn(item.showButton)}}</view>
               <!-- <view class='btn-item' data-item='{{item}}' wx:if="{{item.showButton == 1}}"  bindtap='goLookPdf'>查看合同</view> -->
             </view>
           </view>
         </view>
-       </view>
-    </swiper-item >
+      </view>
+    </swiper-item>
     <swiper-item class="pending">
       <view class="header" hidden='{{showPullDown}}'>
-           <view>刷新中……</view>
-        </view>
-       <view class="k-box" hidden='{{orderList.length!=0}}'>
-         <image class="k-img" src="../../images/k-box.png"></image>
-         <view class="k-text">暂无数据</view>
-       </view>
-       <view class="order-list-container">
-        <view class="view-box" wx:for="{{orderList}}" wx:key="{{index}}" wx:for-item="item" hidden='{{item.rentType==2}}'> 
-            <view class="title">
-              <text class="title-text">订单号： {{item.orderNo}}</text>
-              <view class='typeBtn'>{{validate.orderType(item.orderType)}}</view> 
-            </view> 
-            <view class="item-box">
+        <view>刷新中……</view>
+      </view>
+      <view class="k-box" hidden='{{orderList.length!=0}}'>
+        <image class="k-img" src="../../images/k-box.png"></image>
+        <view class="k-text">暂无数据</view>
+      </view>
+      <view class="order-list-container">
+        <view class="view-box" wx:for="{{orderList}}" wx:key="{{index}}" wx:for-item="item" hidden='{{item.rentType==2}}'>
+          <view class="title">
+            <text class="title-text">订单号： {{item.orderNo}}</text>
+            <view class='typeBtn'>{{validate.orderType(item.orderType)}}</view>
+          </view>
+          <view class="item-box">
             <view class="item">
-            <view class='item-name'>房间</view>
-            <view class="item-text">{{item.roomName}}</view>
+              <view class='item-name'>房间</view>
+              <view class="item-text">{{item.roomName}}</view>
             </view>
-            <view class="item" hidden='{{item.orderType===4||item.rentTypeName==null}}'>
-            <view class='item-name'>租赁方式</view>
-            <view class="item-text">{{item.rentTypeName}}</view>
+            <view class="item" wx:if='{{item.orderType===4}}'>
+              <view class='item-name'>租赁方式</view>
+              <view class="item-text">{{item.rentTypeName}}</view>
+            </view>
+            <view class="item" wx:else>
+              <view class='item-name'>租赁方式</view>
+              <view class="item-text" wx:if="{{item.housingType === 1}}">
+                {{item.roomTypeName + '/' + item.rentTime + '/' +  item.rentPaymentType}}
+              </view>
+              <view class="item-text" wx:else>
+                {{item.rentTime + '/' + item.rentPaymentType}}
+              </view>
             </view>
             <view class="item" hidden='{{item.orderType===4}}'>
-            <view class='item-name'>租金</view>
-            <view class="item-text">{{item.rentFee}}</view>
+              <view class='item-name'>租金</view>
+              <view class="item-text">{{item.rentFee}}</view>
             </view>
             <view class="item" hidden='{{item.orderType===4}}'>
-            <view class='item-name' >押金</view>
-            <view class="item-text">{{item.depositFee}}</view>
+              <view class='item-name'>押金</view>
+              <view class="item-text">{{item.depositFee}}</view>
             </view>
             <view class="item" wx:if='{{item.orderType!==4}}'>
-              <view class='item-name' >服务费</view>
+              <view class='item-name'>服务费</view>
               <view class="item-text">{{item.serviceCharge}}</view>
             </view>
             <view class="item" wx:if='{{item.orderType!==4}}'>
@@ -119,74 +140,83 @@
               <view class="item-text">{{item.totalFee}}</view>
             </view>
           </view>
-            <view class='box-bottom'>
-              <view class='btn-bottom' wx:if='{{validate.overBtn(item)!==null}}'>
-                <view class='btn-item' wx:if='{{validate.overBtn(item)!==null}}' data-item='{{item}}' bindtap='goOverBtn'>{{validate.overBtn(item)}}</view>
-                  <view class='btn-item' data-item='{{item}}' wx:if="{{(item.orderStatus == 3 && item.orderType == 4)||item.orderType == 3}}"  bindtap='goLookPdf'>查看合同</view>
-              </view>
+          <view class='box-bottom'>
+            <view class='btn-bottom' wx:if='{{validate.overBtn(item)!==null}}'>
+              <view class='btn-item' wx:if='{{validate.overBtn(item)!==null}}' data-item='{{item}}' bindtap='goOverBtn'>{{validate.overBtn(item)}}</view>
+              <view class='btn-item' data-item='{{item}}' wx:if="{{(item.orderStatus == 3 && item.orderType == 4)||item.orderType == 3}}" bindtap='goLookPdf'>查看合同</view>
             </view>
+          </view>
         </view>
-       </view>
+      </view>
     </swiper-item>
     <swiper-item class="pending">
       <view class="header" hidden='{{showPullDown}}'>
-           <view>刷新中……</view>
-        </view>
-       <view class="k-box" hidden='{{orderList.length!=0}}'>
-         <image class="k-img" src="../../images/k-box.png"></image>
-         <view class="k-text">暂无数据</view>
-       </view>
-       <view class="order-list-container">
-        <view class="view-box" wx:for="{{orderList}}" wx:key="{{index}}" wx:for-item="item" hidden='{{item.rentType==2}}'> 
-            <view class="title">
-              <text class="title-text">订单号： {{item.orderNo}}</text>
-              <view class='btntype'>{{validate.orderType(item.orderType)}}</view> 
-            </view> 
-            <view class="item-boxs">
-              <view class="item">
-                <view class='item-name'>房间</view>
-                <view class="item-text">{{item.roomName}}</view>
+        <view>刷新中……</view>
+      </view>
+      <view class="k-box" hidden='{{orderList.length!=0}}'>
+        <image class="k-img" src="../../images/k-box.png"></image>
+        <view class="k-text">暂无数据</view>
+      </view>
+      <view class="order-list-container">
+        <view class="view-box" wx:for="{{orderList}}" wx:key="{{index}}" wx:for-item="item" hidden='{{item.rentType==2}}'>
+          <view class="title">
+            <text class="title-text">订单号： {{item.orderNo}}</text>
+            <view class='btntype'>{{validate.orderType(item.orderType)}}</view>
+          </view>
+          <view class="item-boxs">
+            <view class="item">
+              <view class='item-name'>房间</view>
+              <view class="item-text">{{item.roomName}}</view>
+            </view>
+            <view class="item" wx:if='{{item.orderType===4}}'>
+              <view class='item-name'>租赁方式</view>
+              <view class="item-text">{{item.rentTypeName}}</view>
+            </view>
+            <view class="item" wx:else>
+              <view class='item-name'>租赁方式</view>
+              <view class="item-text" wx:if="{{item.housingType === 1}}">
+                {{item.roomTypeName + '/' + item.rentTime + '/' +  item.rentPaymentType}}
               </view>
-              <view class="item" hidden='{{item.orderType===4}}'>
-                <view class='item-name'>租赁方式</view>
-                <view class="item-text">{{item.rentTypeName}}</view>
+              <view class="item-text" wx:else>
+                {{item.rentTime + '/' + item.rentPaymentType}}
               </view>
-              <view class="item" hidden='{{item.orderType===4}}'>
-                <view class='item-name'>租金</view>
-                <view class="item-text">{{item.rentFee}}</view>
-              </view>
-              <view class="item" hidden='{{item.orderType===4}}'>
-                <view class='item-name' >押金</view>
-                <view class="item-text">{{item.depositFee}}</view>
-              </view>
-              <view class="item" wx:if='{{item.orderType!==4}}'>
-                <view class='item-name'>服务费</view>
-                <view class="item-text">{{item.serviceCharge}}</view>
-              </view>
-              <view class="item" wx:if='{{item.orderType!==4}}'>
-                <view class='item-name'>入住日期</view>
-                <view class="item-text">{{item.startDate}}</view>
-              </view>
-              <view class="item">
-                <view class='item-name'>优惠金额</view>
-                <view class="item-text">{{item.discountFee}}</view>
-              </view>
-              <view class="item">
-                <view class='item-name'>应付总额</view>
-                <view class="item-text">{{item.totalFee}}</view>
-              </view>
+            </view>
+            <view class="item" hidden='{{item.orderType===4}}'>
+              <view class='item-name'>租金</view>
+              <view class="item-text">{{item.rentFee}}</view>
+            </view>
+            <view class="item" hidden='{{item.orderType===4}}'>
+              <view class='item-name'>押金</view>
+              <view class="item-text">{{item.depositFee}}</view>
+            </view>
+            <view class="item" wx:if='{{item.orderType!==4}}'>
+              <view class='item-name'>服务费</view>
+              <view class="item-text">{{item.serviceCharge}}</view>
+            </view>
+            <view class="item" wx:if='{{item.orderType!==4}}'>
+              <view class='item-name'>入住日期</view>
+              <view class="item-text">{{item.startDate}}</view>
+            </view>
+            <view class="item">
+              <view class='item-name'>优惠金额</view>
+              <view class="item-text">{{item.discountFee}}</view>
+            </view>
+            <view class="item">
+              <view class='item-name'>应付总额</view>
+              <view class="item-text">{{item.totalFee}}</view>
+            </view>
           </view>
         </view>
-       </view>
-    </swiper-item>
-  </swiper> 
-  <view class="swiper-box" hidden='{{swiperbox}}'>
-   <swiper class="swiper-b" catchtap="onItemClick" indicator-dots >
-    <swiper-item wx:for="{{urlList}}" wx:key="*this">
-      <view class="image-url-box">
-       <image src="{{item}}"></image>
       </view>
     </swiper-item>
-   </swiper>
-</view>
+  </swiper>
+  <view class="swiper-box" hidden='{{swiperbox}}'>
+    <swiper class="swiper-b" catchtap="onItemClick" indicator-dots>
+      <swiper-item wx:for="{{urlList}}" wx:key="*this">
+        <view class="image-url-box">
+          <image src="{{item}}"></image>
+        </view>
+      </swiper-item>
+    </swiper>
+  </view>
 </view>
