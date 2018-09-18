@@ -32,7 +32,7 @@ Page({
       }
       if (this.data.coupon || this.data.couponList.length) {
         this.setData({
-          linkUrl: `/pages/couponChoose/couponChoose?billNo=${this.data.billNo}&money=${this.data.money}`
+          linkUrl: `/pages/couponChoose/couponChoose?billNo=${this.data.billNo}&money=${this.data.money}&chooseCoupon=${this.data.couponReceiveId}`
         })
       }
     })
@@ -47,9 +47,9 @@ Page({
       billNo: options.billNo,
       money: options.money || null,
       couponReceiveId: options.couponReceiveId || null,
-      coupon: options.discountAmount ? `-¥${options.discountAmount}` : ""
+      coupon: options.discountAmount ? `-¥${options.discountAmount}` : (typeof options.couponReceiveId === 'string' ? '不使用' : '')
     })
-    console.log(this.data.billNo)
+    // console.log(typeof options.couponReceiveId)
     this.getcouponList()
   },
 
