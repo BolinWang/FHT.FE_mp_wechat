@@ -1,0 +1,80 @@
+<!--pages/checkIn/checkIn.wxml-->
+<view class="container">
+ <wxs module="validate" src="../../utils/validate.wxs"></wxs>
+   <view class="adress">
+     <view class="name">{{orderDetail.roomName}}</view>
+     <view class="adress-detail">地址：{{orderDetail.roomAddress}}</view>
+   </view>
+   <view class="listbox">
+     <view class='fh-box'>
+       <zan-cell-group >
+       <view class="title">
+         订单信息
+       </view>
+       <zan-cell title="租金">
+         <view class="cell-box">{{orderDetail.rentFee}}</view>
+       </zan-cell>
+       <zan-cell title='押金'>
+         <view class="cell-box">{{orderDetail.depositFee}}</view>
+       </zan-cell>
+       <zan-cell title='服务费'>
+         <view class="cell-box">{{orderDetail.serviceCharge}}</view>
+       </zan-cell>
+      <zan-cell title="租凭类型" is-link>
+         <picker class="cell-box" bindchange="bindPickerChange" value="{{index}}" range="{{orderDetail.rentTypes}}" range-key="name">
+          <view class="picker">
+           {{orderDetail.rentTypes[index].name}}
+          </view>
+        </picker>
+       </zan-cell>
+       <zan-cell title="租凭期限" is-link>
+         <picker class="cell-box" bindchange="bindPickermonth" value="{{monthNumIndex}}" range="{{monthNumList}}" >
+          <view class="picker" wx:if="{{monthNumIndex!==''}}">
+           {{monthNumList[monthNumIndex]}}个月
+          </view>
+           <view class="picker" wx:else>
+          请选择租凭期限
+          </view>
+        </picker>
+       </zan-cell>
+       <zan-cell title="入住日期" is-link>
+         <picker class="cell-box" bindchange="bindPickerStartDate" value="{{startDateIndex}}" range="{{startDateList}}" >
+          <view class="picker" wx:if="{{startDateIndex}}">
+           {{startDateList[startDateIndex]}}
+          </view>
+          <view class="picker" wx:else>
+          请选择入住日期
+          </view>
+        </picker>
+       </zan-cell>
+     </zan-cell-group >
+     </view>
+     <view class='fh-box'>
+       <zan-cell-group>
+          <zan-cell title='推荐人'>
+            <input  bindinput="bindKeyInput" placeholder="请输入你的推荐人"/>
+          </zan-cell>
+        </zan-cell-group>
+     </view>
+   </view>
+   <view class="fh-box endBox">
+     <zan-cell-group >
+       <view class="title">
+        签约人信息
+       </view>
+       <zan-cell title="姓名">
+         <view class="cell-box">{{userInfo.realName}}</view>
+       </zan-cell>
+       <zan-cell title="手机号码">
+         <view class="cell-box">{{mobile}}</view>
+       </zan-cell>
+       <zan-cell title="证件类型">
+         <view class="cell-box">{{validate.showCard(userInfo.cardType)}}</view>
+       </zan-cell>
+       <zan-cell title="证件号">
+         <view class="cell-box">{{userInfo.cardNo}}</view>
+       </zan-cell>
+    </zan-cell-group>
+    <view class='gobtn' bindtap='goSubmit'>提交订单</view>
+  </view>
+</view>

@@ -77,7 +77,6 @@ Page({
         couponReceiveId: this.data.couponReceiveId
       }
     }).then(res => {
-      console.log(res)
       this.setData({
         gopay: true
       })

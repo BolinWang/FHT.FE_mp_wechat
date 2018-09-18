@@ -1,4 +1,5 @@
 /* pages/agreeMent/agreeMent.wxss */
 .container{
   font-size: 20rpx;
+  padding:20rpx;
 }

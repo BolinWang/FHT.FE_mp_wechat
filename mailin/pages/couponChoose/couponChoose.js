@@ -28,13 +28,20 @@ Page({
   chooseActive(e){
     let canIf = e.currentTarget.dataset.inf.status
     if (canIf == 1){
-      this.setData({
-        canuse: e.currentTarget.dataset.inf.customerId,
-        coupon: e.currentTarget.dataset.inf.id,
-        discountAmount: e.currentTarget.dataset.inf.discountAmount
-      })
-      console.log(this.data.canuse)
-    }
+      if (this.data.canuse == e.currentTarget.dataset.inf.customerId) {
+        this.setData({
+          canuse: '',
+          coupon: '',
+          discountAmount: ''
+        })
+      }else{
+        this.setData({
+          canuse: e.currentTarget.dataset.inf.customerId,
+          coupon: e.currentTarget.dataset.inf.id,
+          discountAmount: e.currentTarget.dataset.inf.discountAmount
+        })
+      }
+    } 
   },
   go(){
     if (!this.data.coupon) {

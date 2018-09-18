@@ -110,9 +110,9 @@ Page({
     })
   },
   signContract(item){  //签约
-    // if (item.orderType === 4) {
+    if (item.orderType !== 4) {
   
-    // }
+    
     this.testContract(item).then(res => {
  
           //当订单状态为未付款，且 合同签约状态为未签约或者生成中时
@@ -162,7 +162,8 @@ Page({
          }
         this.getOrderList();
       }
-    })
+    })}else{
+    }
   },
   checkPdf(item){  //校验合同
     return new Promise((resolve, reject) =>Ajax({
@@ -202,17 +203,20 @@ Page({
 
   goLookPdf(e){  //查看pdf
     let item = e.target.dataset.item
-    this.checkPdf(item).then(res => {
+    console.log(item)
+    // this.checkPdf(item).then(res => {
+     console.log(item)
+
      Ajax({
        url: '/contract',
        method: 'queryContract',
        params: {
-         contractNo: res.data.contractNo
+         contractNo: item.contractNo
        }
      }).then(res => {
        this.getfile(res.data.contentUrl)
      })
-    })
+    // })
 
     // let url = `https://test.mdguanjia.com/myhome/html/wechat/pdf_view/examples/mobile-viewer/viewer.html?type='1'&orderNo=${e.currentTarget.dataset.order}&sessionId=${wx.getStorageSync('sessionId')}&t=${new Date().getTime()}`
     // console.log(url)
@@ -305,7 +309,45 @@ Page({
   goOverBtn(e){
     let item = e.target.dataset.item
     if (item.orderStatus == 3 && item.orderType == 4){
-      this.signContract(item)
+      // this.signContract(item)
+      Ajax({
+        url: '/customer',
+        method: 'authenticationStatus',
+        params: {
+        }
+      }).then(res => { 
+        console.log(res)
+        switch (res.data.status) {
+          case 0:
+            wx.showToast({
+              title: '您还未提交资料，请提交资料后，办理入住',
+              icon: 'none',
+              duration: 1000
+            })
+            break;
+          case 1:
+            wx.showToast({
+              title: '您的资料正在审核中，请稍后',
+              icon: 'none',
+              duration: 1000
+            })
+            break
+          case 2:
+            wx.navigateTo({
+              url: `/pages/checkIn/checkIn?detail=${JSON.stringify(item)}&userInfo=${JSON.stringify(res.data)}`
+            })
+            break;
+            case 3:
+            wx.showToast({
+              title: '您的资料审核未通过',
+              icon: 'none',
+              duration: 1000
+            })
+            break;
+          default:
+        }
+      })
+      
     }
   },
   //获取列表
@@ -322,9 +364,9 @@ Page({
         openId: null
       }
     }).then(res => {
-      console.log(res)
       if (this.data.activeTab === 0 && res.data.orderList) {  // 金融房源在待处理账单不显示
-        res.data.orderList = res.data.orderList.filter(item => item.houseFinanceType === 1)
+        res.data.orderList = res.data.orderList.filter(item => item.rentType
+ !== 2)
       }
       this.setData({
         orderList: res.data.orderList || [],

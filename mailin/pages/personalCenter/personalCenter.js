@@ -63,7 +63,6 @@ Page({
         openId: null
       }
     }).then(res => {
-      console.log(res)
       this.setData({
         billCount: res.data.unHandleOrder.billCount, // 未处理账单数 
         financeOrderCount: res.data.unHandleOrder.financeOrderCount  //未处理订单数 

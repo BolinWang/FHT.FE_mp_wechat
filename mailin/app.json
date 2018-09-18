@@ -17,7 +17,8 @@
     "pages/payment/payment",
     "pages/couponChoose/couponChoose",
     "pages/paymentSucces/paymentSucces",
-    "pages/billDetailOver/billDetailOver"
+    "pages/billDetailOver/billDetailOver",
+    "pages/checkIn/checkIn"
   ],
   "window": {
     "backgroundTextStyle": "light",
