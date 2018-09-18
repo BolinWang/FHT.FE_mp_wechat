@@ -301,6 +301,9 @@ Page({
     }
   },
   goPay(item){  //去支付页面
+    const app = getApp()
+    app.globalData.totalFee = item.totalFee
+
     wx.navigateTo({
       url: `/pages/payment/payment?source=1&billNo=${item.orderNo}&money=${item.totalFee}`
     })

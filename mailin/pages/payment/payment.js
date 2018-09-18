@@ -45,9 +45,7 @@ Page({
   onLoad: function (options) {
     this.setData({
       billNo: options.billNo,
-      money: options.money || null,
-      couponReceiveId: options.couponReceiveId || null,
-      coupon: options.discountAmount ? `-¥${options.discountAmount}` : (typeof options.couponReceiveId === 'string' ? '不使用' : '')
+      money: options.money || null
     })
     // console.log(typeof options.couponReceiveId)
     this.getcouponList()
@@ -101,6 +99,11 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
+    if (this.data.coupon || this.data.couponList.length) {
+      this.setData({
+        linkUrl: `/pages/couponChoose/couponChoose?billNo=${this.data.billNo}&money=${this.data.money}&chooseCoupon=${this.data.couponReceiveId}`
+      })
+    }
   },
 
   /**

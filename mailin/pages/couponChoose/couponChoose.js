@@ -46,8 +46,17 @@ Page({
   },
   go(){
     if (!this.data.coupon) {
-      wx.redirectTo({
-        url: `/pages/payment/payment?billNo=${this.data.orderBillNo}&money=${this.data.money}&couponReceiveId=''`,
+      const app = getApp()
+      let pages = getCurrentPages()
+      let prevPage = pages[pages.length - 2]
+      prevPage.setData({
+        billNo: this.data.orderBillNo,
+        money: app.globalData.totalFee,
+        couponReceiveId: '',
+        coupon: '不使用'
+      })
+      wx.navigateBack({
+        delta: 1
       })
       return
     }
@@ -56,12 +65,20 @@ Page({
       method: 'useCoupons',
       params: {
         billNo: this.data.orderBillNo,
-        couponReceiveId: this.data.coupon,
+        couponReceiveId: this.data.coupon
       }
     }).then(res => {
       console.log(res)
-      wx.redirectTo({
-        url: `/pages/payment/payment?billNo=${this.data.orderBillNo}&money=${res.data.billActualFee}&couponReceiveId=${this.data.coupon}&discountAmount=${this.data.discountAmount}`,
+      let pages = getCurrentPages()
+      let prevPage = pages[pages.length - 2]
+      prevPage.setData({
+        billNo: this.data.orderBillNo,
+        money: res.data.billActualFee,
+        couponReceiveId: this.data.coupon,
+        coupon: `-¥${this.data.discountAmount}`
+      })
+      wx.navigateBack({
+        delta: 1
       })
     })
   },
@@ -86,7 +103,7 @@ Page({
         })
        }
      }
-     console.log(res.data.couponList)
+     
    })
   },
   /**
