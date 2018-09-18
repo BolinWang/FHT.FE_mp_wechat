@@ -5,8 +5,11 @@
     <view class="free">{{money}}</view>
   </view>
   <zan-cell-group title-width="90">
-    <zan-cell is-link title="优惠券" border="{{ false }}" url="{{linkUrl}}">
-      <view slot="footer" wx:if="{{coupon}}" class="coupon-text">
+    <zan-cell is-link title="优惠券" border="{{ false }}" url="{{linkUrl}}" link-type="redirectTo">
+      <view slot="footer" wx:if="{{coupon && coupon !== '不使用'}}" class="coupon-text">
+        {{coupon}}
+      </view>
+      <view slot="footer" wx:elif="{{coupon && coupon === '不使用'}}">
         {{coupon}}
       </view>
       <view slot="footer" wx:elif="{{couponList.length > 0}}">

@@ -23,6 +23,7 @@ Page({
     this.setData({
       orderBillNo: options.billNo,
       money: options.money,
+      chooseCoupon: options.chooseCoupon || ''
     })
   },
   chooseActive(e){
@@ -39,7 +40,7 @@ Page({
   go(){
     if (!this.data.coupon) {
       wx.redirectTo({
-        url: `/pages/payment/payment?billNo=${this.data.orderBillNo}&money=${this.data.money}`,
+        url: `/pages/payment/payment?billNo=${this.data.orderBillNo}&money=${this.data.money}&couponReceiveId=''`,
       })
       return
     }
@@ -68,6 +69,16 @@ Page({
      this.setData({
        couponList: res.data.couponList
      })
+     if (this.data.chooseCoupon) {
+       let chooseCoupon = this.data.couponList.filter(item => item.id == this.data.chooseCoupon)
+       if (chooseCoupon.length) {
+        this.setData({
+          canuse: chooseCoupon[0].customerId,
+          coupon: chooseCoupon[0].id,
+          discountAmount: chooseCoupon[0].discountAmount
+        })
+       }
+     }
      console.log(res.data.couponList)
    })
   },
