@@ -43,7 +43,7 @@ Page({
       console.log(res.data.bills)
       if (res.data.bills) {
         res.data.bills.forEach((item, index) => {
-          item.billFee = -item.billFee
+          item.billFee = item.billFee == 0 ? item.billFee : -item.billFee
         })
       }
        this.setData({

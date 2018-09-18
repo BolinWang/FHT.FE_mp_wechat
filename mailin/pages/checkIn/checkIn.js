@@ -31,7 +31,7 @@ Page({
       orderDetail: JSON.parse(options.detail) || '',
       userInfo: userInfo || ''
     })
-   
+   console.log(this.data.orderDetail)
     wx.getStorage({
       key: 'MLZFUSERNAME',
       success: (res) => {

@@ -47,7 +47,6 @@ Page({
     });
   },
   tabChoose(e){   //点击选择
-    
     this.setData({
       activeTab: e.target.dataset.current
     })

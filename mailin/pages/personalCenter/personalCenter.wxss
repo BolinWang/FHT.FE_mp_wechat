@@ -49,7 +49,6 @@
 .crop{
    height:172rpx;
    width:172rpx;
-   background:#ffffff;
    border-radius: 100%;
    box-sizing: border-box;
    border:4rpx solid #fff;

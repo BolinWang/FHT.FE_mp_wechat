@@ -70,7 +70,7 @@ function showAdd(str){
   return text
 }
 function showCard(str){
-  var str2 = ['身份证','护照','港澳通行证','台湾通行证']
+  var str2 = ['身份证', '身份证', '身份证','身份证']
   return str2[str+1]
 }
 // function timeParse(item){

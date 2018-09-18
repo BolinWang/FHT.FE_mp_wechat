@@ -12,13 +12,13 @@
          订单信息
        </view>
        <zan-cell title="租金">
-         <view class="cell-box">{{orderDetail.rentFee}}</view>
+         <view class="cell-box">{{orderDetail.rentTypes[index].rentPrice}}</view>
        </zan-cell>
        <zan-cell title='押金'>
-         <view class="cell-box">{{orderDetail.depositFee}}</view>
+         <view class="cell-box">{{orderDetail.rentTypes[index].depositPrice}}</view>
        </zan-cell>
        <zan-cell title='服务费'>
-         <view class="cell-box">{{orderDetail.serviceCharge}}</view>
+         <view class="cell-box">{{orderDetail.rentTypes[index].serviceChargePrice}}</view>
        </zan-cell>
       <zan-cell title="租凭类型" is-link>
          <picker class="cell-box" bindchange="bindPickerChange" value="{{index}}" range="{{orderDetail.rentTypes}}" range-key="name">
