@@ -38,7 +38,7 @@ Page({
   },
   go(){
     if (!this.data.coupon) {
-      wx.navigateTo({
+      wx.redirectTo({
         url: `/pages/payment/payment?billNo=${this.data.orderBillNo}&money=${this.data.money}`,
       })
       return
@@ -52,7 +52,7 @@ Page({
       }
     }).then(res => {
       console.log(res)
-      wx.navigateTo({
+      wx.redirectTo({
         url: `/pages/payment/payment?billNo=${this.data.orderBillNo}&money=${res.data.billActualFee}&couponReceiveId=${this.data.coupon}&discountAmount=${this.data.discountAmount}`,
       })
     })
