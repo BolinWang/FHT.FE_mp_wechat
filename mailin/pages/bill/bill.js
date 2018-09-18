@@ -41,8 +41,13 @@ Page({
       }
     }).then(res => {
       console.log(res.data.bills)
+      if (res.data.bills) {
+        res.data.bills.forEach((item, index) => {
+          item.billFee = -item.billFee
+        })
+      }
        this.setData({
-         billList:res.data.bills,
+         billList: res.data.bills,
          showPullDown: true
        })
     })
