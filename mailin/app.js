@@ -1,7 +1,7 @@
 //app.js
 const Ajax = require('utils/api.js')
 App({
-  onShow: function () {
+  onLaunch: function () {
     // 启动的时候可以在这里判断登录状态
     this.globalData.sessionId = wx.getStorageSync('sessionId') || null
     this.globalData.openId = wx.getStorageSync('openId') || null
@@ -29,6 +29,7 @@ App({
         }
       });
     }
+    console.log("1234")
     //判断是否是第一次进来
     if (this.globalData.hasPassword === 'false') {
       wx.reLaunch({  //设置密码
@@ -40,9 +41,9 @@ App({
         url: '/pages/login/login'
       })
     } else {
-      wx.reLaunch({   //个人中心
-        url: '/pages/personalCenter/personalCenter'
-      })
+      // wx.reLaunch({   //个人中心
+      //   url: '/pages/personalCenter/personalCenter'
+      // })
     }
   },
   globalData: {

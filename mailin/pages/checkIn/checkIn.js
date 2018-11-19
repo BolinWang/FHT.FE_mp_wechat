@@ -55,9 +55,10 @@ Page({
       })
       return false
     }
-    let that = that
+    let that = this
+    let satrt = this.data.startDate.length > 10 ? this.data.startDate.substring(5) : this.data.startDate
     let params={
-      orderType: this.data.orderDetail.orderType,
+      orderType: 1,
       type: this.data.orderDetail.rentType,
       channelType: 2,
       contactName: this.data.orderDetail.contactName,
@@ -70,7 +71,7 @@ Page({
       roomId: this.data.orderDetail.roomId,
       rentTypeId: this.data.rentTypeId, //租凭类型
       referrerMobile: this.data.referrerMobile,//推荐人手机号码
-      startDate: this.data.startDate.substring(5),//入住日期
+      startDate: satrt,//入住日期
       monthNum: this.data.monthNum //租凭期限
   }
     console.log(params.startDate)
@@ -79,18 +80,23 @@ Page({
       method: 'createOrder',
       v: '3.2.0',
       params:params
-    }).then(res =>{
-      console.log(res)
+    }).then(response =>{
+      let contractNo = response.data.orderNo //传订单号也能处理
+      console.log(response)
       wx.showModal({
         title: '提示',
         content: '点击确认前去签约',
-        success:(res) => {
+        success: (res) => {
           if (res.confirm) {
-            wx.redirectTo({
-              url: `/pages/sign/sign?contractNo=${that.data.orderDetail.contractNo}&activeTab=${0}`
+            this.checkPdf(contractNo).then(res => {
+              wx.navigateTo({
+                url: `/pages/sign/sign?contractNo=${contractNo}&activeTab=${0}`
+              })
             })
+            // wx.redirectTo({
+            //   url: `/pages/sign/sign?contractNo=${contractNo}&activeTab=${0}`
+            // })
           } else if (res.cancel) {
-            console.log('用户点击取消')
             wx.redirectTo({
               url: '../personalCenter/personalCenter'
             })
@@ -98,6 +104,26 @@ Page({
         }
       })
     })
+  },
+  checkPdf(item) {  //校验合同
+    return new Promise((resolve, reject) => Ajax({
+      url: '/contract',
+      method: 'orderContract',
+      v: '3.2.0',
+      params: {
+        orderNo: item
+      }
+    }).then(res => {
+      if (!res.data.canSign) {
+        wx.showToast({
+          title: '合同正在生成中，请稍后重试',
+          icon: 'none',
+          duration: 2000
+        })
+      } else {
+        resolve(res)
+      }
+    }))
   },
   bindPickermonth(e){
     let index = e.detail.value;

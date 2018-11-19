@@ -366,6 +366,7 @@ Page({
         openId: null
       }
     }).then(res => {
+      console.log(res)
       if (this.data.activeTab === 0 && res.data.orderList) {  // 金融房源在待处理账单不显示
         res.data.orderList = res.data.orderList.filter(item => item.rentType
  !== 2)

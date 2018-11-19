@@ -10,7 +10,7 @@
       </view>
    </view>
    <view class="btn">
-    <button class="btn-tex" bindtap='submit'>完成并登陆</button>
+    <button class="btn-tex" bindtap='submit'>完成并登录</button>
    </view>
  </view>
 

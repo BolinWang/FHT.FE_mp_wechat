@@ -41,7 +41,7 @@ const fetch = (config) => {
       data: postData,
       method: 'POST',
       header: { 'content-type': 'application/json' },
-      success(res) {
+      success:(res) => {
         // setTimeout(function () {
         //   wx.hideLoading()
         // }, 1000)
@@ -68,9 +68,10 @@ const fetch = (config) => {
           reject(res.data.message)
         }
       },
-      fail: function (e) {
+      fail: (e) => {
         reject('网络出错')
       }
+      
     })
   });
   // return promise

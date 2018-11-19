@@ -59,7 +59,7 @@ Page({
       if(res.code==0){
         wx.showToast({
           icon: 'none',
-          title: '登陆成功',
+          title: '登录成功',
         })
         wx.setStorage({
           key: 'MLZFUSERNAME',
@@ -234,7 +234,11 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-  
+    if (wx.getStorageSync('sessionId')){
+      wx.reLaunch({   //个人中心
+        url: '/pages/personalCenter/personalCenter'
+      })
+     }
   },
 
   /**

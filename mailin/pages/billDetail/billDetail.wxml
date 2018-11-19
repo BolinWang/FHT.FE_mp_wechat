@@ -10,7 +10,7 @@
        </view>
      </view>
   </view>
-  <view class="bottom">
+  <view class="bottom" hidden='{{!billDescList}}'>
      <view class="bot-free">应付总额:  <text class='name-text-yel'>¥ {{billMoney}}</text></view>
      <view wx:if="{{payStype.desc[0].value}}" class='btn-go'>
        <navigator url="/pages/payment/payment?billNo={{billNo}}&source=2&money={{billMoney}}">立即支付</navigator>

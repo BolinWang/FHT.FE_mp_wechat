@@ -57,6 +57,7 @@
 .photo{
   height: 100%;
   width:100%;
+  transition: opacity 0.4s linear 0.4s;
 }
 .name{
   padding-top: 110rpx;
@@ -127,4 +128,8 @@
 .log-icon{
   height:60rpx;
   width:188rpx;
+}
+ 
+.Action {
+  opacity: 1;
 }

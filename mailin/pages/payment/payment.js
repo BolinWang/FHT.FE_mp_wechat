@@ -45,7 +45,8 @@ Page({
   onLoad: function (options) {
     this.setData({
       billNo: options.billNo,
-      money: options.money || null
+      money: options.money || null,
+      source: options.source || null
     })
     // console.log(typeof options.couponReceiveId)
     this.getcouponList()
@@ -86,7 +87,7 @@ Page({
         'paySign': res.data.sign,
         'success': function (response) {
           wx.redirectTo({
-            url: `/pages/paymentSucces/paymentSucces?money=${that.data.money}`,
+            url: `/pages/paymentSucces/paymentSucces?money=${that.data.money}&source=${that.data.source}`,
           })
         },
         'fail': function (response) {

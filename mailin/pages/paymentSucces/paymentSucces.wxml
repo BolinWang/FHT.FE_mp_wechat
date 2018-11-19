@@ -11,7 +11,8 @@
    <text>备注说明</text>
    <text class="text-r">微信支付</text>
   </view>
-  <view class="btn-go">
-    <navigator hover-class="none" url="/pages/bill/bill?activeTab=1" >完成</navigator>
+  <view class="btn-go" bindtap='goBtn'>
+    完成
+    <!-- <navigator hover-class="none" url="{{herfUrl}}" >完成</navigator> -->
   </view>
 </view>

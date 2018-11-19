@@ -66,7 +66,15 @@ Page({
   },
   //发送验证码
   sendCode() {
+   
     let that = this
+    if (!that.data.mobile) {
+      wx.showToast({
+        title: '手机号码不能为空，请输入手机号码',
+        icon: 'none'
+      })
+      return false
+    }
     Ajax({
       url: '/customer',
       method: 'sendCheckcode',

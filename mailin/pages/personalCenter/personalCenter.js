@@ -8,8 +8,9 @@ Page({
    * 页面的初始数据
    */
   data: {
-    avatarUrl: '../../images/Group.svg',
+    hrefavatarUrl: '../../images/Group.svg',
     sessionId: null,
+    vatarUrl:'',
     nickName: '',
     mobile: '',
     billCount: '', // 未处理账单数 
@@ -27,6 +28,10 @@ Page({
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function () {
+    wx.showLoading({
+      title: '加载中',
+      mask: true
+    });
     this.getPersonal()
     this.getOrderNum()
   },
@@ -50,7 +55,9 @@ Page({
         nickName: res.data.nickName ||'',
         mobile: passwordHidden(res.data.mobile),
       })
-    })   
+       wx.hideLoading()
+    })
+
   },
   // 获取订单 / 账单数目
   getOrderNum () {

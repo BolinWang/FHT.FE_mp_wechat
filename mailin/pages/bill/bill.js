@@ -40,8 +40,9 @@ Page({
         status: this.data.activeTab+1
       }
     }).then(res => {
-      console.log(res.data.bills)
-      if (res.data.bills) {
+      console.log(res)
+      if (res.data.bills && this.data.activeTab===1) {
+
         res.data.bills.forEach((item, index) => {
           item.billFee = item.billFee == 0 ? item.billFee : -item.billFee
         })
@@ -69,7 +70,6 @@ Page({
           clientWidth = res.windowWidth,
           rpxR = 750 / clientWidth;
         var calc = clientHeight * rpxR - 88;
-        console.log(calc)
         that.setData({
           winHeight: calc
         });

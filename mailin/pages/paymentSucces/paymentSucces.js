@@ -5,7 +5,9 @@ Page({
    * 页面的初始数据
    */
   data: {
-    money: ''
+    money: '',
+    source:"",
+    hrefUrl:''
   },
 
   /**
@@ -15,9 +17,16 @@ Page({
     console.log(options)
     this.setData({
       money: options.money || '',
+      source: options.source ||null
     })
   },
-
+  goBtn(){
+    let that =this
+    let herfUrl = this.data.source == 1 ? '/pages/order/Order?activeTab=1' : '/pages/bill/bill?activeTab=1'
+    wx.redirectTo({
+      url: herfUrl
+    })
+  },
   /**
    * 生命周期函数--监听页面初次渲染完成
    */

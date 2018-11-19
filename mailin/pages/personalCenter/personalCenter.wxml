@@ -4,9 +4,9 @@
   <view class="bck"></view>
   <view class="per-box">
     <view class="box-infor">
-      <view class="pho-box" wx:if="avatarUrl">
+      <view class="pho-box">
         <view class='crop'>
-          <image class="photo" src="{{avatarUrl}}"></image>
+          <image class="photo {{ avatarUrl?'Action':''}}" src="{{avatarUrl||hrefavatarUrl}}" ></image>
         </view>
       </view>
       <view class="out" bindtap='dropOut'>

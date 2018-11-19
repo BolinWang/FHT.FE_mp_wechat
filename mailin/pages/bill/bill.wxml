@@ -23,7 +23,7 @@
              <view class="item-icon">
                <image class="icon-bill" src="../../images/bill.svg"></image>
              </view>
-             <view class="item-center">
+             <view class="item-center" hidden='{{billDescList}}'>
                <view class="item-center-big">
                  <text class="item-name">{{itemBill.billName}}</text>
                  <text  class="money  {{itemBill.status == 2?'tabActive':''}}">{{itemBill.billFee}}</text>
@@ -57,7 +57,8 @@
                  <text class="money  {{item.status == 2?'tabActive':''}}">{{item.billFee}}</text>
                </view>
                <view class="item-little">
-                 <text class="item-time">{{item.createDate}}</text>
+                 <text class="item-time" wx:if='{{item.finishDate}}'>{{item.finishDate}}</text>
+                  <text class="item-time" wx:else>{{item.createDate}}</text>
                </view>
              </view>
            </navigator>

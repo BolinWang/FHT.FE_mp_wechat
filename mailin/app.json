@@ -1,9 +1,8 @@
 {
   "pages": [
-    "pages/lauchPage/lauchPage",
     "pages/login/login",
-    "pages/sign/sign",
     "pages/personalCenter/personalCenter",
+    "pages/sign/sign",
     "pages/bill/bill",
     "pages/contractList/contractList",
     "pages/order/Order",
@@ -18,7 +17,8 @@
     "pages/couponChoose/couponChoose",
     "pages/paymentSucces/paymentSucces",
     "pages/billDetailOver/billDetailOver",
-    "pages/checkIn/checkIn"
+    "pages/checkIn/checkIn",
+     "pages/lauchPage/lauchPage"
   ],
   "window": {
     "backgroundTextStyle": "light",
