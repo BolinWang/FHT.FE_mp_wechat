@@ -1,11 +1,13 @@
 {
-  "pages":[
+  "pages": [
+    "pages/personalCenter/personalCenter",
+    "pages/login/login",
     "pages/index/index"
   ],
-  "window":{
+  "window": {
     "backgroundTextStyle": "light",
-    "navigationBarBackgroundColor": "#FF9800",
-    "navigationBarTitleText": "复恒小程序",
-    "navigationBarTextStyle": "#fff"
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTitleText": " 小麦快租",
+    "navigationBarTextStyle": "black"
   }
 }
