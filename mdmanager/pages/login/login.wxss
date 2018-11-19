@@ -1,0 +1,113 @@
+/* pages/logi/login.wxss */
+.bcg{
+  height:260rpx;
+  padding:80rpx 80rpx;
+  line-height: 96rpx;
+  box-sizing: border-box;
+  display: flex;
+}
+.welcome-text{
+  flex:1;
+  padding-left: 52rpx;
+  font-size: 18px;
+}
+.box{
+  display: flex;
+  flex: 1;
+  flex-flow:column;
+}
+.logo-icon{
+   height:96rpx;
+   width:96rpx; 
+}
+.login-box{
+  width:100%;
+  display: flex;
+  justify-content: center;
+  height:100%; 
+  padding:0 48rpx;
+  box-sizing: border-box;
+}
+.inp-box{
+  padding:12rpx 50rpx 0 50rpx;
+}
+.inp-Item{
+  position: relative;
+  height:116rpx;
+  border-bottom: 2rpx solid #E5E5E5;
+  box-sizing: border-box;
+  padding-top:52rpx;
+  display: flex;
+  padding-bottom:20rpx;
+}
+.inp{
+  line-height:44rpx;
+  font-size: 32rpx;
+  flex:1;
+  color: #666666;
+  letter-spacing: -0.38px;
+  padding-right: 18px;
+}
+.inp-clear-icon {
+  position: absolute;
+  bottom: 20rpx;
+  right: 0;
+  z-index: 10;
+}
+.phcolor {
+  color: #cccccc;
+}
+.btn{
+  padding-top:60rpx;
+}
+.btn-tex{
+  border:0;
+  border-radius: 60rpx;
+  line-height: 78rpx;
+  background: #4680FF;
+  color: #ffffff;
+  font-size: 30rpx;
+  letter-spacing: -0.43px;
+}
+button[class="btn-tex"]::after {
+  border: 0;
+} 
+.forget{
+  padding-top:20rpx;
+  font-size: 24rpx;
+  color: #333333;
+  letter-spacing: -0.29px;
+  text-align: right;
+  text-decoration: underline;
+}
+.forget:hover{
+  background: #ffffff;
+}
+.des{
+  font-size: 12px;
+  color: #999999;
+  letter-spacing: -0.29px;
+  display: flex;
+  justify-content: center;
+  padding-top:20rpx;
+}
+.agreement{
+  color: #FF8C07;
+
+}
+.btn-v{
+  background: #ffffff;
+  font-size: 32rpx;
+  border:none;
+  color: #666666;
+  letter-spacing: -0.38px;
+  text-align: center;
+  line-height:44rpx;
+}
+button[class="btn-v"]::after {
+  border: 0;
+} 
+button[disabled]:not([type]) {
+background-color:#ffffff;
+
+}

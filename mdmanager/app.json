@@ -1,0 +1,17 @@
+{
+  "pages": [
+    "pages/login/login",
+    "pages/personalCenter/personalCenter",
+    "pages/bill/bill",
+    "pages/setPasword/setPasword",
+    "pages/forgetPassword/forgetPassword",
+    "pages/index/index",
+    "pages/lauchPage/lauchPage"
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTitleText": "麦滴管家",
+    "navigationBarTextStyle": "black"
+  }
+}

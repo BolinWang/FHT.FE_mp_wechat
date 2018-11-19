@@ -1,0 +1,55 @@
+<!--pages/bill/bill.wxml-->
+
+<view class="container">
+   <wxs module="validate" src="../../utils/validate.wxs"></wxs>
+    <scroll-view scroll-y="true" bindscrolltolower="bindDownLoad"  class="pending" style="height:{{winHeight}}rpx" bindscroll="scroll">
+       <!-- <view class="header" hidden='{{showPullDown}}'>
+           <view>刷新中……</view>
+        </view> -->
+      
+       <view class="order-list-container" wx:if='{{billList.length > 0}}'>
+        <view class="view-box"  wx:for="{{billList}}" wx:key="{{index}}" wx:for-item="item">
+          <!-- //" -->
+          <view class="title">
+            <text class="title-text">{{item.roomName}}</text>
+          </view>
+          <view class="item-box">
+            <view class="item" >
+              <view class='item-name'>{{item.billName}}</view>
+              <view class="item-text col-yel">¥{{item.billFee}}</view>
+            </view>
+            <view class="item" >
+              <view class='item-name'>租客</view>
+              <view class="item-text">{{item.customerName}}</view>
+            </view>
+            <view class="item">
+              <view class='item-name'>手机号码</view>
+              <view class="item-text">{{item.mobile}}</view>
+            </view>
+            <view class="item">
+              <view class='item-name'>最迟收款日</view>
+              <view class="item-text">{{validate.timeParse(item.deadlineDate)}}</view>
+            </view>
+            <view class="item">
+              <view class='item-name'>状态</view>
+              <view class="item-text" wx:if="{{item.overDays <= 0}}">尚未逾期</view>
+              <view class="item-text col-red" wx:else>已逾期{{item.overDays}}天</view>
+            </view>
+          </view>
+          <view class="box-bottom">
+            <view class='btn-bottom'>
+              <view class='btn-item col-blue' data-item='{{item.mobile}}'  bindtap='goTel'> 
+                <text class="bord-left">电话催租</text>
+              </view>
+              <view class='btn-item col-blue' bindtap='goTelMes' data-item='{{item.billId}}' wx:if="{{item.todayMsgTimes === 0}}">短信催组</view>
+              <view class='btn-item' wx:else>今日已催</view>
+            </view>
+          </view>
+        </view>
+      </view>
+       <view class="k-box" wx:else>
+         <image class="k-img" src="../../images/k-box.png"></image>
+         <view class="k-text">暂无数据</view>
+       </view>
+    </scroll-view >
+</view>

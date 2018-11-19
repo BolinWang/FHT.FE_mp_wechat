@@ -1,0 +1,27 @@
+
+<!--pages/login/login.wxml-->
+<view>
+  <view class="bcg">
+   <image class="logo-icon" src="../../images/mdLogo.jpg"></image>
+  <text class='welcome-text'>欢迎来到麦滴管家</text></view>
+  <view class="login-box">
+     <view class="box">
+        <view class="inp-box">
+            <view class="inp-Item">
+              <input type='number' placeholder-class="phcolor" class="inp" placeholder='请输入手机号' bindinput='getUsername' bindfocus="showClearIcon" bindblur="hideClearIcon" value="{{username}}" data-input-type="1"></input>
+              <icon class="inp-clear-icon" type="clear" size="14" data-input-type="1" bindtap="clearInput" wx:if="{{username.length > 0 && activeInput === '1'}}"/>
+            </view>
+            <view class="inp-Item">
+              <input type='password' value="{{password}}" placeholder-class="phcolor" class="inp" placeholder='请输入密码' maxlength='12' bindinput='getPassword' bindfocus="showClearIcon" bindblur="hideClearIcon" data-input-type="2"></input>
+              <icon class="inp-clear-icon" type="clear" size="14" data-input-type="2" bindtap="clearInput" wx:if="{{password.length > 0 && activeInput === '2'}}"/>
+            </view>
+            <view class="btn">
+              <button class="btn-tex" bindtap='goLogin'>登录</button>
+            </view>
+            <view class="text">
+              <navigator class="forget" url="/pages/forgetPassword/forgetPassword">忘记密码</navigator>
+            </view>
+        </view>
+     </view>
+  </view>
+</view>

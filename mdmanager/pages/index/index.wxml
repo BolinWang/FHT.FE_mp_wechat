@@ -1,0 +1,27 @@
+<!--pages/index/index.wxml-->
+<view class="container">
+  <zan-cell-group title-width="90">
+    <zan-cell title="复恒科技">
+      <i class="mainColor iconfont icon-yanzhengma" slot="icon"></i>
+    </zan-cell>
+    <zan-cell title="小程序webview" is-link url="/pages/webView/webView">
+      <i class="mainColor iconfont icon-hetongguanli" slot="icon"></i>
+    </zan-cell>
+    <zan-cell title="UI组件" label="youzan" value="vant-weapp">
+      <i class="iconfont icon-dianfei" slot="icon"></i>
+    </zan-cell>
+    <zan-cell title="表单">
+      <i class="mainColor iconfont icon-qianyue" slot="icon"></i>
+      <input slot="footer" type="digit" placeholder="带小数点的数字键盘"/>
+    </zan-cell>
+    <zan-cell title="开关">
+      <i class="mainColor iconfont icon-shuifei" slot="icon"></i>
+      <switch slot="footer" checked/>
+    </zan-cell>
+     <zan-cell title="签名" is-link url="/pages/sign/sign">
+      <i class="mainColor iconfont icon-hetongguanli" slot="icon"></i>
+    </zan-cell>
+  </zan-cell-group>
+  <image src="../images/htgl.svg"></image>
+</view>
+
