@@ -1,0 +1,51 @@
+function validaTime(str) {
+  var str2 = str.toString()
+  str2 = str2.substring(0, 4) + '.' + str2.substring(4, 6)+ '.' + str2.substring(6, 8)
+  return str2
+}
+function validaBtn(str) {  
+  var str2 = [{
+    value: 6,
+    key: '联系房东'
+  },]
+  
+  for(var i=0;i<str2.length;i++){
+    if (str2[i].value == str){
+      return str2[i].key
+     }
+  }
+  return ''
+}
+function orderType(val){
+  //1 - 预定，2 - 续租，3 - 换房, 4 - 预留；
+  var str2 = [{
+    value: 1,
+    key: '租房'
+  }, {
+    value: 2,
+    key: '租金'
+  }, {
+    value: 3,
+    key: '换房'
+  }, {
+    value: 4,
+    key: '定金'
+  }]
+  return str2[val-1].key
+}
+function overBtn(item) {  
+  var btntext = (item.orderStatus == 4 && '已取消') ||(item.orderStatus == 3 && item.orderType == 4)&&'办理入住' ||null
+  return btntext
+}
+function timeParse(item){
+
+  var time = getDate(item).toLocaleDateString();
+  return time
+}
+module.exports = {
+  validaTime: validaTime,
+  validaBtn: validaBtn,
+  orderType: orderType,
+  overBtn: overBtn,
+  timeParse: timeParse
+}
