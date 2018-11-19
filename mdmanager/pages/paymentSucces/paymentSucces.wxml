@@ -1,0 +1,18 @@
+<!--pages/paymentsucces/paymentSucces.wxml-->
+<view class="container">
+  <view class="icon-box">
+    <image class="icon-image" src="../../images/Shape.svg"></image>
+  </view>
+  <view class="text">支付成功</view>
+  <view class="money">
+    {{money}}
+  </view>
+  <view class="goDetail">
+   <text>备注说明</text>
+   <text class="text-r">微信支付</text>
+  </view>
+  <view class="btn-go" bindtap='goBtn'>
+    完成
+    <!-- <navigator hover-class="none" url="{{herfUrl}}" >完成</navigator> -->
+  </view>
+</view>
