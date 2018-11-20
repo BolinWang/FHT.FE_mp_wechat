@@ -3,54 +3,119 @@
   <view class="steps">
     <van-steps
     steps="{{ steps }}"
-    active="{{ active }}"
-  />
+    active="{{ active }}"/>
   </view>
   <view class="form">
     <van-cell-group>
      <van-field
-        value="{{ value }}"
+        id='estateName'
+        value="{{ etryHouseData.estateName }}"
         label="品牌公寓"
         placeholder="请输入品牌公寓"
         border="{{ true }}"
         bind:change="onChange"
         input-align="right"
       />
-      <van-cell title="房源地址" is-link />
-      <van-cell title="区域板块" is-link />
-      <van-field
-        value="{{ value }}"
-        label="楼幢号"
-        placeholder="请输入楼幢号"
-        border="{{ true }}"
-        bind:change="onChange"
-        input-align="right"
-      />
-      <van-field
-        value="{{ value }}"
-        label="所在楼层"
-        placeholder="请输入所在楼层"
-        border="{{ true }}"
-        bind:change="onChange"
-        input-align="right"
-      />
-      <van-field
-        value="{{ value }}"
-        label="楼层总数"
-        placeholder="请输入楼层总数"
-        border="{{ true }}"
-        bind:change="onChange"
-        input-align="right"
-      />
-      <van-field
-        value="{{ value }}"
-        label="房间号"
-        placeholder="请输入房间号"
-        border="{{ true }}"
-        bind:change="onChange"
-        input-align="right"
-      />
+      <van-cell title="房源地址" 
+      value='{{houseAdress}}'
+      is-link bind:click="addressShowHandel" />
+      <view class="bankuai">
+        <picker bindchange="bindPickerChange" range="{{areaBankuai.areaCity}}">
+         <van-cell title="区域板块" value="{{areaBankuai.areaCity[index]}}" is-link bind:click="" />
+        </picker>
+      </view>
+      <view wx:if="{{roomInputShow == true}}">
+        <van-field
+          id="buildingName"
+          value="{{ etryHouseData.buildingName }}"
+          label="楼幢名"
+          placeholder="请输入楼幢号"
+          border="{{ true }}"
+          bind:change="onChange"
+          input-align="right"
+        />
+        <van-field
+          id="floorName"
+          value="{{ etryHouseData.floorName }}"
+          label="所在楼层"
+          placeholder="请输入所在楼层"
+          border="{{ true }}"
+          bind:change="onChange"
+          input-align="right"
+        />
+        <van-field
+          id="floorAmount"
+          value="{{ etryHouseData.floorAmount }}"
+          label="楼层总数"
+          placeholder="请输入楼层总数"
+          border="{{ true }}"
+          bind:change="onChange"
+          input-align="right"
+        />
+        <van-field
+          id="roomNo"
+          value="{{ etryHouseData.roomNo }}"
+          label="房间号"
+          placeholder="请输入房间号"
+          border="{{ true }}"
+          bind:change="onChange"
+          input-align="right"
+        />
+      </view>
+       <view wx:elif="{{roomInputShow == false}}">
+           <van-cell title="楼幢门牌" value="{{etryHouseData.buildingName}}{{etryHouseData.floorName}}{{etryHouseData.roomNo}}" is-link bind:click="floorNumSet" />
+           <van-popup
+              custom-style="width:100%;height:100%;"
+              show="{{ roomSetShow }}"
+              position="right"
+              overlay="{{ true }}"
+              bind:close="floorNumClose">
+              <view wx:for="{{buildingInfo.buildingName}}" >  
+                <view class="roomSet" data-name="{{item}}" bindtap='getBuildingName'>
+                    {{item}}
+                </view>
+              </view>
+          </van-popup>
+          <van-popup
+              custom-style="width:100%;height:100%;"
+              show="{{unitCodeShow }}"
+              position="right"
+              overlay="{{ true }}"
+              bind:close="floorNumClose">
+              <view wx:for="{{buildingInfo.unitCode}}" >  
+                <view class="roomSet" data-name="{{item}}" bindtap='getUnitCode'>
+                    {{item}}
+                </view>
+              </view>
+          </van-popup>
+          <van-popup
+              custom-style="width:100%;height:100%;"
+              show="{{roomNoShow }}"
+              position="right"
+              overlay="{{ true }}"
+              bind:close="floorNumClose">
+              <view wx:for="{{buildingInfo.floor}}" 
+              wx:for-item="floorName"
+              wx:for-index="idx1">  
+                <view class="roomSet" bindtap='getFloor'>
+                  <view>{{idx1}}</view>
+                  {{floorName[index]}}
+                  <view wx:for="buildingInfo.floor[idx1]" 
+                  wx:for-item="floorNameNum"
+                  wx:for-index="idx2">
+                  <view
+                  data-name="{{buildingInfo.floor[idx1][idx2]}}"
+                  class="floorNameNum"
+                  bindtap='getFloorNameNum'>
+                      {{buildingInfo.floor[idx1][idx2]}}
+                  </view>
+                  </view>
+                </view>
+              </view>
+          </van-popup>
+       </view>
     </van-cell-group>  
+    <navigator class="buttonFixed" bindtap='nextTep' url="roomType/roomType"> 下一步 </navigator>
   </view>
 </view>
 

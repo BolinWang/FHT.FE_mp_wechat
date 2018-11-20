@@ -1,0 +1,20 @@
+/* common/selectCity/selectCity.wxss */
+.addresslist{
+  font-size:12px;
+}
+.citylistNum{
+  background:#f5f5f5;
+  height:80rpx;
+  line-height:80rpx;
+  padding-left:20rpx;
+  width:100%;
+  box-sizing: border-box;
+}
+.citylistName{
+  padding:20rpx;
+  width:100%;
+  display:flex;
+  justify-content: space-between;
+  box-sizing: border-box;
+  border-bottom:thin solid #f5f5f5; 
+}

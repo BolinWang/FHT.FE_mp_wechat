@@ -1,10 +1,13 @@
 {
   "pages": [
     "pages/entryHouse/entryHouse",
+    "common/apartment/apartment",
+    "common/selectCity/selectCity",
     "pages/personalCenter/personalCenter",
     "pages/login/login",
     "pages/index/index",
-    "pages/wanShanHouse/wanShanHouse"
+    "pages/wanShanHouse/wanShanHouse",
+    "pages/entryHouse/roomType/roomType"
   ],
   "window": {
     "backgroundTextStyle": "light",

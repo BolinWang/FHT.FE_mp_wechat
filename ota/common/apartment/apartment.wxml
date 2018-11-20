@@ -1,0 +1,16 @@
+<view>
+  <van-search value="{{ value }}" 
+  bind:change="serchChange" 
+  placeholder="请输入搜索关键词" />
+  <view wx:for="{{nameData}}"
+    wx:for-item="i">
+    <view class="serachlist" 
+      data-id='{{nameData[index].regionId}}' 
+      data-name = '{{nameData[index].buildingInfo}}'
+      data-index = '{{nameData[index].address}}'
+      bindtap='backEntryHouse'>
+      {{nameData[index].nameQu}}
+      <text class="serachText"> {{nameData[index].nameAdress}}</text>
+    </view>
+  </view>
+</view>

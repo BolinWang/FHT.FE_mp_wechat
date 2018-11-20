@@ -8,11 +8,12 @@
 		"es6": true,
 		"postcss": true,
 		"minified": true,
-		"newFeature": true
+		"newFeature": true,
+		"autoAudits": false
 	},
 	"compileType": "miniprogram",
 	"libVersion": "1.9.98",
-	"appid": "wx0d5ece1ceaecf54c",
+	"appid": "wx3f42ba44c05bab38",
 	"projectname": "wxDemo",
 	"condition": {
 		"search": {

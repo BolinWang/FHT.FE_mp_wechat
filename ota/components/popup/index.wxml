@@ -1,3 +1,4 @@
+
 <van-overlay
   wx:if="{{ inited && overlay }}"
   mask
