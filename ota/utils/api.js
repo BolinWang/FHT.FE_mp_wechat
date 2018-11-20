@@ -62,6 +62,4 @@ const fetch = (url, data, params = {}) => {
   return promise
 }
 
-module.exports = {
-  fetch: fetch
-}
+module.exports = fetch

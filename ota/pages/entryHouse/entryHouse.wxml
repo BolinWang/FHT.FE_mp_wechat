@@ -1,0 +1,56 @@
+<!--pages/entryHouse/entryHouse.wxml-->
+<view class="contains"> 
+  <view class="steps">
+    <van-steps
+    steps="{{ steps }}"
+    active="{{ active }}"
+  />
+  </view>
+  <view class="form">
+    <van-cell-group>
+     <van-field
+        value="{{ value }}"
+        label="品牌公寓"
+        placeholder="请输入品牌公寓"
+        border="{{ true }}"
+        bind:change="onChange"
+        input-align="right"
+      />
+      <van-cell title="房源地址" is-link />
+      <van-cell title="区域板块" is-link />
+      <van-field
+        value="{{ value }}"
+        label="楼幢号"
+        placeholder="请输入楼幢号"
+        border="{{ true }}"
+        bind:change="onChange"
+        input-align="right"
+      />
+      <van-field
+        value="{{ value }}"
+        label="所在楼层"
+        placeholder="请输入所在楼层"
+        border="{{ true }}"
+        bind:change="onChange"
+        input-align="right"
+      />
+      <van-field
+        value="{{ value }}"
+        label="楼层总数"
+        placeholder="请输入楼层总数"
+        border="{{ true }}"
+        bind:change="onChange"
+        input-align="right"
+      />
+      <van-field
+        value="{{ value }}"
+        label="房间号"
+        placeholder="请输入房间号"
+        border="{{ true }}"
+        bind:change="onChange"
+        input-align="right"
+      />
+    </van-cell-group>  
+  </view>
+</view>
+

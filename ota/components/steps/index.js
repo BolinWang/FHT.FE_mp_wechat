@@ -1,41 +1,40 @@
-import { create } from '../common/create';
-
-create({
+import { VantComponent } from '../common/component';
+import { GREEN } from '../common/color';
+VantComponent({
   props: {
     icon: String,
-    steps: {
-      type: Array,
-      observer: 'formatSteps'
-    },
-    active: {
-      type: Number,
-      observer: 'formatSteps'
-    },
+    steps: Array,
+    active: Number,
     direction: {
       type: String,
       value: 'horizontal'
     },
     activeColor: {
       type: String,
-      value: '#06bf04'
+      value: GREEN
     }
   },
-
-  attached() {
+  watch: {
+    steps: 'formatSteps',
+    active: 'formatSteps'
+  },
+  created: function created() {
     this.formatSteps();
   },
-
   methods: {
-    formatSteps() {
-      const { steps } = this.data;
-      steps.forEach((step, index) => {
-        step.status = this.getStatus(index);
-      });
-      this.setData({ steps });
-    },
+    formatSteps: function formatSteps() {
+      var _this = this;
 
-    getStatus(index) {
-      const { active } = this.data;
+      var steps = this.data.steps;
+      steps.forEach(function (step, index) {
+        step.status = _this.getStatus(index);
+      });
+      this.setData({
+        steps: steps
+      });
+    },
+    getStatus: function getStatus(index) {
+      var active = this.data.active;
 
       if (index < active) {
         return 'finish';

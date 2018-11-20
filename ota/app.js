@@ -1,6 +1,7 @@
 //app.js
 App({
   onLaunch: function () {
+    
     // 启动的时候可以在这里判断登录状态
   },
   globalData: {

@@ -1,4 +1,50 @@
 <!--pages/personalCenter/personalCenter.wxml-->
 <view class="container">
-adasd
+   <view class="bck"></view>
+   <view class="per-box">
+      <view class="box-infor">
+        <view class="pho-box">
+          <view class="crop">
+            <image class="photo Action" src="{{avatarUrl || hrefavatarUrl}}"></image>
+          </view>
+        </view>
+        <view class="out" bindtap='dropOut'>
+          <image class="out-icon" src="../../images/tuichu.svg"></image>
+        </view>
+        <view class="per-inf">
+          <view class="name">{{nickName}}</view>
+          <view class="phone">{{mobile}}</view>
+        </view>
+      </view>
+      <view class="tab-go">
+        <view class="goItem">
+          <view class="agreement" bindtap="showEnterHouse"> 
+          <image class="goIcon" src="../../images/qyrz.svg"></image>
+          <text class="goText">录入房源</text>
+        </view>
+        <van-popup 
+        position="bottom"
+        show="{{ enterHouseShow }}" 
+        bind:click-overlay="closeEnterHouse">
+          <view class="enterHouse">
+          <navigator class="enterHouseLink"  url="/pages/entryHouse/entryHouse?title=navigator">
+          分散式合租
+          </navigator>
+           <navigator class="enterHouseLink"  url="/pages/entryHouse/entryHouse?title=navigator2">
+          分散式整租
+          </navigator>
+          </view>
+          <view class="closeEnterHouse" bindtap='closeEnterHouse'>
+             关闭
+          </view>
+        </van-popup>
+        </view>
+        <view class="goItem">
+          <navigator class="agreement" url="/pages/wanShanHouse/wanShanHouse">
+          <image class="goIcon" src="../../images/qyrz.svg"></image>
+          <text class="goText">待完善房源</text>
+        </navigator>
+        </view>
+      </view>
+   </view>
 </view>

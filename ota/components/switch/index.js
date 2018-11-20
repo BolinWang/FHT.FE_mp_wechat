@@ -1,33 +1,46 @@
-import { create } from '../common/create';
-
-create({
+import { VantComponent } from '../common/component';
+VantComponent({
   field: true,
-
   classes: ['node-class'],
-
   props: {
+    checked: Boolean,
     loading: Boolean,
     disabled: Boolean,
-    checked: {
-      type: Boolean,
-      observer(value) {
-        this.setData({ value });
-      }
-    },
+    activeColor: String,
+    inactiveColor: String,
     size: {
       type: String,
       value: '30px'
     }
   },
-
-  attached() {
-    this.setData({ value: this.data.checked });
+  watch: {
+    checked: function checked(value) {
+      this.setData({
+        value: value
+      });
+    }
   },
-
+  computed: {
+    classes: function classes() {
+      return this.classNames('custom-class', 'van-switch', {
+        'van-switch--on': this.data.checked,
+        'van-switch--disabled': this.data.disabled
+      });
+    },
+    style: function style() {
+      var backgroundColor = this.data.checked ? this.data.activeColor : this.data.inactiveColor;
+      return "font-size: " + this.data.size + "; " + (backgroundColor ? "background-color: " + backgroundColor : '');
+    }
+  },
+  created: function created() {
+    this.setData({
+      value: this.data.checked
+    });
+  },
   methods: {
-    onClick() {
+    onClick: function onClick() {
       if (!this.data.disabled && !this.data.loading) {
-        const checked = !this.data.checked;
+        var checked = !this.data.checked;
         this.$emit('input', checked);
         this.$emit('change', checked);
       }

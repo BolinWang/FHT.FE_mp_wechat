@@ -1,0 +1,12 @@
+/* pages/entryHouse/entryHouse.wxss */
+.steps{
+  margin:30rpx 100rpx 0;
+}
+.form{
+  margin-top:20px;
+  font-size:12px;
+}
+.contains{
+  /* background:#ddd; */
+  border-top:2rpx solid #ddd
+}
