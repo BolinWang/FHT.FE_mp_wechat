@@ -1,4 +1,7 @@
 /* pages/entryHouse/entryHouse.wxss */
+.contains{
+  padding-bottom:90rpx;
+}
 .steps{
   margin:30rpx 100rpx 0;
 }
@@ -26,7 +29,7 @@
   text-align: center;
   border-radius:0;
   font-size:14px;
-  padding:20rpx;
+  padding:10rpx;
   color:#fff;
 }
 .citylistNum{
@@ -59,4 +62,13 @@
 }
 .floorNameNum{
   padding:0 40rpx;
+}
+.nextTepButton{
+  position: fixed;
+  left:0;
+  top:0;
+  display: flex;
+}
+.ntBtn{
+  display:block;
 }

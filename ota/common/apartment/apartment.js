@@ -28,7 +28,8 @@ Page({
           "floor": {
             "1层": ["101", "102"],
             "2层": ["201", "202"]
-          }
+          },
+          "floorAmount": 2
         }
       }],
     adressId:'' //请求参数的ID
@@ -61,9 +62,6 @@ Page({
       item.adressText = item.name.split(")")
       item.nameQu = item.adressText[0].substring(1)
       item.nameAdress = item.adressText[1]
-      if (!item.buildingInfo){
-        item.buildingInfo = {}
-      }
     })
     this.setData({
       nameData: this.data.nameData
@@ -71,15 +69,10 @@ Page({
   },
   backEntryHouse(e){
     let pages = getCurrentPages();//当前页面
-    console.log(pages)
     let prevPage = pages[pages.length - 3];//上一页面
-    console.log(e.currentTarget.dataset.id)
-    console.log(e.currentTarget.dataset.index)
-    console.log(e.currentTarget.dataset.name)
     prevPage.setData({//直接给上移页面赋值
-      addressName: e.currentTarget.dataset.id,
-      buildingInfo: e.currentTarget.dataset.name,
-      houseAdress: e.currentTarget.dataset.index
+      apartmentData: e.currentTarget.dataset.id,
+      houserAdress: e.currentTarget.dataset.name,
     })
     wx.navigateBack({//返回
       delta: 2

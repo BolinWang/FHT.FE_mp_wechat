@@ -1,1 +1,54 @@
 /* pages/entryHouse/roomType/roomType.wxss */
+.steps{
+  margin:30rpx 100rpx 0;
+}
+.roomDetails{
+  margin:20rpx 0;
+  display: flex;
+  justify-content: space-between;
+  text-align: center;
+  font-size:12px;
+  border-bottom:1px solid #ddd;
+  padding:30rpx;
+}
+.roomDetails .roomDStep{
+  flex:1;
+  border-right:1px solid #ddd;
+}
+.roomDetails .roomDStep:last-child{
+  border-right:none;
+}
+.roomStatus{
+  padding:20rpx;
+  display: flex;
+  justify-content: space-between;
+  font-size:12px;
+  border-bottom:1px solid #ddd
+}
+.roomText{
+  color:#ddd;
+}
+.pickerColumn{
+  text-align: center;
+}
+.pickercolumn view{
+  text-align: center;
+  font-size:12px;
+}
+.sureRoomDetail{
+  font-size:12px;padding-left:40rpx;
+  display: flex;
+  justify-content: flex-end;
+  padding:0 20rpx;
+}
+.sureRoomDetail view:first-child{
+  padding-left:57rpx;
+  flex:1;
+  text-align: center;
+}
+.sureRoomDetail view:last-child{
+  color:#4680FF;
+}
+.active{
+  color:#4680FF;
+  }

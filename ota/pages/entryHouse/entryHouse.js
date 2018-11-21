@@ -1,45 +1,52 @@
-// pages/entryHouse/entryHouse.js
+
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    title:'',
+    nextTepShow:false,//下一步
     roomSetShow:false,//房间号配置
     unitCodeShow:false,//单元
     roomNoShow:false,//房间号
-    houseAdress:'',//房源地址
     active:'0',
     roomInputShow:false, //是否展示房间输入
-    addressName:'sss',
-    buildingInfo:{},//房间信息
-    currentAdress:'',
-    areaBankuai:{  //区域板块
+    houserAdress:'',
+    apartmentData:{},//小区传过来的数据
+    areaBankuai:{  //区域板块数据
       index:0,
-      areaCity:['美国', '中国', '巴西', '日本'],
+      pickerDisabled:true,
+      areaCity: []
+    }, 
+    zoneName:'',
+    etryHouseData:{  
+      estateName: "", //品牌公寓
+      provinceId: "", //省ID
+      cityId: "", //市ID
+      regionId: "", //区Id
+      zoneId: "", //板块id
+      regionAddressId: "", //小区ID
+      houseDesc: "",  //公寓描述
+      buildingName: "",//楼幢名
+      unitCode: Number,//单元
+      roomNo: Number,//房间号
+      floorName: Number,//楼层
+      floorAmount: Number, //楼层总数
+      chamberCount: 1, // 室
+      boardCount: 1, //厅
+      toiletCount: 1, //wei
+      kitchenCount:1 // 厨
     },
-    etryHouseData:{
-      estateName:'', //品牌公寓
-      regionAddressId:'', //房源地址 传一个小区id就好
-      zoneId:'', //区域板块
-      floorName:'', //所在楼层
-      floorAmount:'', //楼层总数
-      roomNo:'' , //房间号
-      buildingName:'' //楼幢名
-    },
-    areaList:{
-      county_list: {
-        110101: '东城区',
-        110102: '西城区',
-        110105: '朝阳区',
-        110106: '丰台区',
-        120101: '和平区',
-        120102: '河东区',
-        120103: '河西区',
-        120104: '南开区',
-        120105: '河北区'
-      }
+    errTips:{
+      estateName: '请输入品牌公寓', //品牌公寓
+      buildingName: '请输入正确楼幢名',//楼幢名
+      floorAmount:'请输入正确楼层总数',
+      unitCode: '请输入正确单元号',//单元
+      roomNo: '请输入正确的房间号',//房间号
+      zoneId: '请选择区域板块', //板块id
+      houserAdress:'请选择房源地址', //房源地址
+      floorName:'所在楼层只能输入数字', //所在楼层
+      floorMan:'请选择楼幢门牌'
     },
     steps: [
       {
@@ -59,6 +66,14 @@ Page({
       etryHouseData: this.data.etryHouseData
     })
     console.log(this.data.etryHouseData)
+  },
+  //校验number
+  checkNumber(value){
+    if (!/^[0-9]*$/.test(value)){
+      return true
+    }else{
+      return false
+    }
   },
   /**
    * 生命周期函数--监听页面加载
@@ -89,10 +104,28 @@ Page({
   },
   //区域板块选择
   bindPickerChange: function (e) {
-    console.log('picker发送选择改变，携带值为', e.detail.value)
+    console.log('picker发送选择改变，携带值为', e.detail)
+    this.data.etryHouseData.zoneId = e.detail.value
     this.setData({
-      index: e.detail.value
+      'etryHouseData.zoneId': this.data.areaBankuai.areaCity[e.detail.value].id,
+      zoneName: this.data.areaBankuai.areaCity[e.detail.value].name
     })
+  },
+  pickerChangeShow(){
+    if (this.data.areaBankuai.areaCity.length === 0) {
+      this.setData({
+        'areaBankuai.pickerDisabled':true
+      })
+      wx.showToast({
+        title: '请先选择房源地址',
+        icon: 'none',
+        duration: 2000
+      })
+    }else{
+      this.setData({
+        'areaBankuai.pickerDisabled': false
+      })
+    }
   },
   //楼幢选择
   getBuildingName(e){
@@ -111,7 +144,7 @@ Page({
   getUnitCode(e){
     console.log("buildingName", e.currentTarget.dataset.name)
     this.setData({
-      'etryHouseData.floorName': e.currentTarget.dataset.name
+      'etryHouseData.unitCode': e.currentTarget.dataset.name
     })
     if (e.currentTarget.dataset.name) {
       this.setData({
@@ -124,7 +157,8 @@ Page({
   getFloorNameNum(e){
     console.log('',e.currentTarget.dataset.name)
     this.setData({
-      'etryHouseData.roomNo': e.currentTarget.dataset.name
+      'etryHouseData.roomNo': e.currentTarget.dataset.name,
+      'etryHouseData.floorName': e.currentTarget.dataset.name.substring(0,1) + '层'
     })
     if (e.currentTarget.dataset.name) {
       this.setData({
@@ -132,21 +166,129 @@ Page({
       })
     }
   },
+  //下一步
+  nextTep(e){   
+    if (this.data.etryHouseData.estateName === ''){
+      wx.showToast({
+        title: this.data.errTips.estateName,
+        icon: 'none',
+        duration: 2000
+      })
+    } else if (this.data.houserAdress === ''){
+      wx.showToast({
+        title: this.data.errTips.houserAdress,
+        icon: 'none',
+        duration: 2000
+      })
+    } else if (this.data.etryHouseData.zoneId === ''){
+      wx.showToast({
+        title: this.data.errTips.zoneId,
+        icon: 'none',
+        duration: 2000
+      })
+    } else if (this.data.etryHouseData.buildingName === '' || this.checkNumber(this.data.etryHouseData.buildingName)) {
+      wx.showToast({
+        title: this.data.errTips.buildingName,
+        icon: 'none',
+        duration: 2000
+      })
+    }else if (this.data.etryHouseData.floorAmount === '' || this.checkNumber(this.data.etryHouseData.floorAmount)) {
+      wx.showToast({
+        title: this.data.errTips.floorAmount,
+        icon: 'none',
+        duration: 2000
+      })
+    } else if (this.data.etryHouseData.floorName === '' || this.checkNumber (this.data.etryHouseData.floorName)) {
+      wx.showToast({
+        title: this.data.errTips.floorName,
+        icon: 'none',
+        duration: 2000
+      })
+    } else if (this.data.etryHouseData.roomNo === '' || this.checkNumber(this.data.etryHouseData.roomNo)) {
+      wx.showToast({
+        title: this.data.errTips.roomNo,
+        icon: 'none',
+        duration: 2000
+      })
+    } else if (this.data.etryHouseData.floorName >this.data.etryHouseData.floorAmount){
+      wx.showToast({
+        title: '所在楼层不能大于楼层总数',
+        icon: 'none',
+        duration: 2000
+      })
+    } else{
+      wx.navigateTo({
+        url: 'roomType/roomType',
+      })
+    }
+    
+console.log()
+    // this.setData({
+    //   nextTepShow:true,
+    //   active: 1
+    // })
+  },
   //页面显示的时候：
   onShow(){
     let that = this
+    console.log('从小区那传过来的数据', that.data.apartmentData)
     this.setData({
-      'etryHouseData.regionAddressId': that.data.addressName
+      'etryHouseData.buildingName':'',
+      'etryHouseData.unitCode':'',
+      'etryHouseData.roomNo':'',
+      'etryHouseData.floorAmount':'',
+      'etryHouseData.floorName':'',
+      'etryHouseData.zoneId':'',
+      'areaBankuai.areaCity':[],
+      zoneName:''
     })
-    console.log('从小区那传过来的数据', that.data.buildingInfo)
-    if (JSON.stringify(that.data.buildingInfo) == "{}"){
+    //判断是显示输入 还是显示选择
+    if (!that.data.apartmentData.buildingInfo){
       this.setData({
         roomInputShow:true
       })
     }else{
       this.setData({
-        roomInputShow: false
+        roomInputShow: false,
+        'etryHouseData.regionAddressId': that.data.apartmentData.regionId  //区id
       })
+    }
+    if (!!that.data.apartmentData.buildingInfo) { //获取楼层总数
+      this.setData({
+        'etryHouseData.floorAmount': that.data.apartmentData.floorAmount
+      })
+    }
+    // 获取板块数据
+    if (!!that.data.apartmentData.regionId) {  //regionId 区id不为空
+    // 房源地址赋值
+    this.setData({
+      houserAdress: that.data.houserAdress,
+      'etryHouseData.provinceId': that.data.apartmentData.provinceId, //省ID
+      'etryHouseData.cityId': that.data.apartmentData.cityId, //市ID
+      'etryHouseData.regionId': that.data.apartmentData.regionId, //区Id
+    })
+    let data = {
+      "list": [{
+        "zoneId": 5,
+        "zoneName": "板块1"
+      }, {
+        "zoneId": 6,
+        "zoneName": "板块2"
+      }]
+    }
+    // fetch('/queryZoneListByAreaId',{
+    //   params: {
+    //     'regionId': this.data.etryHouseData.regionId //要传区ID
+    //   }
+    // }).then((res)=>{
+        data.list.map((item)=>{
+          this.data.areaBankuai.areaCity.push(JSON.parse(JSON.stringify(item).replace('zoneId', 'id').replace('zoneName', 'name')))
+        })
+        this.setData({
+          'areaBankuai.areaCity': this.data.areaBankuai.areaCity,
+          'areaBankuai.pickerDisabled': false
+        })
+    // })
     }
   }
 })

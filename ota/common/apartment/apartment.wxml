@@ -5,9 +5,8 @@
   <view wx:for="{{nameData}}"
     wx:for-item="i">
     <view class="serachlist" 
-      data-id='{{nameData[index].regionId}}' 
-      data-name = '{{nameData[index].buildingInfo}}'
-      data-index = '{{nameData[index].address}}'
+      data-id='{{nameData[index]}}' 
+      data-name='{{nameData[index].nameAdress}}' 
       bindtap='backEntryHouse'>
       {{nameData[index].nameQu}}
       <text class="serachText"> {{nameData[index].nameAdress}}</text>

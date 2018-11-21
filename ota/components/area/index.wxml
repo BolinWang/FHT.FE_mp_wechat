@@ -8,7 +8,6 @@
   <view wx:if="{{ loading }}" class="van-picker__loading">
     <van-loading color="#1989fa"/>
   </view>
-
   <picker-view
     indicator-style="height: {{ itemHeight }}px;"
     style="width: 100%; height: {{ itemHeight * visibleItemCount + 'px' }}"

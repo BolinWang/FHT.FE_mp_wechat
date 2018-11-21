@@ -1,66 +1,115 @@
 // pages/entryHouse/roomType/roomType.js
 Page({
-
   /**
    * 页面的初始数据
    */
   data: {
-
+    active: 1,
+    checked:false,
+    pickerColumn:'',
+    popupShow:false,
+    chamberCountShow:false,//室
+    roomDataShow:false, //
+    currentDataset:'',
+    currentDatasetName:'',
+    boardCountShow: false,//厅
+    kitchenCountShow: false,//厨
+    toiletCountShow: false,//卫
+    dataArray:[
+      ['1', '2', '3', '4', '5', '6', '7', '8','9'],  //室
+      ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9'],// 厅
+      ],
+    steps: [
+      {
+        // text: '步骤一',
+        desc: '编辑地址'
+      },
+      {
+        // text: '步骤二',
+        desc: '编辑户型'
+      }
+    ],
+     etryHouseData:{  
+      estateName: "", //品牌公寓
+      provinceId: "", //省ID
+      cityId: "", //市ID
+      regionId: "", //区Id
+      zoneId: "", //板块id
+      regionAddressId: "", //小区ID
+      houseDesc: "",  //公寓描述
+      buildingName: "",//楼幢名
+      unitCode: Number,//单元
+      roomNo: Number,//房间号
+      floorName: Number,//楼层
+      floorAmount: Number, //楼层总数
+      chamberCount: 1, // 室
+      boardCount: 0, //厅
+      toiletCount: 0, //wei
+      kitchenCount:0 // 厨
+    },
   },
-
-  /**
-   * 生命周期函数--监听页面加载
-   */
-  onLoad: function (options) {
-
+  //室厅厨卫生点击事件
+  chamberCountClick(e){
+    this.setData({
+      popupShow:true,
+      chamberCountShow: true,//室
+      roomDataShow: false,
+      currentDataset: e.currentTarget.dataset.name
+    })
   },
+  roomCountClick(e){
+    console.log(e.currentTarget.dataset.name)
+    this.setData({
+      popupShow: true,
+      chamberCountShow: false,
+      boardCountShow: false,//厅
+      kitchenCountShow: false,//厨
+      toiletCountShow: false,//卫
+      roomDataShow: true,
+      currentDataset: e.currentTarget.dataset.name
+    })
+    if (e.currentTarget.dataset.name === 'boardCount'){
+        this.setData({
+          boardCountShow: true,//厅
+          kitchenCountShow: false,//厨
+          toiletCountShow: false,//卫
+        })
+    } else if (e.currentTarget.dataset.name === 'toiletCount'){
+      this.setData({
+        boardCountShow: false,//厅
+        kitchenCountShow: false,//厨
+        toiletCountShow: true,//卫
+      })
 
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady: function () {
-
+    } else if (e.currentTarget.dataset.name === 'kitchenCount'){
+      this.setData({
+        boardCountShow: false,//厅
+        kitchenCountShow: true,//厨
+        toiletCountShow: false,//卫
+      })
+    }
   },
-
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow: function () {
-
+  //点击选项
+  pickerBindChange(e){
+    this.data.etryHouseData[this.data.currentDataset] = parseInt(e.detail.value)+1
+    this.setData({
+      etryHouseData: this.data.etryHouseData
+    })
   },
-
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide: function () {
-
+  //点击确定
+  sureClick(){
+    this.setData({
+      popupShow: false,
+      chamberCountShow: false,//室
+      boardCountShow: false,//厅
+      kitchenCountShow: false,//厨
+      toiletCountShow: false,//卫
+    })
   },
-
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload: function () {
-
-  },
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh: function () {
-
-  },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom: function () {
-
-  },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function () {
-
+  //changedata
+  onChange({detail}){
+    this.setData({
+      checked:detail
+    })
   }
 })
