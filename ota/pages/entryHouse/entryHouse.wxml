@@ -3,6 +3,7 @@
   <view class="steps">
     <van-steps
     steps="{{ steps }}"
+    active-color="#4680FF"
     active="{{ active }}"/>
   </view>
   <form bindsubmit="formSubmit">
@@ -65,7 +66,7 @@
         <van-field
           id="roomNo"
           value="{{ etryHouseData.roomNo }}"
-          label="房间号"
+          label="房间号(号)"
           placeholder="请输入房间号"
           border="{{ true }}"
           type="number"
@@ -127,7 +128,9 @@
           </van-popup>
        </view>
     </van-cell-group>  
-    <button class="buttonFixed" bindtap='nextTep'> 下一步 </button>
+    <view class="bottomBtn">
+        <button class="buttonFixed" bindtap='nextTep'> 下一步 </button>
+     </view>
   </view>
   <view wx:if="{{nextTepShow === true}}">
     <view class="nextTepButton">

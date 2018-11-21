@@ -81,5 +81,13 @@
     <van-switch checked="{{ checked }}" bind:change="onChange" size="50rpx" />
     </view>
   </view>
+  <view class="bottomBtn">
+    <view>
+        继续录入
+    </view>
+    <view>
+        保存并完善
+    </view>
+  </view>
 </view>
 

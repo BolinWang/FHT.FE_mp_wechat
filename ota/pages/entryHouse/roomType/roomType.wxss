@@ -52,3 +52,29 @@
 .active{
   color:#4680FF;
   }
+.bottomBtn{
+  display: flex;
+  justify-content:space-around;
+  align-items: center;
+  position: fixed;
+  bottom:0;
+  left:0;
+  height:74px;
+  width:100%;
+  box-shadow: 1px 0px 3px #ddd;
+}
+.bottomBtn view{
+    padding:20rpx;
+    width:40%;
+    border-radius:4px;
+    font-size:14px;
+    text-align: center;
+}
+.bottomBtn view:first-child{
+  border:thin solid #99A9BF;
+  color:#99A9BF;
+}
+.bottomBtn view:last-child{
+    background:#4680FF;
+    color:#fff;
+}

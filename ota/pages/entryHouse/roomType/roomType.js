@@ -36,17 +36,25 @@ Page({
       regionId: "", //区Id
       zoneId: "", //板块id
       regionAddressId: "", //小区ID
-      houseDesc: "",  //公寓描述
       buildingName: "",//楼幢名
-      unitCode: Number,//单元
-      roomNo: Number,//房间号
-      floorName: Number,//楼层
-      floorAmount: Number, //楼层总数
+      unitCode: '',//单元
+      roomNo: '',//房间号
+      floorName: '',//楼层
+      floorAmount: '', //楼层总数
       chamberCount: 1, // 室
       boardCount: 0, //厅
       toiletCount: 0, //wei
       kitchenCount:0 // 厨
     },
+  },
+  onLoad(params){
+    //上一步传过来的参数
+    let etryHouseData = JSON.parse(params.etryHouseData)
+    console.log('adfa', etryHouseData)
+    this.setData({
+      etryHouseData: etryHouseData
+    })
+    console.log(this.data.etryHouseData)
   },
   //室厅厨卫生点击事件
   chamberCountClick(e){

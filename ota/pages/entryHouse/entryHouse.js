@@ -1,6 +1,5 @@
 
 Page({
-
   /**
    * 页面的初始数据
    */
@@ -26,16 +25,15 @@ Page({
       regionId: "", //区Id
       zoneId: "", //板块id
       regionAddressId: "", //小区ID
-      houseDesc: "",  //公寓描述
       buildingName: "",//楼幢名
-      unitCode: Number,//单元
-      roomNo: Number,//房间号
-      floorName: Number,//楼层
-      floorAmount: Number, //楼层总数
+      unitCode: '',//单元
+      roomNo: '',//房间号
+      floorName: '',//楼层
+      floorAmount: '', //楼层总数
       chamberCount: 1, // 室
-      boardCount: 1, //厅
-      toiletCount: 1, //wei
-      kitchenCount:1 // 厨
+      boardCount: 0, //厅
+      toiletCount: 0, //wei
+      kitchenCount:0 // 厨
     },
     errTips:{
       estateName: '请输入品牌公寓', //品牌公寓
@@ -158,7 +156,7 @@ Page({
     console.log('',e.currentTarget.dataset.name)
     this.setData({
       'etryHouseData.roomNo': e.currentTarget.dataset.name,
-      'etryHouseData.floorName': e.currentTarget.dataset.name.substring(0,1) + '层'
+      'etryHouseData.floorName': e.currentTarget.dataset.name.substring(0,1)
     })
     if (e.currentTarget.dataset.name) {
       this.setData({
@@ -186,7 +184,7 @@ Page({
         icon: 'none',
         duration: 2000
       })
-    } else if (this.data.etryHouseData.buildingName === '' || this.checkNumber(this.data.etryHouseData.buildingName)) {
+    } else if (this.data.etryHouseData.buildingName === '') {
       wx.showToast({
         title: this.data.errTips.buildingName,
         icon: 'none',
@@ -217,8 +215,9 @@ Page({
         duration: 2000
       })
     } else{
+      let forData = JSON.stringify(this.data.etryHouseData)
       wx.navigateTo({
-        url: 'roomType/roomType',
+        url: 'roomType/roomType?etryHouseData='+ forData,
       })
     }
     
@@ -227,6 +226,9 @@ console.log()
     //   nextTepShow:true,
     //   active: 1
     // })
+  },
+  onLoad(){
+
   },
   //页面显示的时候：
   onShow(){
@@ -255,7 +257,7 @@ console.log()
     }
     if (!!that.data.apartmentData.buildingInfo) { //获取楼层总数
       this.setData({
-        'etryHouseData.floorAmount': that.data.apartmentData.floorAmount
+        'etryHouseData.floorAmount': that.data.apartmentData.buildingInfo.floorAmount
       })
     }
     // 获取板块数据
@@ -274,7 +276,10 @@ console.log()
       }, {
         "zoneId": 6,
         "zoneName": "板块2"
-      }]
+        }, {
+          "zoneId": 7,
+          "zoneName": "板块3"
+        }]
     }
     // fetch('/queryZoneListByAreaId',{
     //   params: {
