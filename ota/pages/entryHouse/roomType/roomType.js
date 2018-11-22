@@ -1,4 +1,5 @@
 // pages/entryHouse/roomType/roomType.js
+const fetch = require('../../../utils/api.js')
 Page({
   /**
    * 页面的初始数据
@@ -49,12 +50,12 @@ Page({
   },
   onLoad(params){
     //上一步传过来的参数
-    let etryHouseData = JSON.parse(params.etryHouseData)
-    console.log('adfa', etryHouseData)
-    this.setData({
-      etryHouseData: etryHouseData
-    })
-    console.log(this.data.etryHouseData)
+    if (!!params.etryHouseData){
+      let etryHouseData = JSON.parse(params.etryHouseData)
+      this.setData({
+        etryHouseData: etryHouseData
+      })
+    } 
   },
   //室厅厨卫生点击事件
   chamberCountClick(e){
@@ -116,8 +117,30 @@ Page({
   },
   //changedata
   onChange({detail}){
+    console.log(detail)
     this.setData({
       checked:detail
     })
+  },
+  //提交数据
+  submitEntry(e){
+    let datasetName = e.currentTarget.dataset.name
+    console.log(this.data.etryHouseData)
+    // fetch('/presaveRoom',{
+    //   method: 'savePresaveRoom', //保存未完善房源
+    //   params: {
+    //     hostingInfo:JSON.stringify(this.data.etryHouseData)
+    //   }
+    // }).then((res)=>{
+      if (datasetName === 'continueEntryHouse'){  //继续录入
+           wx.redirectTo({
+             url: '../entryHouse',
+           })
+      } else if (datasetName === 'saveEntryHouse'){
+          wx.redirectTo({
+            url: '../wanShanHouse',  // 跳转到完善房源页面
+          })
+      }
+  //   })
   }
 })

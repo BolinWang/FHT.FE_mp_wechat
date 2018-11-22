@@ -1,0 +1,27 @@
+<!--pages/roomSet/roomSet.wxml-->
+<view class="steps">
+    <van-steps
+    steps="{{ steps }}"
+    active-color="#4680FF"
+    active="{{ active }}"/>
+  </view>
+<view>
+  <room-hosting id="room_hosting" wx:if="{{nextTepShow === true}}"></room-hosting>
+  <room-price wx:if="{{nextTepShow === false}}" bindcustomevent="onMyEvent">
+  </room-price>
+  <view class="bottomBtn">
+  <button class="buttonFixed"
+  wx:if="{{nextTepFirst === true}}
+  bindtap="nextTepF"
+  > 下一步 </button>
+   <button class="buttonFixed"
+  wx:if="{{nextTepSecond === true}}
+  bindtap="nextTepS"
+  > 下一步 </button>
+  <button class="buttonFixed" 
+  bindtap='submitData'
+  wx:if="{{sureBtnShow === true}}
+  > 确定 </button>
+</view>
+</view>
+

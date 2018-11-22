@@ -1,0 +1,4 @@
+/* pages/roomSet/roomSet.wxss */
+.steps{
+  margin:20rpx 100rpx 0;
+}

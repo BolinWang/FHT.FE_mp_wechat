@@ -50,29 +50,32 @@ Page({
     wx.redirectTo({
       url: '../personalCenter/personalCenter'
     })
-    // fetch('/customer', {
-    //   method: 'loginByPassword',
-    //   params: {
-    //     username: that.data.username,
-    //     password: SHA2(that.data.password)
-    //   }
-    // }).then(res => {
-    //   if (res.code == 0) {
-    //     wx.showToast({
-    //       icon: 'none',
-    //       title: '登录成功',
-    //     })
-    //     wx.setStorage({
-    //       key: 'MLZFUSERNAME',
-    //       data: that.data.username,
-    //     })
-    //     wx.setStorageSync('OTA_sessionId', res.data.sessionId)
-    //     app.globalData.sessionId = res.data.sessionId
-    //     wx.redirectTo({
-    //       url: '../personalCenter/personalCenter'
-    //     })
-    //   }
-    // })
+    fetch('/customer',
+     {
+      method: 'loginByPassword',
+      params: {
+        username: that.data.username,
+        password: SHA2(that.data.password)
+      }
+    },{
+      method:'GET'
+    }).then(res => {
+      if (res.code == 0) {
+        wx.showToast({
+          icon: 'none',
+          title: '登录成功',
+        })
+        wx.setStorage({
+          key: 'MLZFUSERNAME',
+          data: that.data.username,
+        })
+        wx.setStorageSync('OTA_sessionId', res.data.sessionId)
+        app.globalData.sessionId = res.data.sessionId
+        wx.redirectTo({
+          url: '../personalCenter/personalCenter'
+        })
+      }
+    })
   },
   // 获取手机号码
   getMobile(e) {

@@ -79,3 +79,34 @@
   clear: both;
   height: 0;
 }
+.bottomBtn{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  bottom:0;
+  left:0;
+  height:148rpx;
+  width:100%;
+  box-shadow: 1px 0px 3px #ddd;
+  backgound:#fff;
+}
+.buttonFixed{
+  display: block;
+  width:80%;
+  height:88rpx;
+  line-height: 88rpx;
+  padding:0;
+  background:#4680FF;
+  text-align: center;
+  font-size:14px;
+  color:#fff;
+  border-radius:5px;
+}
+.pickerColumn{
+  text-align: center;
+}
+.pickercolumn view{
+  text-align: center;
+  font-size:12px;
+}

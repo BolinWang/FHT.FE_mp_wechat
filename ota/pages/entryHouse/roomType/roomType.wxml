@@ -6,7 +6,7 @@
     active-color="#4680FF"
     active="{{ active }}"/>
   </view>
-<view class="roomDetails">
+<view class="roomDetails roomBtm">
     <view class="roomDStep {{chamberCountShow==true?'active':''}}" bindtap='chamberCountClick' data-name="chamberCount">
        <view>卧室</view>
        <view>{{etryHouseData.chamberCount}}</view>
@@ -74,7 +74,7 @@
     已出租
     </view>
     <view class="roomText">
-      已经出租请打开开关
+      已出租请打开开关
     </view> 
     <view>
     <!-- <switch bindchange="changeRoomStatus" class="changeIcon"/> -->
@@ -82,10 +82,10 @@
     </view>
   </view>
   <view class="bottomBtn">
-    <view>
+    <view data-name="continueEntryHouse" bindtap='submitEntry'>
         继续录入
     </view>
-    <view>
+    <view data-name="saveEntryHouse" bindtap='submitEntry'>
         保存并完善
     </view>
   </view>

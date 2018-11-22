@@ -1,0 +1,12 @@
+/* common/picture/picture.wxss */
+.uploadImg{
+  display:block;
+  width:25px;
+  height:25px;
+  line-height:25px;
+  text-align: center;
+  background:#4680FF;
+  border-radius:50%;
+  color:#fff;
+  font-size:20px;
+}

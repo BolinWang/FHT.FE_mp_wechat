@@ -1,0 +1,73 @@
+<view>
+  <form bindsubmit="formSubmit">
+    <view class="">
+      <van-field
+          value="{{ hostingInfo.contactMobile }}"
+          label="看房联系人"
+          placeholder="请输入"
+          border="{{ true }}"
+          bind:change="onChange"
+          input-align="right"
+        />
+      <view class="vanRow">
+          <van-row>
+            <van-col span="8">
+            面积
+            </van-col>
+            <van-col span="14">
+              <input 
+              value="{{hostingInfo.contactMobile}}"
+              placeholder='请输入' 
+              class="text"/>
+            </van-col>
+            <van-col span="2" class="danwColor">
+            ㎡
+            </van-col>
+          </van-row>
+        </view>
+        <van-field
+          value="{{ hostingInfo.houseDirection }}"
+          label="朝向"
+          placeholder="请选择"
+          border="{{ true }}"
+          bind:change="onChange"
+          input-align="right"
+          is-link
+        />
+        <view class="vanRow">
+          <van-row>
+            <van-col span="22">
+            房间照片
+            </van-col>
+            <van-col span="2" class="danwColor">
+              <picture></picture>
+            </van-col>
+          </van-row>
+        </view>
+         <van-field
+          value="{{ hostingInfo.facilityItems }}"
+          label="房间设施"
+          placeholder="请选择"
+          border="{{ true }}"
+          bind:change="onChange"
+          input-align="right"
+          is-link
+        />
+        <view class="vanRow" style="border-bottom:none">
+          <van-row>
+            <van-col span="8">
+            房间描述
+            </van-col>
+            <van-col span="16">
+              <textarea 
+              class="textarea" 
+              placeholder='请输入150字以内的描述' 
+              value="{{hostingInfo.houseDesc}}"
+              bindblur='textarea' value='' 
+              hidden='{{false}}'></textarea>
+            </van-col>
+          </van-row>
+        </view>
+    </view>
+  </form>
+</view>

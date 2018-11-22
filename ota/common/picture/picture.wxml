@@ -1,0 +1,6 @@
+<!--common/picture/picture.wxml-->
+<view>
+<view bindtap='chooseImage'>
+  <view class="uploadImg"> + </view>  
+</view>
+</view>

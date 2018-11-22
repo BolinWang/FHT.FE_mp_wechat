@@ -7,7 +7,7 @@
     active="{{ active }}"/>
   </view>
   <form bindsubmit="formSubmit">
-  <view class="form" wx:if="{{nextTepShow === false}}">
+  <view class="form">
     <van-cell-group>
      <van-field
         id='estateName'
@@ -131,12 +131,6 @@
     <view class="bottomBtn">
         <button class="buttonFixed" bindtap='nextTep'> 下一步 </button>
      </view>
-  </view>
-  <view wx:if="{{nextTepShow === true}}">
-    <view class="nextTepButton">
-      <button class="ntBtn"> 继续录入 </button>
-      <button class="ntBtn"> 继续录入 </button>
-    </view> 
   </view>
   </form>
 </view>

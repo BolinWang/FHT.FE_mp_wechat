@@ -1,11 +1,10 @@
 const defaultConfig = {
-  version: "1.0",
+  version: "1.0.1",
   timestamp: new Date().getTime(),
-  reqId: "0010C2379272774D6EC087B917CE2A71438DEF90",
-  sign: "8F4C4A8E9D850EDD9692DE38723D0543"
+  reqId: "wx_OTA",
+  sign: "wx_OTA"
 }
 // basePath api请求路径
-
 
 //测试
 const basePath = 'https://test.mdguanjia.com/otastarter/'

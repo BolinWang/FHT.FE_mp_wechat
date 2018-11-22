@@ -1,10 +1,9 @@
-
+const fetch = require('../../utils/api.js')
 Page({
   /**
    * 页面的初始数据
    */
   data: {
-    nextTepShow:false,//下一步
     roomSetShow:false,//房间号配置
     unitCodeShow:false,//单元
     roomNoShow:false,//房间号
@@ -19,6 +18,7 @@ Page({
     }, 
     zoneName:'',
     etryHouseData:{  
+      houseRentType:'',//房屋出租类型 1整租  2合租
       estateName: "", //品牌公寓
       provinceId: "", //省ID
       cityId: "", //市ID
@@ -33,7 +33,8 @@ Page({
       chamberCount: 1, // 室
       boardCount: 0, //厅
       toiletCount: 0, //wei
-      kitchenCount:0 // 厨
+      kitchenCount:0, // 厨
+      leaseStatus: 0,//租房状态
     },
     errTips:{
       estateName: '请输入品牌公寓', //品牌公寓
@@ -79,8 +80,7 @@ Page({
   onLoad: function (options) {
     const that = this;
     that.setData({
-     
-      // title:options.title
+      "etryHouseData.houseRentType": options.houseRentType
     })
   },
   addressShowHandel(){
