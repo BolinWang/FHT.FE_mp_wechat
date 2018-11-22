@@ -47,14 +47,14 @@ Page({
   },
   submitLogin() {
     let that = this
-    wx.redirectTo({
-      url: '../personalCenter/personalCenter'
-    })
-    fetch('/customer',
+    // wx.redirectTo({
+    //   url: '../personalCenter/personalCenter'
+    // })
+    fetch('/user',
      {
-      method: 'loginByPassword',
+      method: 'login',
       params: {
-        username: that.data.username,
+        account: that.data.username,
         password: SHA2(that.data.password)
       }
     },{
@@ -65,11 +65,11 @@ Page({
           icon: 'none',
           title: '登录成功',
         })
-        wx.setStorage({
-          key: 'MLZFUSERNAME',
+        wx.setStorage({  //保存用户名
+          key: 'OTAACCoUNT',
           data: that.data.username,
         })
-        wx.setStorageSync('OTA_sessionId', res.data.sessionId)
+        wx.setStorageSync('OTA_sessionId', res.data.sessionId)  //存储sessionId
         app.globalData.sessionId = res.data.sessionId
         wx.redirectTo({
           url: '../personalCenter/personalCenter'

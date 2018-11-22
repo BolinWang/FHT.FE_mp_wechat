@@ -1,0 +1,7 @@
+<!--pages/personalCenter/centerSet/centerSet.wxml-->
+<view>
+修改密码
+</view>
+<view>
+  退出登录
+</view>

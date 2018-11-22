@@ -1,5 +1,7 @@
 {
   "pages": [
+    "pages/forgetPassword/forgetPassword",
+    "pages/login/login",
     "pages/roomSet/roomSet",
     "common/roomPrice/roomPrice",
     "pages/configureHouse/configureHouse",
@@ -9,10 +11,10 @@
     "common/apartment/apartment",
     "common/selectCity/selectCity",
     "pages/personalCenter/personalCenter",
-    "pages/login/login",
     "pages/index/index",
     "common/roomHosting/roomHosting",
-    "common/picture/picture"
+    "common/picture/picture",
+    "pages/personalCenter/centerSet/centerSet"
   ],
   "window": {
     "backgroundTextStyle": "light",
