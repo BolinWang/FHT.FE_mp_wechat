@@ -1,8 +1,8 @@
 {
   "pages": [
+    "pages/roomSet/roomSet",
     "pages/forgetPassword/forgetPassword",
     "pages/login/login",
-    "pages/roomSet/roomSet",
     "common/roomPrice/roomPrice",
     "pages/configureHouse/configureHouse",
     "pages/wanShanHouse/wanShanHouse",
@@ -13,6 +13,7 @@
     "pages/personalCenter/personalCenter",
     "pages/index/index",
     "common/roomHosting/roomHosting",
+    "common/houseHosting/houseHosting",
     "common/picture/picture",
     "pages/personalCenter/centerSet/centerSet"
   ],

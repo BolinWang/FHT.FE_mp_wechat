@@ -29,6 +29,8 @@
   margin-bottom:40px;
   margin-left:20px;
   overflow: hidden;
+  position: relative;
+  z-index:201;
 }
 .checkbox{
    display: flex;
@@ -45,7 +47,4 @@
   padding:20rpx;
   font-size:12px;
   text-align: right;
-}
-.fieldClass{
-  color:#333;
 }

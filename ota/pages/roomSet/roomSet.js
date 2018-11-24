@@ -1,4 +1,4 @@
-// pages/roomSet/roomSet.js
+
 Page({
   /**
    * 页面的初始数据
@@ -10,6 +10,13 @@ Page({
     nextTepSecond:false,
     sureBtnShow:false,
     active:0,
+    houseData:{},//房屋的配置
+    roomData:{},//房间的配置
+    priceData:{},//价格的数据
+    presaveRoomData:{
+      id:'',
+      roomName:''
+    },//提交的数据
     steps:[{
         desc: '房间'
       },
@@ -18,14 +25,39 @@ Page({
       }
     ]
   },
+  nextTepF() {  //第一步
+    this.house_hosting = this.selectComponent('#house_hosting');
+    // 下一步之前先验证表单
+    console.log('房屋data',this.house_hosting.data.hostingInfo)
+    wx.nextTick(()=>{
+      if (this.house_hosting.formValidate()){
+        this.setData({
+          houseData: this.house_hosting.data.hostingInfo,
+          nextTepFirst:false,
+          nextTepSecond:true
+        })
+      }
+    })
+  },
+  nextTepS(){ // 合租房间配置 第二步
+    this.room_hosting = this.selectComponent('#room_hosting');
+    // 下一步之前先验证表单
+    console.log('房间data', this.selectComponent('#room_hosting'))
+    wx.nextTick(() => {
+      if (this.room_hosting.formValidate()) {
+        this.setData({
+          roomData: this.room_hosting.data.hostingRooms,
+          nextTepFirst: false,
+          nextTepSecond: true,
+        })
+      }
+    })
+  },
   submitData: function (e) {
     this.room_hosting = this.selectComponent('#room_hosting')
   },
   pageEventListener1(e){
     console.log('pageEventListener1', e)
-  },
-  onMyEvent(){
-    console.log('onMyEvent')
   },
   /**
    * 生命周期函数--监听页面加载
@@ -33,7 +65,9 @@ Page({
   onLoad: function (options) {
     if (!!options.houseRentType){
         this.setData({
-          houseRentType: options.houseRentType
+          houseRentType: options.houseRentType,
+          'presaveRoomData.id': options.id,
+          'presaveRoomData.roomName': options.roomName|| '' ,
         })
     }
   },
@@ -41,7 +75,6 @@ Page({
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function () {
-
   },
 
   /**

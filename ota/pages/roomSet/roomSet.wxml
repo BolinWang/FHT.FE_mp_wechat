@@ -6,8 +6,9 @@
     active="{{ active }}"/>
   </view>
 <view>
-  <room-hosting id="room_hosting" wx:if="{{nextTepShow === true}}"></room-hosting>
-  <room-price wx:if="{{nextTepShow === false}}" bindcustomevent="onMyEvent">
+  <house-hosting id="house_hosting" wx:if="{{nextTepFirst === true}}"></house-hosting>
+   <room-hosting id="room_hosting" wx:if="{{nextTepSecond === true}}"></room-hosting>
+  <room-price wx:if="{{sureBtnShow === true}}" bindcustomevent="onMyEvent">
   </room-price>
   <view class="bottomBtn">
   <button class="buttonFixed"

@@ -1,6 +1,25 @@
 <view>
   <form bindsubmit="formSubmit">
     <view class="">
+      <van-field
+          value="{{ hostingInfo.contactName }}"
+          label="看房联系人"
+          placeholder="请输入"
+          border="{{ true }}"
+          bind:change="onChange"
+          data-id="contactName"
+          input-align="right"
+        />
+         <van-field
+          value="{{ hostingInfo.contactMobile }}"
+          label="联系电话"
+          placeholder="请输入"
+          border="{{ true }}"
+          type="number"
+          data-id="contactMobile"
+          bind:change="onChange"
+          input-align="right"
+        />
         <view class="vanRow">
           <van-row>
             <van-col span="8">
@@ -8,12 +27,12 @@
             </van-col>
             <van-col span="14">
               <input 
-              value="{{hostingRooms.roomArea}}"
+              value="{{hostingInfo.houseArea}}"
               placeholder='请输入纯数字' 
               class="text"
               type="digit"
               bindblur= 'onChange'
-              data-id="roomArea"
+              data-id="houseArea"
               />
             </van-col>
             <van-col span="2" class="danwColor">
@@ -27,26 +46,8 @@
         range="{{roomDirectionList}}"
         range-key="label">
         <van-field
-          class="fieldClass"
-          placeholder-class="fieldClass"
-          value="{{ roomDirectionLabel}}"
+          value="{{ houseDirectionLabel }}"
           label="朝向"
-          placeholder="请选择"
-          border="{{ true }}"
-          input-align="right"
-          disabled
-          is-link
-        />
-        </picker>
-         <picker 
-        mode="selector"
-        bindchange="featuresPickerChange"
-        range="{{roomFeatures}}"
-        range-key="label">
-        <van-field
-          class="fieldClass"
-          value="{{ roomFeaturesLabel }}"
-          label="房间特色"
           placeholder="请选择"
           border="{{ true }}"
           input-align="right"
@@ -68,7 +69,7 @@
         <van-field
           bindtap='showPopuRoomSet'
           value="{{ facilityItemsName }}"
-          label="房间配置"
+          label="房间设施"
           placeholder="请选择"
           border="{{ true }}"
           input-align="right"
@@ -76,6 +77,22 @@
           is-link
         />
          </view>
+        <view class="vanRow" style="border-bottom:none">
+          <van-row>
+            <van-col span="8">
+            房间描述
+            </van-col>
+            <van-col span="16">
+              <textarea 
+              class="textarea" 
+              placeholder='请输入150字以内的描述' 
+              value="{{hostingInfo.houseDesc}}"
+              maxlength='150'
+              bindblur='textareaBlur'
+              hidden='{{false}}'></textarea>
+            </van-col>
+          </van-row>
+        </view>
         <van-popup
           show="{{ roomSetShow }}"
           position="bottom"

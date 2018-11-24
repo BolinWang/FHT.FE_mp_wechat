@@ -8,13 +8,13 @@
   <form bindsubmit="formSubmit">
     <view class="">
       <van-field
-          value="{{  }}"
-          label="看房联系人"
-          placeholder="请输入"
-          border="{{ true }}"
-          bind:change="onChange"
-          input-align="right"
-        />
+        value="{{  }}"
+        label="看房联系人"
+        placeholder="请输入"
+        border="{{ true }}"
+        bind:change="onChange"
+        input-align="right"
+      />
       <view class="vanRow">
           <van-row>
             <van-col span="8">

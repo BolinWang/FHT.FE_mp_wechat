@@ -89,7 +89,8 @@
   height:148rpx;
   width:100%;
   box-shadow: 1px 0px 3px #ddd;
-  backgound:#fff;
+  background:#fff;
+  z-index:10;
 }
 .buttonFixed{
   display: block;
