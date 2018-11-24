@@ -90,7 +90,7 @@ Page({
   editHouseFun(){
     
     wx.redirectTo({
-      url: '../roomSet/roomSet?houseRentType=' + this.data.editData.houseRentType
+      url: '../roomSet/roomSet?houseRentType=' + this.data.editData
     })
   }
 })

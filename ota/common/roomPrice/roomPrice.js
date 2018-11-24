@@ -164,6 +164,7 @@ Component({
         this.showTips(errTips.rent)
         return false
       }
+      return true
     }
   }
 })

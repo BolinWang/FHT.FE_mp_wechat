@@ -1,11 +1,11 @@
 {
   "pages": [
+    "pages/wanShanHouse/wanShanHouse",
     "pages/roomSet/roomSet",
     "pages/forgetPassword/forgetPassword",
     "pages/login/login",
     "common/roomPrice/roomPrice",
     "pages/configureHouse/configureHouse",
-    "pages/wanShanHouse/wanShanHouse",
     "pages/entryHouse/roomType/roomType",
     "pages/entryHouse/entryHouse",
     "common/apartment/apartment",

@@ -184,6 +184,7 @@ Component({
           icon: 'none',
           duration: 2000
         })
+        return false
       }
       console.log(this.data.hostingRooms.roomDirection)
       if (!this.data.hostingRooms.roomDirection) {
