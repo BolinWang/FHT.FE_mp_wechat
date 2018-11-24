@@ -4,34 +4,49 @@
       <van-cell-group
       border="{{false}}"
       >
+      <picker 
+        mode="selector"
+        bind:change="payOfPaymentChange"
+        range="{{payOfPayments}}"
+        range-key="label">
         <van-field
-          value="{{  }}"
+          value="{{ payOfPaymentLabel }}"
           label="付款方式"
           placeholder="请选择"
           border="{{ true }}"
-          bind:change="onChange"
           input-align="right"
+          disabled
           is-link
         />
-        <van-field
-          value="{{  }}"
-          label="押金方式"
-          placeholder="请选择"
-          border="{{ true }}"
-          bind:change="onChange"
-          input-align="right"
-          is-link
-        />
+      </picker>  
+      <picker 
+        mode="selector"
+        bind:change="depositOfPaymentChange"
+        range="{{depositOfPayments}}"
+        range-key="label">
+          <van-field
+            value="{{ depositOfPaymentLabel }}"
+            label="押金方式"
+            placeholder="请选择"
+            border="{{ true }}"
+            input-align="right"
+            is-link
+          />
+        </picker>
+        <picker 
+        mode="selector"
+        bind:change="serviceCycleChange"
+        range="{{serviceCycles}}"
+        range-key="label">
          <van-field
-          value="{{  }}"
+          value="{{ serviceCycleLabel }}"
           label="服务费周期"
           placeholder="请选择"
           border="{{ true }}"
-          bind:change="onChange"
           input-align="right"
           is-link
         />
-        
+        </picker> 
       </van-cell-group > 
        <view class="vanRow">
           <van-row>
@@ -41,6 +56,10 @@
             <van-col span="12">
               <input 
               placeholder='请输入' 
+              value="{{roomPriceData.rent}}"
+              type="number"
+              data-name="rent"
+              bindblur="rentChange"
               class="text"/>
             </van-col>
             <van-col span="4" class="danwColor">
@@ -56,6 +75,11 @@
             <van-col span="12">
               <input 
               placeholder='请输入' 
+              value="{{roomPriceData.deposit}}"
+              type="number"
+              data-name="deposit"
+              bindblur="onChange"
+              disabled="{{depositDiabled}}"
               class="text"/>
             </van-col>
             <van-col span="4" class="danwColor">
@@ -71,6 +95,10 @@
             <van-col span="12">
               <input 
               placeholder='请输入' 
+              type="number"
+              data-name='serviceChargePrice'
+              value="{{roomPriceData.serviceChargePrice}}"
+              bindblur="onChange"
               class="text"/>
             </van-col>
             <van-col span="4" class="danwColor">

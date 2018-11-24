@@ -6,13 +6,14 @@ Page({
   data: {
     nextTepShow:true,
     houseRentType: '',// 1整租 2合租
-    nextTepFirst:true,
+    nextTepFirst:false,
     nextTepSecond:false,
-    sureBtnShow:false,
+    sureBtnShow:true,
     active:0,
     houseData:{},//房屋的配置
     roomData:{},//房间的配置
     priceData:{},//价格的数据
+    houseArea:'',
     presaveRoomData:{
       id:'',
       roomName:''
@@ -34,7 +35,8 @@ Page({
         this.setData({
           houseData: this.house_hosting.data.hostingInfo,
           nextTepFirst:false,
-          nextTepSecond:true
+          nextTepSecond:true,
+          houseArea: parseInt(this.house_hosting.data.hostingInfo.houseArea)
         })
       }
     })
@@ -48,13 +50,22 @@ Page({
         this.setData({
           roomData: this.room_hosting.data.hostingRooms,
           nextTepFirst: false,
-          nextTepSecond: true,
+          nextTepSecond: false,
+          sureBtnShow:true
         })
       }
     })
   },
+  // 第三步提交数据
   submitData: function (e) {
-    this.room_hosting = this.selectComponent('#room_hosting')
+    this.house_price = this.selectComponent('#house_price')
+    wx.nextTick(()=>{
+      if (this.house_price.formValidate()) {
+        this.setData({
+          priceData: this.room_hosting.data.roomPriceData
+        })
+      }
+    })
   },
   pageEventListener1(e){
     console.log('pageEventListener1', e)

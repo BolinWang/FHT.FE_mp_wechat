@@ -1,10 +1,10 @@
 const app = getApp()
 // basePath api请求路径
 //测试
-// const basePath = 'https://dev.mdguanjia.com/hms/api'
-//线上
+const basePath = 'https://dev.mdguanjia.com/hms/api'
 
-const basePath = 'https://api.mdguanjia.com/hms/api'
+// 线上
+// const basePath = 'https://api.mdguanjia.com/hms/api'
 let version='1.0'
 const fetch = (config) => {
   let defaultConfig = {

@@ -7,8 +7,15 @@
   </view>
 <view>
   <house-hosting id="house_hosting" wx:if="{{nextTepFirst === true}}"></house-hosting>
-   <room-hosting id="room_hosting" wx:if="{{nextTepSecond === true}}"></room-hosting>
-  <room-price wx:if="{{sureBtnShow === true}}" bindcustomevent="onMyEvent">
+   <room-hosting 
+   houseArea="{{houseArea}}" 
+   id="room_hosting" 
+   wx:if="{{nextTepSecond === true}}">
+   </room-hosting >
+  <room-price 
+    id='house_price'
+    wx:if="{{sureBtnShow === true}}" 
+    bindcustomevent="onMyEvent">
   </room-price>
   <view class="bottomBtn">
   <button class="buttonFixed"
