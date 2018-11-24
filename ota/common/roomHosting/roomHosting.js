@@ -1,5 +1,11 @@
 import { validateMobile } from '../../utils/validate.js'
 Component({
+  properties:{
+    houseArea:{
+      type:Number,
+      value:''
+    }
+  },
   /**
    * 页面的初始数据
    */
@@ -96,8 +102,8 @@ Component({
     errorTips: {
       contactName: '请输入联系人姓名',
       contactMobile: '请输入联系人电话',
-      roomArea: '请输入房屋面积',
-      houseDirection: '请选择朝向',
+      roomArea: '请输入房间面积',
+      roomDirection: '请选择朝向',
       pictures: ' 请上传图片'
     }
   },
@@ -119,10 +125,8 @@ Component({
     /*朝向picker*/
     directionPickerChange(e) {
       this.setData({
-        'hostingInfo.houseDirection': e.detail.value * 1 + 1
-      })
-      this.setData({
-        roomDirectionLabel: this.data.roomDirectionList[e.detail.value].label
+        'hostingRooms.roomDirection': e.detail.value * 1 + 1,
+        roomDirectionLabel: this.data.roomDirectionList[e.detail.value].label,  
       })
     },
     //房间特色
@@ -174,6 +178,14 @@ Component({
         this.showTips(this.data.errorTips.roomArea)
         return false
       } 
+      if (this.data.hostingRooms.roomArea > this.data.houseArea){
+        wx.showToast({
+          title: '房间面积不能大于房屋面积',
+          icon: 'none',
+          duration: 2000
+        })
+      }
+      console.log(this.data.hostingRooms.roomDirection)
       if (!this.data.hostingRooms.roomDirection) {
         this.showTips(this.data.errorTips.roomDirection)
         return false

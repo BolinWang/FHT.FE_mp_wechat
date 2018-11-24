@@ -94,7 +94,7 @@
             </van-col>
             <van-col span="12">
               <input 
-              placeholder='请输入' 
+              placeholder='请输入'
               type="number"
               data-name='serviceChargePrice'
               value="{{roomPriceData.serviceChargePrice}}"
