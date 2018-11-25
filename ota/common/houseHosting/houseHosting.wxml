@@ -88,7 +88,7 @@
               placeholder='请输入150字以内的描述' 
               value="{{hostingInfo.houseDesc}}"
               maxlength='150'
-              bindblur='textareaBlur'
+              bindinput='textareaBlur'
               hidden='{{false}}'></textarea>
             </van-col>
           </van-row>

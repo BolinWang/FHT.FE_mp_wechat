@@ -69,7 +69,6 @@ Page({
     if (this.data.editData.houseRentType === 2){
       params.roomName = this.data.editData.roomName
     }
-    console.log(params)
     Dialog.confirm({
       title: '',
       message: '确定删除房源吗？'
@@ -88,9 +87,8 @@ Page({
     });
   },
   editHouseFun(){
-    
     wx.redirectTo({
-      url: '../roomSet/roomSet?houseRentType=' + this.data.editData
+      url: '../roomSet/roomSet?houseRentType=' + JSON.stringify(this.data.editData)
     })
   }
 })

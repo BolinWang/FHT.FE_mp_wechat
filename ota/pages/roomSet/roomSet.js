@@ -1,4 +1,5 @@
 const fetch = require('../../utils/api.js')
+import { deepClone } from '../../utils/util.js'
 Page({
   /**
    * 页面的初始数据
@@ -15,7 +16,7 @@ Page({
     priceData:{},//价格的数据
     houseArea:'',
     presaveRoomData:{
-      // id:Number,
+      id:'',
       roomName:''
     },//提交的数据
     steps:[{
@@ -72,22 +73,22 @@ Page({
   submitData: function (e) {
     this.house_price = this.selectComponent('#house_price')
     console.log(this.house_price.data.roomPriceData)
-    wx.nextTick(()=>{
+    // wx.nextTick(()=>{
       if (this.house_price.formValidate()) {
         this.setData({
-          priceData: this.house_price.data.roomPriceData
+          priceData: deepClone(this.house_price.data.roomPriceData)
         })
       }
-    })
-    console.log(this.data.priceData)
+    // })
     let hostingInfo = Object.assign(this.data.houseData, this.data.priceData)
+    hostingInfo.hostingRooms = deepClone(this.data.roomData)
     console.log('hostingInfo', hostingInfo)
     fetch('/',{
       "method": "completeHostingRoom",
       "params":{
         "id": 1,
         "roomName": '',
-        "hostingInfo":{}
+        "hostingInfo": deepClone(hostingInfo)
       }
     }).then((res)=>{
 
@@ -100,14 +101,15 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    let listData = JSON.parse(options.houseRentType)
     // if (!!options.houseRentType){
         this.setData({
-          houseRentType: options.houseRentType,
-          'presaveRoomData.id': options.id,
-          'presaveRoomData.roomName': options.roomName|| '' ,
+          houseRentType: listData.houseRentType,
+          'presaveRoomData.id': listData.id,
+          'presaveRoomData.roomName': listData.roomName|| '' ,
         })
     // }
-    console.log(options.houseRentType)
+    console.log(JSON.parse(options.houseRentType))
   },
   /**
    * 生命周期函数--监听页面初次渲染完成
