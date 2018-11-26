@@ -1,0 +1,32 @@
+<view class="steps">
+  <van-steps
+  steps="{{ steps }}"
+  active-color="#4680FF"
+  active="{{ active }}"/>
+</view>
+<view wx:for="{{roomlist}}" >
+    <view class="roomList">
+      <view>
+          房间名称
+      </view>
+      <view>
+      {{item}}
+      </view>
+    </view>
+    <view class="roomStatus">
+    <view>
+    已出租
+    </view>
+    <view class="roomText">
+      已出租请打开开关
+    </view> 
+    <view>
+    {{index}}
+    <!-- <switch bindchange="changeRoomStatus" class="changeIcon"/> -->
+    <van-switch checked="{{ checkedArray[0] }}" 
+    data-id="{{index}}"
+    bind:change="onChange" size="50rpx" />
+    {{checkedArray[0]}}
+    </view>
+  </view>
+</view>

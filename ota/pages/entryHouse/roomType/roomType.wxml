@@ -6,6 +6,7 @@
     active-color="#4680FF"
     active="{{ active }}"/>
   </view>
+<form >
 <view class="roomDetails roomBtm">
     <view class="roomDStep {{chamberCountShow==true?'active':''}}" bindtap='chamberCountClick' data-name="chamberCount">
        <view>卧室</view>
@@ -81,7 +82,12 @@
     <van-switch checked="{{ checked }}" bind:change="onChange" size="50rpx" />
     </view>
   </view>
-  <view class="bottomBtn">
+   <view class="bottomBtn" wx:if="{{houseRentType === '2'}}">
+    <view data-name="continueEntryHouse" bindtap='nextTeps'>
+        下一步
+    </view>
+  </view>
+  <view class="bottomBtn"  wx:if="{{houseRentType === '1'}}">
     <view data-name="continueEntryHouse" bindtap='submitEntry'>
         继续录入
     </view>
@@ -89,5 +95,6 @@
         保存并完善
     </view>
   </view>
+ </form>
 </view>
 

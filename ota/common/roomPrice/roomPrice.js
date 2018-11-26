@@ -35,7 +35,7 @@ Component({
     depositOfPayments:[
       {
         label: '自定义',
-        value: 1
+        value: 13
       },
       {
         label: '一个月',
@@ -64,9 +64,11 @@ Component({
       ['1', '2', '3', '4', '5', '6', '7', '8', '9'],  //室
       ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9'],// 厅
     ],
-    roomPriceData:{
+    serviceData:{
       serviceChargePrice: '',//服务费金额
-      serviceFeeType:'',//服务费周期
+      serviceFeeType: '',//服务费周期
+    },
+    roomPriceData:{
       depositOfPayment:'',//押
       payOfPayment:'', //付
       rent:'',//租金
@@ -87,7 +89,7 @@ Component({
     serviceCycleChange(e){
       this.setData({
         serviceCycleLabel: this.data.serviceCycles[e.detail.value].label,
-        'roomPriceData.serviceFeeType': this.data.serviceCycles[e.detail.value].value
+        'serviceData.serviceFeeType': this.data.serviceCycles[e.detail.value].value
       })
       console.log('服务费周期',e.detail.value)
     },
@@ -108,12 +110,21 @@ Component({
       console.log('11',depositOfPayment)
       // 改变押金方式 押金随机改变
       let roomPriceData = this.data.roomPriceData 
-      this.setData({
-        depositOfPaymentLabel: depositOfPayment.label,
-        'roomPriceData.depositOfPayment': depositOfPayment.value,
-        'roomPriceData.deposit': roomPriceData.rent * depositOfPayment.value
-      })
-      console.log(this.data.roomPriceData.depositOfPayment )
+      if (e.detail.value === 0){
+        this.setData({
+          depositOfPaymentLabel: depositOfPayment.label,
+          'roomPriceData.depositOfPayment': depositOfPayment.value,
+          'roomPriceData.deposit':'0.00'
+        })
+      }else{
+        this.setData({
+          depositOfPaymentLabel: depositOfPayment.label,
+          'roomPriceData.depositOfPayment': depositOfPayment.value,
+          'roomPriceData.deposit': roomPriceData.rent * depositOfPayment.value
+        })
+        console.log(this.data.roomPriceData.depositOfPayment)
+      }
+      
     },
     //付款方式
     payOfPaymentChange(e){
@@ -128,17 +139,23 @@ Component({
       //改变租金价格 押金随机改变
       let roomPriceData = this.data.roomPriceData 
       roomPriceData.rent= (e.detail.value*1).toFixed(2)
-      roomPriceData.deposit = roomPriceData.rent * roomPriceData.depositOfPayment
+      roomPriceData.deposit = (roomPriceData.rent * roomPriceData.depositOfPayment*1).toFixed(2)
       this.setData({
         roomPriceData: this.data.roomPriceData
       })
     },
     //自定义时候输入押金
     onChange(e){
-      this.data.roomPriceData[e.currentTarget.dataset.name] = (e.detail.value * 1).toFixed(2)
-      this.setData({
-        roomPriceData: this.data.roomPriceData
-      })
+      if (e.currentTarget.dataset.name === 'serviceChargePrice'){
+        this.setData({
+          'serviceData.serviceChargePrice': (e.detail.value * 1).toFixed(2)
+        })
+      }else{
+        this.data.roomPriceData[e.currentTarget.dataset.name] = (e.detail.value * 1).toFixed(2)
+        this.setData({
+          roomPriceData: this.data.roomPriceData
+        })
+      }
       console.log(this.data.roomPriceData)
     },
     showTips(text) {

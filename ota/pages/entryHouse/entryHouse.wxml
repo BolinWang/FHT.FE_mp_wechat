@@ -40,7 +40,6 @@
           bind:change="onChange"
           bind:focus="onFocus"
           input-align="right"
-
         />
         <van-field
           id="floorAmount"

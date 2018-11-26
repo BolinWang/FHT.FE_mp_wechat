@@ -10,10 +10,12 @@ Page({
     nextTepFirst:true,
     nextTepSecond:false,
     sureBtnShow:false,
+    prevTeps: false,
     active:0,
     houseData:{},//房屋的配置
     roomData:{},//房间的配置
     priceData:{},//价格的数据
+    serviceData:{},
     houseArea:'',
     presaveRoomData:{
       id:'',
@@ -31,28 +33,28 @@ Page({
     this.house_hosting = this.selectComponent('#house_hosting');
     console.log(Object.assign({name:'1',"aa":'aa'}, {id:'2',"pctius":{name:'23'}} ))
     // 下一步之前先验证表单
-    console.log('房屋data',this.house_hosting.data.hostingInfo)
     wx.nextTick(()=>{
       if (this.house_hosting.formValidate()){
         this.setData({
           houseData: this.house_hosting.data.hostingInfo,
-          houseArea: parseInt(this.house_hosting.data.hostingInfo.houseArea)
+          houseArea: parseInt(this.house_hosting.data.hostingInfo.houseArea),
+          prevTeps:true
         })
+        // 如果为整租只有两步，合租散布
+        if (this.data.houseRentType * 1 === 1) {// 1整租 
+          this.setData({
+            nextTepFirst: false,
+            sureBtnShow: true,
+          })
+        } else if (this.data.houseRentType * 1 === 2) { //2合租
+          this.setData({
+            nextTepFirst: false,
+            nextTepSecond: true,
+          })
+        }
       }
     })
-    console.log(this.data.houseRentType)
-    // 如果为整租只有两步，合租散布
-    if (this.data.houseRentType*1 === 1) {// 1整租 
-      this.setData({
-        nextTepFirst: false,
-        sureBtnShow: true,
-      })
-    } else if (this.data.houseRentType*1 === 2) { //2合租
-      this.setData({
-        nextTepFirst: false,
-        nextTepSecond: true,
-      })
-    }
+    console.log('房屋data', this.house_hosting.data.hostingInfo)
   },
   nextTepS(){ // 合租房间配置 第二步
     this.room_hosting = this.selectComponent('#room_hosting');
@@ -69,10 +71,29 @@ Page({
       }
     })
   },
+  prevTepsClick(){ //上一步
+    if (this.data.nextTepSecond === true){
+      this.setData({
+        nextTepFirst:true,
+        nextTepSecond:false
+      })
+    } 
+    if(this.data.nextTepSecond === true){
+      this.setData({
+        nextTepSecond: true,
+        sureBtnShow:false
+      })
+    }
+  },
   // 第三步提交数据
   submitData: function (e) {
     this.house_price = this.selectComponent('#house_price')
-    console.log(this.house_price.data.roomPriceData)
+    let serviceData = this.house_price.data.serviceData
+    if (this.data.houseRentType * 1 === 1) {// 1整租 
+      this.data.houseData = Object.assign(this.data.houseData, serviceData)
+    } if (this.data.houseRentType * 1 === 2){ //2 合租
+      this.data.roomData = Object.assign(this.data.roomData, serviceData)
+    }
     // wx.nextTick(()=>{
       if (this.house_price.formValidate()) {
         this.setData({
@@ -86,8 +107,8 @@ Page({
     fetch('/',{
       "method": "completeHostingRoom",
       "params":{
-        "id": 1,
-        "roomName": '',
+        "id": this.data.presaveRoomData.id,
+        "roomName": this.data.presaveRoomData.roomName,
         "hostingInfo": deepClone(hostingInfo)
       }
     }).then((res)=>{
@@ -106,7 +127,7 @@ Page({
         this.setData({
           houseRentType: listData.houseRentType,
           'presaveRoomData.id': listData.id,
-          'presaveRoomData.roomName': listData.roomName|| '' ,
+          'presaveRoomData.roomName': listData.roomName || ''
         })
     // }
     console.log(JSON.parse(options.houseRentType))
@@ -115,47 +136,12 @@ Page({
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function () {
-  },
 
+  },
   /**
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
+     
   },
-
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload: function () {
-
-  },
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh: function () {
-
-  },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom: function () {
-
-  },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function () {
-
-  }
 })

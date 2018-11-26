@@ -27,10 +27,10 @@
         show="{{ enterHouseShow }}" 
         bind:click-overlay="closeEnterHouse">
           <view class="enterHouse">
-          <navigator class="enterHouseLink"  url="/pages/entryHouse/entryHouse?title=navigator">
+          <navigator class="enterHouseLink"  url="/pages/entryHouse/entryHouse?houseRentType=2">
           分散式合租
           </navigator>
-           <navigator class="enterHouseLink"  url="/pages/entryHouse/entryHouse?title=navigator2">
+           <navigator class="enterHouseLink"  url="/pages/entryHouse/entryHouse?houseRentType=1">
           分散式整租
           </navigator>
           </view>

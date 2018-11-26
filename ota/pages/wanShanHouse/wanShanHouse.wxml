@@ -16,10 +16,10 @@ wx:for-index='idx1'>
         {{presaveRoomList[idx1][idx2].roomNo}}
       </view>
       <view>
-        <view wx:if="{{ presaveRoomList[idx1][idx2].houseRentType === 1}}">
+        <view wx:if="{{ presaveRoomList[idx1][idx2].houseRentType === 2}}">
           合租
           </view>
-        <view wx:if="{{ presaveRoomList[idx1][idx2].houseRentType === 2}}">
+        <view wx:if="{{ presaveRoomList[idx1][idx2].houseRentType == 1}}">
           整租
           </view>
       </view>

@@ -1,21 +1,24 @@
 {
   "pages": [
+    "pages/entryHouse/addRoom/addRoom",
+    "pages/personalCenter/personalCenter",
     "pages/wanShanHouse/wanShanHouse",
+    "pages/roomSet/nextPage/nextPage",
+    "pages/personalCenter/centerSet/centerSet",
     "pages/roomSet/roomSet",
     "pages/forgetPassword/forgetPassword",
     "pages/login/login",
     "common/roomPrice/roomPrice",
-    "pages/configureHouse/configureHouse",
     "pages/entryHouse/roomType/roomType",
     "pages/entryHouse/entryHouse",
     "common/apartment/apartment",
     "common/selectCity/selectCity",
-    "pages/personalCenter/personalCenter",
     "pages/index/index",
     "common/roomHosting/roomHosting",
     "common/houseHosting/houseHosting",
     "common/picture/picture",
-    "pages/personalCenter/centerSet/centerSet"
+    "pages/roomSet/secondPage/secondPage",
+    "pages/roomSet/surePage/surePage"
   ],
   "window": {
     "backgroundTextStyle": "light",

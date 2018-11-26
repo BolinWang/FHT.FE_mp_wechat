@@ -2,6 +2,7 @@
 const fetch = require('../../utils/api.js')
 import Dialog from '../../components/dialog/dialog';
 import { deepClone } from '../../utils/util.js'
+const app = getApp()
 Page({
   /**
    * 页面的初始数据
@@ -9,6 +10,7 @@ Page({
   data: {
     popupShow:false,
     editData:'',
+    lr:false,
     presaveRoomList:{
       "小区A": [{
         "id": 1,
@@ -36,9 +38,6 @@ Page({
       }]
     }   // 列表数据
   },
-  onLoad(){ //加载数据
-    // this.getHouseData();
-  },
   //获取小区房间的接口
   getHouseData(){
     fetch('/presaveRoom',{
@@ -52,10 +51,20 @@ Page({
   //点击房间编辑
   entryRoomPz(e){
     this.setData({
-      popupShow: true,
+      popupShow: false,
+    })
+    setTimeout(()=>{
+      this.setData({
+        popupShow: true,
+      })
+    },500)
+    this.setData({
       editData: e.currentTarget.dataset.name
     })
-    console.log(this.data.editData)
+    app.globalHouseData.houseRentType = this.data.editData.houseRentType
+    app.globalHouseData.id = this.data.editData.id
+    app.globalHouseData.roomName = this.data.editData.roomName
+    console.log(app.globalHouseData.houseRentType)
   },
   canclePopup(){
     this.setData({
@@ -87,8 +96,30 @@ Page({
     });
   },
   editHouseFun(){
-    wx.redirectTo({
-      url: '../roomSet/roomSet?houseRentType=' + JSON.stringify(this.data.editData)
+    wx.navigateTo({
+      url: '../roomSet/nextPage/nextPage?houseRentType=' + JSON.stringify(this.data.editData)
     })
+  },
+  onHide() { 
+    console.log(1234567)
+    this.setData({
+      popupShow: false
+    })
+  },
+  onLoad: function (options) {  
+    this.setData({
+      lr:true
+    })
+  },
+  onUnload(options){
+    if(this.data.lr){// 判断是不是从录入进入完善房源
+      wx.navigateBack({
+        delta: 2
+      })
+    }else{
+      wx.navigateBack({
+        delta: 1
+      })
+    }
   }
 })

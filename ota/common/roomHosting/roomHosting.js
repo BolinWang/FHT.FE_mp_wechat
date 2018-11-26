@@ -172,6 +172,9 @@ Component({
         duration: 2000
       })
     },
+    formReset(){
+     console.log('重置表单')
+    },
     // 验证表单
     formValidate() {
       if (!this.data.hostingRooms.roomArea) {

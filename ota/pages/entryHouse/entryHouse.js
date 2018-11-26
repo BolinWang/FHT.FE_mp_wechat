@@ -217,33 +217,28 @@ Page({
     } else{
       let forData = JSON.stringify(this.data.etryHouseData)
       wx.navigateTo({
-        url: 'roomType/roomType?etryHouseData='+ forData,
+        url: 'roomType/roomType?etryHouseData=' + forData + '&houseRentType=' + this.data.etryHouseData.houseRentType,
       })
     }
-    
-console.log()
     // this.setData({
     //   nextTepShow:true,
     //   active: 1
     // })
   },
-  onLoad(){
-
-  },
   //页面显示的时候：
   onShow(){
     let that = this
-    console.log('从小区那传过来的数据', that.data.apartmentData)
-    this.setData({
-      'etryHouseData.buildingName':'',
-      'etryHouseData.unitCode':'',
-      'etryHouseData.roomNo':'',
-      'etryHouseData.floorAmount':'',
-      'etryHouseData.floorName':'',
-      'etryHouseData.zoneId':'',
-      'areaBankuai.areaCity':[],
-      zoneName:''
-    })
+    // console.log('从小区那传过来的数据', that.data.apartmentData)
+    // this.setData({
+    //   'etryHouseData.buildingName':'',
+    //   'etryHouseData.unitCode':'',
+    //   'etryHouseData.roomNo':'',
+    //   'etryHouseData.floorAmount':'',
+    //   'etryHouseData.floorName':'',
+    //   'etryHouseData.zoneId':'',
+    //   'areaBankuai.areaCity':[],
+    //   zoneName:''
+    // })
     //判断是显示输入 还是显示选择
     if (!that.data.apartmentData.buildingInfo){
       this.setData({

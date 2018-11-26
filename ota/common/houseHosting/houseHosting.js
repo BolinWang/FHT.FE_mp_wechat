@@ -1,5 +1,6 @@
 import { validateMobile } from '../../utils/validate.js'
 Component({
+  
   /**
    * 页面的初始数据
    */
@@ -159,7 +160,8 @@ Component({
       if (!this.data.hostingInfo.contactMobile) {
         this.showTips(this.data.errorTips.contactMobile)
         return false
-      } else if (!validateMobile(this.data.hostingInfo.contactMobile)){
+      } 
+      if (!validateMobile(this.data.hostingInfo.contactMobile)){
         this.showTips('手机号码错误')
         return false
       }

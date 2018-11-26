@@ -1,5 +1,5 @@
 <view>
-  <form bindsubmit="formSubmit">
+  <form bindsubmit="formSubmit" bindreset="formReset">
     <view class="">
         <view class="vanRow">
           <van-row>

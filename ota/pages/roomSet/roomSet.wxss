@@ -2,3 +2,4 @@
 .steps{
   margin:20rpx 100rpx 0;
 }
+.hidden{display: none;}

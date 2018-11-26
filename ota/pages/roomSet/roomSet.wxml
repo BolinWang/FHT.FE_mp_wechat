@@ -6,15 +6,17 @@
     active="{{ active }}"/>
   </view>
 <view>
-  <house-hosting id="house_hosting" wx:if="{{nextTepFirst === true}}"></house-hosting>
+  <house-hosting id="house_hosting"
+  class="{{nextTepFirst === true?'':'hidden'}}"
+></house-hosting>
    <room-hosting 
    houseArea="{{houseArea}}" 
    id="room_hosting" 
-   wx:if="{{nextTepSecond === true}}">
+   class="{{nextTepSecond === true?'':'hidden'}}">
    </room-hosting >
   <room-price 
     id='house_price'
-    wx:if="{{sureBtnShow === true}}" 
+    class="{{sureBtnShow === true?'':'hidden'}}" 
     bindcustomevent="onMyEvent">
   </room-price>
   <view class="bottomBtn">
@@ -22,6 +24,10 @@
   wx:if="{{nextTepFirst === true}}
   bindtap="nextTepF"
   > 下一步 </button>
+  <button class="buttonFixed"
+  bindtap='prevTepsClick'
+  wx:if="{{prevTeps === true}}
+  >上一步 </button>
    <button class="buttonFixed"
   wx:if="{{nextTepSecond === true}}
   bindtap="nextTepS"
