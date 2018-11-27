@@ -44,7 +44,7 @@ Page({
         wx.request({
           url: 'https://apis.map.qq.com/ws/geocoder/v1/',
           data: {
-            "key": "HDYBZ-MVIR2-6TJUV-CUXGZ-A3YLE-W5BPD",
+            "key": "PZ3BZ-VEYCV-QBEP6-UKVAY-IJPT7-2BFS3",
             "location": locationString
           },
           method: 'GET',

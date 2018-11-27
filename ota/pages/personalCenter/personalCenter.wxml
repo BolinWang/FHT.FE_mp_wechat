@@ -4,12 +4,12 @@
    <view class="per-box">
       <view class="box-infor">
         <view class="pho-box">
-          <view class="crop">
+          <view class="crop" bindtap="">
             <image class="photo Action" src="{{avatarUrl || hrefavatarUrl}}"></image>
           </view>
         </view>
-        <view class="out" bindtap='dropOut'>
-          <image class="out-icon" src="../../images/tuichu.svg"></image>
+        <view class="out" bindtap='setFun'>
+          <image class="out-icon" src="../../images/set_icon.png"></image>
         </view>
         <view class="per-inf">
           <view class="name">{{nickName}}</view>

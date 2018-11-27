@@ -22,66 +22,138 @@ Page({
     vcode: null,  //验证码
     password: null,
     username: null,
-    activeInput: null
+    activeInput: null,
+    currentTime:60
   },
-  goLogin() {   //账号密码登陆
-    if (!this.data.username) {
-      wx.showToast({
-        icon: 'none',
-        title: '手机号不能为空',
-      })
-    } else if (!this.data.password) {
-      wx.showToast({
-        icon: 'none',
-        title: '请输入密码',
-      })
-    } else if (!validateMobile(this.data.username)) {
-      wx.showToast({
-        icon: 'none',
-        title: '手机号码格式不正确',
-      })
-    } else {
-      this.submitLogin()
-    }
-
+  checkPhone(){
+    if (!this.data.mobile) {
+      this.errTips('手机号不能为空')
+    } else if(!validateMobile(this.data.mobile)) {
+      this.errTips('手机号码格式不正确')
+    } 
+    return true
   },
-  submitLogin() {
-    let that = this
-    // wx.redirectTo({
-    //   url: '../personalCenter/personalCenter'
-    // })
-    fetch('/user',
-     {
-      method: 'login',
-      params: {
-        account: that.data.username,
-        password: SHA2(that.data.password)
-      }
-    },{
-      method:'GET'
-    }).then(res => {
-      if (res.code == 0) {
+  loginFetch(data = {}) {
+    fetch('user',
+      {
+        method: 'login',
+        params: data
+      }, {
+        method: 'POST'
+      }).then(data => {
         wx.showToast({
           icon: 'none',
           title: '登录成功',
         })
         wx.setStorage({  //保存用户名
           key: 'OTAACCoUNT',
-          data: that.data.username,
+          data: this.data.username,
         })
-        wx.setStorageSync('OTA_sessionId', res.data.sessionId)  //存储sessionId
-        app.globalData.sessionId = res.data.sessionId
+        wx.setStorageSync('OTA_sessionId', data.sessionId)  //存储sessionId
+        console.log(data.sessionId)
+        app.globalData.sessionId = data.sessionId
         wx.redirectTo({
           url: '../personalCenter/personalCenter'
         })
-      }
+      })
+  },
+  //用户名登录
+  submitLogin() {
+    const params = {
+      account: this.data.username,
+      password: SHA2(this.data.password),
+      verifyCode: this.data.vcode
+    }
+    this.loginFetch(params)
+  },
+  //验证码登录
+  formSubmitcode() {
+    const params = {
+      account: this.data.mobile,
+      verifyCode: this.data.vcode
+    }
+    this.loginFetch(params)
+  },
+  errTips(text){
+    wx.showToast({
+      icon: 'none',
+      title: text,
     })
+    return false
+  },
+  goLogin(e) {   //账号密码登陆
+    const currentDom = e.currentTarget.dataset.name
+    if (e.currentTarget.dataset.name === 'verifyCode'){
+      if (!this.data.mobile) {
+        this.errTips('手机号不能为空')
+      }else if (!validateMobile(this.data.mobile)) {
+        this.errTips('手机号码格式不正确')
+      } 
+      if (!(this.data.vcode)) {
+        this.errTips('验证码不能为空')
+      }
+      else{
+        this.formSubmitcode()
+      }
+    } if (e.currentTarget.dataset.name === 'account'){
+      if (!this.data.username) {
+        this.errTips('手机号不能为空')
+      } else if (!this.data.password) {
+        this.errTips('请输入密码')
+      } else if (!validateMobile(this.data.username)) {
+        this.errTips('手机号码格式不正确')
+      }else{
+        this.submitLogin()
+      }
+    }
+  },
+  //获取验证码
+  sendCode() {
+    if (!this.data.disabled) {
+      let that = this
+      var time = this.data.currentTime
+      if (this.checkPhone()) {
+        fetch('sms', {
+          method: 'verifyCode',
+          params: {
+            mobile: this.data.mobile
+          }
+        }).then((res) => {
+          console.log(res)
+          wx.showToast({
+            title: '短信验证码已发送',
+            icon: 'none'
+          })
+          // this.setData({
+          //   vcode: res.verifyCode	
+          // })
+          const interval = setInterval(() => {
+            time--;
+            that.setData({
+              textTime: time + 's 后重新发送', //按钮文字变成倒计时对应秒数
+              codeDis: true,
+              color: '#bbb'
+            })
+            if (time <= 0) {
+              clearInterval(interval)
+              that.setData({
+                textTime: '重新发送',
+                codeDis: false,
+                currentTime:61,
+                color: "#333"
+              })
+            }
+          }, 1000)
+        })
+      }
+    }
   },
   // 获取手机号码
   getMobile(e) {
     this.setData({
       mobile: e.detail.value.replace(/\s+/g, '')
     })
+    console.log(this.data.mobile)
   },
   getUsername(e) {
     this.setData({
@@ -94,65 +166,34 @@ Page({
       password: e.detail.value.replace(/\s+/g, '')
     })
   },
+  //获取验证码
+  getCode(e){
+    this.setData({
+      vcode: e.detail.value.replace(/\s+/g, '')
+    })
+  },
   tapName(e) {
     const tabId = e.currentTarget.dataset.id;
     this.setData({
       tabActive: tabId
     })
   },
-  /**
-   * 生命周期函数--监听页面加载
-   */
-  onLoad: function (options) {
-
+  showClearIcon(e) {
+    this.setData({
+      activeInput: e.currentTarget.dataset.inputType
+    })
   },
-
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady: function () {
-
+  hideClearIcon(e) {
+    this.setData({
+      activeInput: '0'
+    })
   },
-
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload: function () {
-
-  },
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh: function () {
-
-  },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom: function () {
-
-  },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function () {
-
+  onShow(){
+    console.log(wx.getStorageSync('OTA_sessionId'))
+    if (wx.getStorageSync('OTA_sessionId')) {
+      wx.reLaunch({   //个人中心
+        url: '/pages/personalCenter/personalCenter'
+      })
+    }
   }
 })

@@ -8,36 +8,22 @@ Page({
   data: {
     hrefavatarUrl: '../../images/Group.svg',
     sessionId:null,
-    nickName:'邓冬明',
-    mobile:'13098776787',
+    nickName:'',
+    mobile:'',
     enterHouseShow:false  // 点击录入房源展示弹层
-  },
-
-  /**
-   * 生命周期函数--监听页面加载
-   */
-  onLoad: function (options) {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady: function () {
-    // wx.showLoading({
-    //   title: '加载中',
-    //   mask: true
-    // });
-    this.getPersonal()
-    // this.getOrderNum()
   },
   // 获取个人信息
   getPersonal(){
     let that = this
-    // fetch('/user',{
-    //   method:'info',
-    //   sessionId: wx.getStorageSync('OTA_sessionId')
-    // })
+    fetch('/user',{
+      method:'info'
+    }).then((res)=>{
+      this.setData({
+        nickName: res.accountName,
+        mobile:res.mobile
+      })
+      console.log('用户信息',res)
+    })
   },
   //展示录入房源弹层
   showEnterHouse(){
@@ -52,12 +38,14 @@ Page({
     })
   },
   /**
-   * 生命周期函数--监听页面显示
+   * 设置
    */
-  onShow: function () {
-
-  },
-
+  setFun(){
+    console.log('adfadsf')
+    wx.navigateTo({
+      url: 'centerSet/centerSet',
+    })
+  }, 
   /**
    * 生命周期函数--监听页面隐藏
    */
@@ -66,32 +54,8 @@ Page({
       enterHouseShow: false
     })
   },
+ onLoad(){
+   this.getPersonal();
+ }
 
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload: function () {
-    
-  },
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh: function () {
-
-  },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom: function () {
-
-  },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function () {
-
-  }
 })

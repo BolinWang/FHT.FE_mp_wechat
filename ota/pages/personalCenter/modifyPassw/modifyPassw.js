@@ -1,38 +1,34 @@
-import { validateMobile } from '../../utils/validate.js'
-const fetch = require('../../utils/api.js')
-import { SHA2 } from '../../utils/shaEncrypt.js'
+const fetch = require('../../../utils/api.js')
+import { SHA2 } from '../../../utils/shaEncrypt.js'
 const app = getApp()
 Page({
   /**
    * 页面的初始数据
    */
   data: {
-    title:'找回密码',
+    title: '修改密码',
     text: '获取验证码',
     currentTime: 5, //倒计时
     disabled: false, //按钮是否禁用
-    color:'#333',
-    newPassw:'',
-    phone:'',
-    code:''
+    color: '#333',
+    newPassw: '',
+    phone: '',
+    code: ''
   },
-  resetPassw(){
-    console.log(app.globalData.sessionId)
+  resetPassw() {
     this.set_passw = this.selectComponent('#set_passw')
-    console.log(this.set_passw.formValidate())
-    console.log(this.set_passw.data)
-    if (this.set_passw.formValidate()){
+    if (this.set_passw.formValidate()) {
       fetch('user', {
-        method: 'retrievePassword',  //找回密码
+        method: 'modifyPassword',  //找回密码
         params: {
           account: this.set_passw.data.phone,
           newPassword: SHA2(this.set_passw.data.newPassw),
-          verifyCode: this.set_passw.data.code 
+          verifyCode: this.set_passw.data.code
         }
       }).then((data) => {
         console.log(data)
         wx.showToast({
-          title: '密码找回成功',
+          title: '修改密码成功',
           icon: 'none'
         })
         wx.removeStorage({

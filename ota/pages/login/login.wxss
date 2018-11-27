@@ -39,10 +39,10 @@
   padding-bottom:6rpx;
 }
 .tabText{
-  color: #FF8C07;
+  color: #4680FF;
   line-height:50rpx;
   box-sizing: border-box;
-  border-bottom:4rpx solid #FF8C07;
+  border-bottom:4rpx solid #4680FF;
 }
 .inp-box{
   padding:12rpx 50rpx 0 50rpx;
@@ -80,7 +80,7 @@
   border:0;
   border-radius: 60rpx;
   line-height: 88rpx;
-  background: #FF8C07;
+  background: #4680FF;
   color: #ffffff;
   font-size: 36rpx;
   letter-spacing: -0.43px;

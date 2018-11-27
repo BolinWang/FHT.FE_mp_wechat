@@ -13,15 +13,15 @@ const basePath = 'https://test.mdguanjia.com/otastarter/'
 // const basePath = 'https://api.mdguanjia.com/otastarter'
 
 const fetch = (url, data, params = {}) => {
-  wx.showLoading({
-    title: '加载中',
-  })
+  // wx.showLoading({
+  //   title: '加载中',
+  // })
   const promise = new Promise((resolve, reject) => {
     let that = this
     let postData = Object.assign(data, defaultConfig)
     // 登录不需要做sessionId鉴权
     if (postData.method !== 'login') {
-      postData.sessionId = wx.getStorageSync('sessionId')
+      postData.sessionId = wx.getStorageSync('OTA_sessionId')
     }
     wx.request({
       url: basePath + url,
@@ -48,7 +48,7 @@ const fetch = (url, data, params = {}) => {
           wx.showToast({
             title: res.data.message || '网络异常',
             icon: 'none',
-            duration: 2000
+            duration: 3000
           })
           reject(res.data.message)
         }

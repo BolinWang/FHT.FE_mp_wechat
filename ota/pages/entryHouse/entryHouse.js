@@ -220,10 +220,6 @@ Page({
         url: 'roomType/roomType?etryHouseData=' + forData + '&houseRentType=' + this.data.etryHouseData.houseRentType,
       })
     }
-    // this.setData({
-    //   nextTepShow:true,
-    //   active: 1
-    // })
   },
   //页面显示的时候：
   onShow(){
@@ -276,11 +272,13 @@ Page({
           "zoneName": "板块3"
         }]
     }
-    // fetch('/queryZoneListByAreaId',{
-    //   params: {
-    //     'regionId': this.data.etryHouseData.regionId //要传区ID
-    //   }
-    // }).then((res)=>{
+    fetch('fangyuan/queryZoneListByAreaId',{
+      params: {
+        'regionId': this.data.etryHouseData.regionId //要传区ID
+      }
+    },{
+      method:'POST'
+    }).then((res)=>{
         data.list.map((item)=>{
           this.data.areaBankuai.areaCity.push(JSON.parse(JSON.stringify(item).replace('zoneId', 'id').replace('zoneName', 'name')))
         })
@@ -288,7 +286,7 @@ Page({
           'areaBankuai.areaCity': this.data.areaBankuai.areaCity,
           'areaBankuai.pickerDisabled': false
         })
-    // })
+    })
     }
   }
 })
